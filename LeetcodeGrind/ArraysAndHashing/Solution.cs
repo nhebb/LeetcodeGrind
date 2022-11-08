@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static System.Net.Mime.MediaTypeNames;
+using System.Xml.Linq;
 
 namespace LeetcodeGrind.ArraysAndHashing;
 
@@ -188,5 +190,169 @@ internal class Solution
             i++;
         }
         return longest;
+    }
+
+
+    // 118. Pascal's Triangle
+    public IList<IList<int>> Generate(int numRows)
+    {
+        var result = new List<IList<int>>();
+        if (numRows < 1) { return result; }
+
+        result.Add(new List<int>() { 1 });
+        if (numRows == 1) return result;
+
+        result.Add(new List<int>() { 1, 1 });
+        if (numRows == 2) return result;
+
+        for (int r = 2; r < numRows; r++)
+        {
+            var row = new List<int>(r);
+            row.Add(1);
+            for (int c = 1; c < r; c++)
+            {
+                row.Add(result[r - 1][c - 1] + result[r - 1][c]);
+            }
+            row.Add(1);
+            result.Add(row);
+        }
+        return result;
+    }
+
+
+    // 27. Remove Element
+    /* Python3 version:
+    def removeElement(self, nums: List[int], val: int) -> int:
+        validLength = 0
+        for i in range(len(nums)):
+            if nums[i] != val:
+                nums[validLength] = nums[i]
+                validLength += 1
+        
+        return validLength
+     */
+    public int RemoveElement(int[] nums, int val)
+    {
+        int validLength = 0;
+        for (int i = 0; i < nums.Length; i++)
+        {
+            if (nums[i] != val)
+            {
+                nums[validLength] = nums[i];
+                validLength++;
+            }
+        }
+        return validLength;
+    }
+
+
+
+    // 496. Next Greater Element I
+    public int[] NextGreaterElement(int[] nums1, int[] nums2)
+    {
+        var d = new Dictionary<int, int>();
+        for (int i = 0; i < nums2.Length; i++)
+        {
+            d[nums2[i]] = i;
+        }
+
+        var ans = new int[nums1.Length];
+        for (int i = 0; i < nums1.Length; i++)
+        {
+            var found = false;
+            int j = d[nums1[i]] + 1;
+            while (j < nums2.Length)
+            {
+                if (nums2[j] > nums1[i])
+                {
+                    ans[i] = nums2[j];
+                    found = true;
+                    break;
+                }
+                j++;
+            }
+            if (!found)
+                ans[i] = -1;
+        }
+        return ans;
+    }
+
+
+    // 503. Next Greater Element II
+    /* Given a circular integer array nums (i.e., the next element of 
+     * nums[nums.length - 1] is nums[0]), return the next greater number
+     * for every element in nums.
+     * 
+     * The next greater number of a number x is the first greater number 
+     * to its traversing-order next in the array, which means you could 
+     * search circularly to find its next greater number. If it doesn't exist,
+     * return -1 for this number.
+     * */
+    public int[] NextGreaterElements(int[] nums)
+    {
+        var ans = new int[nums.Length];
+        for (int i = 0; i < nums.Length; i++)
+        {
+            var found = false;
+            var j = (i + 1) % nums.Length;
+            while (true)
+            {
+                if (i == j) break;
+
+                if (nums[j] > nums[i])
+                {
+                    ans[i] = nums[j];
+                    found = true;
+                    break;
+                }
+                j = (j + 1) % nums.Length;
+            }
+            if (!found)
+                ans[i] = -1;
+        }
+        return ans;
+    }
+
+
+    // 929. Unique Email Addresses
+    public int NumUniqueEmails(string[] emails)
+    {
+        var hs = new HashSet<string>();
+        foreach (var email in emails)
+        {
+            var parts = email.Split('@');
+            var local = parts[0].Replace(".", "");
+            if (local.Contains('+'))
+                hs.Add(local.Split('+')[0] + "@" + parts[1]);
+            else
+                hs.Add(local + "@" + parts[1]);
+        }
+        return hs.Count;
+    }
+
+
+    // 205. Isomorphic Strings
+    public bool IsIsomorphic(string s, string t)
+    {
+        if (s.Length != t.Length) { return false; }
+        if (s == t || s.Length == 1) { return true; }
+
+        var sdict = new Dictionary<char, int>();
+        var tdict = new Dictionary<char, int>();
+
+        for (int i = 0; i < s.Length; i++)
+        {
+            if (!sdict.ContainsKey(s[i]))
+                sdict[s[i]] = i;
+            if (!tdict.ContainsKey(t[i]))
+                tdict[t[i]] = i;
+        }
+
+        for (int i = 0; i < s.Length; i++)
+        {
+            if (sdict[s[i]] != tdict[t[i]])
+                return false;
+        }
+        return true;
     }
 }
