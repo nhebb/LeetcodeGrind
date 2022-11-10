@@ -8,7 +8,7 @@ using System.Xml.Linq;
 
 namespace LeetcodeGrind.ArraysAndHashing;
 
-internal class ArraysAndHashing
+public class ArraysAndHashing
 {
     // 217. Contains Duplicate
     public bool ContainsDuplicate(int[] nums)
@@ -40,7 +40,7 @@ internal class ArraysAndHashing
                 return new int[] { i, result };
             }
         }
-        return null;
+        return new int[] { -1, -1 }; ;
     }
 
 

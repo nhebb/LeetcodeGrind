@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace LeetcodeGrind.TwoPointers;
 
-internal class TwoPointers
+public class TwoPointers
 {
     // 125. Valid Palindrome
     public bool IsPalindrome(string s)
@@ -27,6 +27,36 @@ internal class TwoPointers
         return text == reverse;
     }
 
+
+    // 680. Valid Palindrome II
+    public bool ValidPalindrome(string s)
+    {
+        if (s.Length <= 2) return true;
+        if (s == string.Join("", s.Reverse())) return true;
+
+        var i = 0;
+        var j = s.Length - 1;
+        var skip = 0;
+        while (i < j)
+        {
+            if (s[i] != s[j])
+            {
+                skip++;
+                if (skip > 1)
+                    return false;
+
+                if (s[i] == s[j - 1])
+                    j--;
+                else if (s[i + 1] == s[j])
+                    i++;
+                else
+                    return false;
+            }
+            i++;
+            j--;
+        }
+        return true;
+    }
 
     // 344. Reverse String
     public void ReverseString(char[] s)
