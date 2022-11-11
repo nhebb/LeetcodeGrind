@@ -27,7 +27,7 @@ public class TwoPointers
         return text == reverse;
     }
 
-
+    // TODO: Re-do as recursive solution
     // 680. Valid Palindrome II
     public bool ValidPalindrome(string s)
     {

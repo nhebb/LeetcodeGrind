@@ -790,4 +790,49 @@ public class ArraysAndHashing
         }
         return max + 1;
     }
+
+
+    // 189. Rotate Array
+    public void Rotate(int[] nums, int k)
+    {
+        if (nums.Length == 1 || k == 0)
+            return;
+
+        k = k % nums.Length;
+
+        var i = k;
+
+        while (true)
+        {
+            var j = i - k;
+            if (j < 0)
+                j += nums.Length;
+
+            var temp = nums[i];
+            nums[i] = nums[j];
+
+        }
+    }
+
+
+    // 1047. Remove All Adjacent Duplicates In String
+    public string RemoveDuplicates(string s)
+    {
+        var stack = new Stack<char>();
+        stack.Push(s[0]);
+        for (int i = 1; i < s.Length; i++)
+        {
+            if (stack.Count == 0 || s[i] != stack.Peek())
+            {
+                stack.Push(s[i]);
+            }
+            else
+            {
+                _ = stack.Pop();
+            }
+        }
+        var result = stack.ToList();
+        result.Reverse();
+        return string.Join("", result);
+    }
 }
