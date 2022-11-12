@@ -176,10 +176,10 @@ public class ArraysAndHashing
         bool nomatch = false;
         while (i <= maxLength)
         {
-            var testPrefix = strs[0].Substring(0, i);
+            var testPrefix = strs[0][..i];
             for (int j = 1; j < strs.Length; j++)
             {
-                if (strs[j].Substring(0, i) != testPrefix)
+                if (strs[j][..i] != testPrefix)
                 {
                     nomatch = true;
                     break;
@@ -207,8 +207,7 @@ public class ArraysAndHashing
 
         for (int r = 2; r < numRows; r++)
         {
-            var row = new List<int>(r);
-            row.Add(1);
+            var row = new List<int>(r) { 1 };
             for (int c = 1; c < r; c++)
             {
                 row.Add(result[r - 1][c - 1] + result[r - 1][c]);
@@ -798,7 +797,7 @@ public class ArraysAndHashing
         if (nums.Length == 1 || k == 0)
             return;
 
-        k = k % nums.Length;
+        k %= nums.Length;
 
         var i = k;
 
@@ -835,4 +834,57 @@ public class ArraysAndHashing
         result.Reverse();
         return string.Join("", result);
     }
+
+
+    // TODO: Wrong Answer
+    // 2007. Find Original Array From Doubled Array
+    public int[] FindOriginalArray(int[] changed)
+    {
+        if (changed.Length % 2 == 1)
+            return Array.Empty<int>();
+
+        Array.Sort(changed);
+        var d = new Dictionary<int, int>();
+        foreach (var num in changed)
+        {
+            if (d.TryGetValue(num, out int val))
+                d[num] = val + 1;
+            else
+                d[num] = 1;
+        }
+
+        var count = 0;
+        var res = new List<int>();
+        for (int i = 0; i < changed.Length; i++)
+        {
+            var dblNum = changed[i] * 2;
+            if (d.ContainsKey(changed[i]) &&
+                d.TryGetValue(dblNum, out int val))
+            {
+                res.Add(changed[i]);
+                count++;
+                d[dblNum] = val - 1;
+                if (d[dblNum] == 0)
+                    d.Remove(d[dblNum]);
+
+                if (d.TryGetValue(changed[i], out int val2))
+                {
+                    d[changed[i]] = val2 - 1;
+                    if (d[changed[i]] == 0)
+                        d.Remove(changed[i]);
+                }
+                else
+                {
+                    return Array.Empty<int>();
+                }
+            }
+        }
+
+        if (count * 2 == changed.Length)
+            return res.ToArray();
+
+        return Array.Empty<int>();
+    }
+
 }
+

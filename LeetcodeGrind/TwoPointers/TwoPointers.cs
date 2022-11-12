@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+using bug = System.Diagnostics.Debug;
+
 namespace LeetcodeGrind.TwoPointers;
 
 public class TwoPointers
@@ -27,35 +29,40 @@ public class TwoPointers
         return text == reverse;
     }
 
-    // TODO: Re-do as recursive solution
+    // TODO: Accepted but very slow (beats only 5.25%). Can it be improved?
     // 680. Valid Palindrome II
     public bool ValidPalindrome(string s)
     {
         if (s.Length <= 2) return true;
         if (s == string.Join("", s.Reverse())) return true;
 
-        var i = 0;
-        var j = s.Length - 1;
-        var skip = 0;
-        while (i < j)
+        bool IsValidRecurse(int i, int j, int skipCount)
         {
-            if (s[i] != s[j])
+            while (i < j)
             {
-                skip++;
-                if (skip > 1)
-                    return false;
+                if (s[i] != s[j])
+                {
+                    skipCount++;
+                    if (skipCount > 1)
+                        return false;
 
-                if (s[i] == s[j - 1])
-                    j--;
-                else if (s[i + 1] == s[j])
-                    i++;
-                else
-                    return false;
+                    if (s[i] == s[j - 1] && s[i + 1] == s[j])
+                        return IsValidRecurse(i + 1, j, skipCount)
+                            || IsValidRecurse(i, j - 1, skipCount);
+                    else if (s[i] == s[j - 1])
+                        j--;
+                    else if (s[i + 1] == s[j])
+                        i++;
+                    else
+                        return false;
+                }
+                i++;
+                j--;
             }
-            i++;
-            j--;
+            return true;
         }
-        return true;
+
+        return IsValidRecurse(0, s.Length - 1, 0);
     }
 
     // 344. Reverse String
@@ -66,7 +73,7 @@ public class TwoPointers
         int j = s.Length - 1;
         while (i < j)
         {
-           (s[i], s[j]) = (s[j], s[i]);
+            (s[i], s[j]) = (s[j], s[i]);
             i++;
             j--;
         }

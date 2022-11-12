@@ -3,9 +3,14 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.3.32929.385
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LeetcodeGrind", "LeetcodeGrind\LeetcodeGrind.csproj", "{1E3D2E3B-7EAE-4ABA-8D1A-F75503242548}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LeetcodeGrind", "LeetcodeGrind\LeetcodeGrind.csproj", "{1E3D2E3B-7EAE-4ABA-8D1A-F75503242548}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LeetcodeGrindTests", "LeetcodeGrindTests\LeetcodeGrindTests.csproj", "{B2EF0C87-8837-467D-A08B-BFEBDA5F467C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LeetcodeGrindTests", "LeetcodeGrindTests\LeetcodeGrindTests.csproj", "{B2EF0C87-8837-467D-A08B-BFEBDA5F467C}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{A07AD939-EA52-4128-94B0-3E1570A3A98A}"
+	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
