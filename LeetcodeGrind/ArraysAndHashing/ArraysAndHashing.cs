@@ -886,5 +886,12 @@ public class ArraysAndHashing
         return Array.Empty<int>();
     }
 
+
+    // 151. Reverse Words in a String
+    public string ReverseWords(string s)
+    {
+        var words = s.Split(' ', StringSplitOptions.RemoveEmptyEntries);
+        return string.Join(" ", words.Reverse());
+    }
 }
 
