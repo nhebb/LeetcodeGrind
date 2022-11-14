@@ -4,10 +4,9 @@
     {
         static void Main(string[] args)
         {
-            var aah = new ArraysAndHashing.ArraysAndHashing();
-            Console.WriteLine(aah.ReverseWords("  hello world  "));
-            Console.WriteLine(aah.ReverseWords("a good   example"));
-
+            var greedy = new Greedy.Greedy();
+            var nums = new int[] { 2, 3, 1, 1, 4 };
+            Console.WriteLine(greedy.Jump(nums));
         }
     }
 }
