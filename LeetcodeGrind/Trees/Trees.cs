@@ -164,6 +164,14 @@ public class Trees
     }
 
 
+    // TODO: Finish this
+    // 108. Convert Sorted Array to Binary Search Tree
+    public TreeNode SortedArrayToBST(int[] nums)
+    {
+
+    }
+
+
     // 235. Lowest Common Ancestor of a Binary Search Tree
     public TreeNode LowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q)
     {
@@ -214,5 +222,16 @@ public class Trees
     }
 
 
-    // 
+    // 105. Construct Binary Tree from Preorder and Inorder Traversal
+    public TreeNode BuildTree(int[] preorder, int[] inorder)
+    {
+        if(preorder.Length == 1) return new TreeNode(preorder[0]);
+
+        TreeNode Dfs(int preIndex, int min, int max)
+        {
+            if (min > max) return null;
+
+            var mid = 
+        }
+    }
 }
