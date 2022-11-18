@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Linq;
 
 namespace LeetcodeGrind.Trees;
 
@@ -46,7 +47,7 @@ public class Trees
     // 145. Binary Tree Postorder Traversal
     public IList<int> PostorderTraversal(TreeNode root)
     {
-        var postorder = new List<int> { };
+        var postorder = new List<int>() { };
         void Dfs(TreeNode node)
         {
             if (node == null) return;
@@ -166,10 +167,10 @@ public class Trees
 
     // TODO: Finish this
     // 108. Convert Sorted Array to Binary Search Tree
-    public TreeNode SortedArrayToBST(int[] nums)
-    {
+    //public TreeNode SortedArrayToBST(int[] nums)
+    //{
 
-    }
+    //}
 
 
     // 235. Lowest Common Ancestor of a Binary Search Tree
@@ -225,13 +226,51 @@ public class Trees
     // 105. Construct Binary Tree from Preorder and Inorder Traversal
     public TreeNode BuildTree(int[] preorder, int[] inorder)
     {
-        if(preorder.Length == 1) return new TreeNode(preorder[0]);
+        if (preorder.Length == 1) return new TreeNode(preorder[0]);
+        var preIndex = 0;
 
-        TreeNode Dfs(int preIndex, int min, int max)
+        // minIndex and maxIndex are for the inorder array
+        TreeNode Dfs(int minIndex, int maxIndex)
         {
-            if (min > max) return null;
+            if (preIndex >= preorder.Length || minIndex > maxIndex) return null;
 
-            var mid = 
+            var val = preorder[preIndex];
+            preIndex++;
+
+            var node = new TreeNode(val);
+            var mid = Array.IndexOf(inorder, val);
+
+            node.left = Dfs(minIndex, mid - 1);
+            node.right = Dfs(mid + 1, maxIndex);
+
+            return node;
         }
+        var root = Dfs(0, inorder.Length - 1);
+        return root;
+    }
+
+
+
+    // 1448. Count Good Nodes in Binary Tree
+    public int GoodNodes(TreeNode root)
+    {
+        var good = 1;
+
+        void Dfs(TreeNode node, int maxVal)
+        {
+            if (node == null) return;
+            if (node.val >= maxVal)
+            {
+                good++;
+                maxVal = node.val;
+            }
+            Dfs(node.left, maxVal);
+            Dfs(node.right, maxVal);
+        }
+
+        Dfs(root.left, root.val);
+        Dfs(root.right, root.val);
+
+        return good;
     }
 }
