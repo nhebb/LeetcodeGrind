@@ -4,7 +4,10 @@
     {
         static void Main(string[] args)
         {
-            //ShowRangeExamples();
+            var nums = new int[] { 1000000000, 1000000000, 1000000000, 1000000000};
+            var target = -294967296;
+            var aah = new ArraysAndHashing.ArraysAndHashing();
+            Console.WriteLine("Result: " + aah.FourSum(nums, target).ToString());
         }
 
         // From https://learn.microsoft.com/en-us/dotnet/csharp/tutorials/ranges-indexes

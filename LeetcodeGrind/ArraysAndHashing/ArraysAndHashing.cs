@@ -910,5 +910,121 @@ public class ArraysAndHashing
 
         return sum;
     }
-}
 
+
+    // 2161. Partition Array According to Given Pivot
+    public int[] PivotArray(int[] nums, int pivot)
+    {
+        var lesser = new Queue<int>();
+        var greater = new Queue<int>();
+
+        for (int i = 0; i < nums.Length; i++)
+        {
+            if (nums[i] < pivot)
+                lesser.Enqueue(nums[i]);
+            else if (nums[i] > pivot)
+                greater.Enqueue(nums[i]);
+        }
+
+        var numPivots = nums.Length - (lesser.Count + greater.Count);
+        var index = -1;
+
+        while (lesser.Count > 0)
+        {
+            index++;
+            nums[index] = lesser.Dequeue();
+        }
+
+        for (int i = 0; i < numPivots; i++)
+        {
+            index++;
+            nums[index] = pivot;
+        }
+
+        while (greater.Count > 0)
+        {
+            index++;
+            nums[index] = greater.Dequeue();
+        }
+
+        return nums;
+    }
+
+
+    // 16. 3Sum Closest
+    public int ThreeSumClosest(int[] nums, int target)
+    {
+        Array.Sort(nums);
+
+        var minDiff = int.MaxValue;
+        var minSum = int.MaxValue;
+
+        for (int i = 0; i < nums.Length; i++)
+        {
+            var lastDiff = int.MaxValue;
+            int j = i + 1;
+            int k = nums.Length - 1;
+            while (j < k)
+            {
+                var diff = nums[i] + nums[j] + nums[k] - target;
+                if (diff == 0)
+                    return nums[i] + nums[j] + nums[k];
+
+                var absDiff = Math.Abs(diff);
+                if (absDiff < minDiff)
+                {
+                    minDiff = absDiff;
+                    minSum = nums[i] + nums[j] + nums[k];
+                }
+
+                lastDiff = absDiff;
+
+                if (diff < 0)
+                    j++;
+                else if (diff > 0)
+                    k--;
+            }
+        }
+        return minSum;
+    }
+
+
+    // 18. 4Sum
+    public IList<IList<int>> FourSum(int[] nums, int target)
+    {
+        var ans = new List<IList<int>>();
+        if (nums.Length < 4)
+            return ans;
+
+        Array.Sort(nums);
+        var indices = new HashSet<string>();
+
+        for (int i = 0; i < nums.Length - 2; i++)
+        {
+            for (int j = i + 1; j < nums.Length - 1; j++)
+            {
+                int k = j + 1;
+                int l = nums.Length - 1;
+                while (k < l)
+                {
+                    long diff = (long)nums[i] + nums[j] + nums[k] + nums[l] - target;
+                    if (diff == 0)
+                    {
+                        if (indices.Add($"{nums[i]},{nums[j]},{nums[k]},{nums[l]}"))
+                        {
+                            ans.Add(new List<int>() { nums[i], nums[j], nums[k], nums[l] });
+                        }
+                        k++;
+                        l--;
+                    }
+                    else if (diff < 0)
+                        k++;
+                    else
+                        l--;
+                }
+            }
+        }
+
+        return ans;
+    }
+}
