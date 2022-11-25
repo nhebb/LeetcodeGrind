@@ -194,6 +194,22 @@ public class LinkedLists
         return prev.next;
     }
 
+    //24. Swap Nodes in Pairs
+    public ListNode SwapPairs(ListNode head)
+    {
+        if (head == null || head.next == null)
+            return head;
+
+        var prev = new ListNode();
+        prev.next = head.next;
+
+        var node = head.next.next;
+        head.next.next = head;
+        head.next = SwapPairs(node);
+
+        return prev.next;
+    }
+
 
     // 25. Reverse Nodes in k-Group
     /* Given the head of a linked list, reverse the nodes of the list k at a time,

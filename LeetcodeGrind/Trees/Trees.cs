@@ -273,4 +273,55 @@ public class Trees
 
         return good;
     }
+
+
+    // 111. Minimum Depth of Binary Tree
+    public int MinDepth(TreeNode root)
+    {
+        if (root == null) return 0;
+        var minDepth = int.MaxValue;
+
+        void Dfs(TreeNode node, int depth)
+        {
+            if (node == null) return;
+
+            if (node.left == null && node.right == null)
+            {
+                minDepth = Math.Min(minDepth, depth);
+                return;
+            }
+            Dfs(node.left, depth + 1);
+            Dfs(node.right, depth + 1);
+        }
+
+        Dfs(root, 1);
+
+        return minDepth;
+    }
+
+
+    // 108. Convert Sorted Array to Binary Search Tree
+    public TreeNode SortedArrayToBST(int[] nums)
+    {
+        if (nums == null || nums.Length == 0)
+            return null;
+
+        TreeNode Dfs(int idx1, int idx2)
+        {
+            if (idx2 < idx1) return null;
+
+            var mid = idx1 + (idx2 - idx1) / 2;
+
+            var node = new TreeNode(nums[mid]);
+            node.left = Dfs(idx1, mid - 1);
+            node.right = Dfs(mid + 1, idx2);
+
+            return node;
+        }
+
+        var root = Dfs(0, nums.Length - 1);
+
+        return root;
+    }
+}
 }

@@ -798,18 +798,16 @@ public class ArraysAndHashing
             return;
 
         k %= nums.Length;
-
         var i = k;
+        var startIndex = i;
+        var temp = nums[i];
 
         while (true)
         {
             var j = i - k;
             if (j < 0)
                 j += nums.Length;
-
-            var temp = nums[i];
             nums[i] = nums[j];
-
         }
     }
 
@@ -1027,4 +1025,5 @@ public class ArraysAndHashing
 
         return ans;
     }
+
 }
