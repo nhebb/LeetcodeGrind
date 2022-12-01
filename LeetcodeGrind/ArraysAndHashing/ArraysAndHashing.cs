@@ -1026,4 +1026,27 @@ public class ArraysAndHashing
         return ans;
     }
 
+
+    // 283. Move Zeroes
+    public void MoveZeroes(int[] nums)
+    {
+        var offset = 0;
+        var firstZeroIndex = nums.Length;
+
+        for (int i = 0; i < nums.Length; i++)
+        {
+            if (nums[i] == 0)
+                offset++;
+            else
+            {
+                nums[i - offset] = nums[i];
+                firstZeroIndex = i - offset + 1;
+            }
+        }
+        for (int i = firstZeroIndex; i < nums.Length; i++)
+        {
+            nums[i] = 0;
+        }
+    }
+
 }
