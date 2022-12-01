@@ -1037,7 +1037,7 @@ public class ArraysAndHashing
         {
             if (nums[i] == 0)
                 offset++;
-            else
+            else if (offset > 0)
             {
                 nums[i - offset] = nums[i];
                 firstZeroIndex = i - offset + 1;
