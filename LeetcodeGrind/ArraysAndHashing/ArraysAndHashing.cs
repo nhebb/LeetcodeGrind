@@ -1049,4 +1049,30 @@ public class ArraysAndHashing
         }
     }
 
+
+    // 31. Next Permutation
+    public void NextPermutation(int[] nums)
+    {
+        // 45123 -> 45132 -> 45213 -> 45312 -> 45321 -> 54321 -> 12345
+        if (nums.Length == 1) return;
+
+        int i = nums.Length - 2;
+        int j = nums.Length - 1;
+        bool swapped = false;
+
+        while (i >= 0)
+        {
+            if (nums[i] < nums[j])
+            {
+                (nums[i], nums[j]) = (nums[j], nums[i]);
+                swapped = true;
+                break;
+            }
+            i--;
+            j--;
+        }
+
+        if (!swapped)
+            Array.Sort(nums);
+    }
 }
