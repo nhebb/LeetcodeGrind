@@ -212,13 +212,15 @@ public class BinarySearch
 
         bool MatrixBinarySearch(int idx1, int idx2)
         {
-            if (idx2 < idx1) return false;
+            if (idx1 > idx2) return false;
 
             var mid = idx1 + (idx2 - idx1) / 2;
             var row = mid / cols;
             var col = mid % cols;
 
-            if (matrix[row][col] == target)
+            if (idx1 == idx2)
+                return matrix[row][col] == target;
+            else if (matrix[row][col] == target)
                 return true;
             else if (matrix[row][col] > target)
                 return MatrixBinarySearch(idx1, mid - 1);
