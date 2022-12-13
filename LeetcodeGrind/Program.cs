@@ -4,11 +4,13 @@
     {
         static void Main(string[] args)
         {
-            var nums = new int[] { 1, 3 , 5};
-            var target = 4;
+            var matrix = new int[1][];
+            matrix[0] = new int[] { 1, 1 };
+            var target = 2;
             var bs = new BinarySearch.BinarySearch();
-            Console.WriteLine("Expected: 2");
-            Console.WriteLine("Result: " + bs.SearchInsert(nums, target).ToString());
+            var result = bs.SearchMatrix(matrix, target);
+            Console.WriteLine("Expected: false");
+            Console.WriteLine($"Result: {result}");
         }
     }
 }
