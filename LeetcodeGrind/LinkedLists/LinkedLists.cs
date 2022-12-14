@@ -246,9 +246,14 @@ public class LinkedLists
         if (i > 1)
             return head;
 
-
-
         prev.next = fast;
+        var nextNode = fast.next;
+
+        for (i = 0; i < k; i++)
+        {
+            var temp = slow.next;
+
+        }
 
         return prev.next;
     }

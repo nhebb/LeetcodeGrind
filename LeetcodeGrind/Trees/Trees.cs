@@ -324,4 +324,65 @@ public class Trees
         return root;
     }
 
+
+    // 257. Binary Tree Paths
+    public IList<string> BinaryTreePaths(TreeNode root)
+    {
+        var result = new List<string>();
+
+        void BackTrack(TreeNode node, List<int> vals)
+        {
+            vals.Add(node.val);
+
+            if (node.left != null)
+                BackTrack(node.left, vals);
+
+            if (node.right != null)
+                BackTrack(node.right, vals);
+
+            if (node.left == null && node.right == null)
+                result.Add(string.Join("->", vals));
+
+            vals.RemoveAt(vals.Count - 1);
+        }
+
+        BackTrack(root, new List<int>());
+
+        return result;
+    }
+
+
+
+    // 2120. Execution of All Suffix Instructions Staying in a Grid
+    public int[] ExecuteInstructions(int n, int[] startPos, string s)
+    {
+        var result = new int[s.Length];
+
+        for (int i = 0; i < s.Length; i++)
+        {
+            var r = startPos[0];
+            var c = startPos[1];
+            var moves = 0;
+            for (int j = i; j < s.Length; j++)
+            {
+                var dir = s[j];
+                if (dir == 'L')
+                    c--;
+                else if (dir == 'R')
+                    c++;
+                else if (dir == 'U')
+                    r--;
+                else
+                    r++;
+
+                if (c >= 0 && c < n && r >= 0 && r < n)
+                    moves++;
+                else
+                    break;
+
+            }
+            result[i] = moves;
+        }
+        return result;
+    }
 }

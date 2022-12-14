@@ -19,6 +19,9 @@ public class Heaps
     // 973. K Closest Points to Origin
     public int[][] KClosest(int[][] points, int k)
     {
+        // After review, this code sucks. I should have used a min heap
+        // instead of a max heap. Calculating the sqrt wasn't necessary,
+        // since it's used for comparison.
         var pq = new PriorityQueue<int[], double>(new MaxDoubleComparer());
 
         foreach (var pt in points)
@@ -40,7 +43,7 @@ public class Heaps
     // Better solution w/o PQ
     public int[][] KClosest2(int[][] points, int k)
     {
-        return points.OrderBy(p => p[0] * p[0] + p[1]*p[1])
+        return points.OrderBy(p => p[0] * p[0] + p[1] * p[1])
                      .Take(k)
                      .ToArray();
     }
