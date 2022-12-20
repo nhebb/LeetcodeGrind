@@ -1,6 +1,9 @@
-﻿using System;
+﻿using LeetcodeGrind.LinkedLists;
+using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -46,5 +49,79 @@ public class Heaps
         return points.OrderBy(p => p[0] * p[0] + p[1] * p[1])
                      .Take(k)
                      .ToArray();
+    }
+
+
+    // 23. Merge k Sorted Lists
+    public ListNode MergeKLists(ListNode[] lists)
+    {
+
+        if (lists == null || lists.Length == 0) { return null; }
+
+        var pq = new PriorityQueue<ListNode, int>();
+
+        foreach (var enqueNode in lists)
+        {
+            if (enqueNode != null)
+            {
+                pq.Enqueue(enqueNode, enqueNode.val);
+            }
+        }
+
+        var prev = new ListNode(0);
+        var node = prev;
+
+        while (pq.Count > 0)
+        {
+            node.next = pq.Dequeue();
+            if (node.next != null)
+            {
+                pq.Enqueue(node.next, node.next.val);
+            }
+            node = node.next;
+        }
+
+        return prev.next;
+    }
+
+    //417. Pacific Atlantic Water Flow
+    public IList<IList<int>> PacificAtlantic(int[][] heights)
+    {
+        var ans = new List<IList<int>>();
+
+
+        return ans;
+    }
+
+
+    // 463. Island Perimeter
+    public int IslandPerimeter(int[][] grid)
+    {
+        var count = 0;
+
+        for (int r = 0; r < grid.Length; r++)
+        {
+            for (int c = 0; c < grid[r].Length; c++)
+            {
+                if (grid[r][c] == 0)
+                    continue;
+
+                if (r == 0 || (r > 0 && grid[r - 1][c] == 0))
+                    count++;
+
+                if (r == grid.Length - 1 || 
+                    (r < grid.Length - 1 && grid[r + 1][c] == 0))
+                    count++;
+
+                if (c == 0 || (c > 0 && grid[r][c - 1] == 0))
+                    count++;
+
+                if (c == grid[r].Length - 1 || 
+                    (c < grid[r].Length - 1 && grid[r][c + 1] == 0))
+                    count++;
+            }
+        }
+
+        return count;
     }
 }
