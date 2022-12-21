@@ -83,7 +83,7 @@ public class LinkedLists
         return prev.next;
     }
 
-
+    
     // 21. Merge Two Sorted Lists
     public ListNode MergeTwoLists(ListNode l1, ListNode l2)
     {
@@ -235,6 +235,7 @@ public class LinkedLists
 
         return prev.next;
     }
+
 
     //24. Swap Nodes in Pairs
     public ListNode SwapPairs(ListNode head)

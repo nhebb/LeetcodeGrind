@@ -118,6 +118,36 @@ public class Strings
     }
 
 
+    // 22. Generate Parentheses
+    public IList<string> GenerateParenthesis(int n)
+    {
+        var result = new List<string>();
+        var parens = "";
+
+        void RecurseParens(string parens, int left, int right)
+        {
+            if (left == right && right == n)
+            {
+                result.Add(parens);
+                return;
+            }
+
+            if (left < n)
+            {
+                RecurseParens(parens + "(", left + 1, right);
+            }
+
+            if (right < left)
+            {
+                RecurseParens(parens + ")", left, right + 1);
+            }
+        }
+
+        RecurseParens(parens, 0, 0);
+        return result;
+    }
+
+
     // 38. Count and Say
     public string CountAndSay(int n)
     {
@@ -144,4 +174,33 @@ public class Strings
         }
         return s;
     }
+
+
+    // 58. Length of Last Word
+    public int LengthOfLastWord(string s)
+    {
+        var length = 0;
+        var instring = false;
+        var count = 0;
+
+        for (int i = 0; i < s.Length; i++)
+        {
+            if (s[i] == ' ')
+            {
+                if (instring)
+                {
+                    instring = false;
+                    length = count;
+                    count = 0;
+                }
+                continue;
+            }
+            instring = true;
+            count++;
+        }
+        if (count > 0) length = count;
+
+        return length;
+    }
+
 }

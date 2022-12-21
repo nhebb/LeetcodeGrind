@@ -92,6 +92,87 @@ public class MathAndGeometry
     }
 
 
+    // 43. Multiply Strings
+    public string Multiply(string num1, string num2)
+    {
+        if (num1 == "0" || num2 == "0")
+        {
+            return "0";
+        }
+        var answer = new int[num1.Length + num2.Length];
+        Array.Fill(answer, 0);
+
+        var onesPlace = answer.Length - 1;
+
+        for (int i = num1.Length - 1; i >= 0; i--)
+        {
+            var k = onesPlace;
+            var factor1 = num1[i] - '0';
+
+            for (int j = num2.Length - 1; j >= 0; j--)
+            {
+                answer[k] += (num1[i] - '0') * (num2[j] - '0');
+                if (answer[k] >= 10)
+                {
+                    answer[k - 1] += (answer[k] / 10);
+                    answer[k] %= 10;
+                }
+                k--;
+            }
+            onesPlace--;
+        }
+
+        for (int i = answer.Length - 1; i >= 0; i--)
+        {
+            int carry = 0;
+            if (answer[i] >= 10)
+            {
+                carry = answer[i] / 10;
+                answer[i] %= 10;
+                answer[i - 1] += carry;
+            }
+        }
+
+        var result = String.Join("", answer);
+
+        // skip leading 0's
+        int x = 0;
+        while (result[x] == '0')
+            x++;
+
+        return result[x..];
+    }
+
+
+    // 50. Pow(x, n)
+    public double MyPow(double x, int n)
+    {
+        if (n == 0) return 1.0;
+        if (x == 1.0) return x;
+
+        if (x == -1.0)
+            return (n % 2 == 0) ? 1.0 : -1.0;
+
+        bool neg = false;
+        if (n < 0)
+        {
+            neg = true;
+            n *= -1;
+        }
+
+        if (n == int.MinValue)
+            return 0.0;
+
+        double result = 1.0;
+        for (int i = 0; i < n; i++)
+        {
+            result *= x;
+        }
+
+        return neg ? 1 / result : result;
+    }
+
+
     // 1037. Valid Boomerang
     public bool IsBoomerang(int[][] points)
     {
