@@ -140,7 +140,25 @@ public class Heaps
 
         var max1 = nums[pq.Dequeue()] - 1;
         var max2 = nums[pq.Peek()] - 1;
-   
+
         return max1 * max2;
+    }
+
+
+    // 2418. Sort the People
+    public string[] SortPeople(string[] names, int[] heights)
+    {
+        var pq = new PriorityQueue<string, int>();
+        for (int i = 0; i < names.Length; i++)
+        {
+            pq.Enqueue(names[i], -heights[i]);
+        }
+
+        var ans = new List<string>(names.Length);
+        while (pq.Count > 0)
+        {
+            ans.Add(pq.Dequeue());
+        }
+        return ans.ToArray();
     }
 }
