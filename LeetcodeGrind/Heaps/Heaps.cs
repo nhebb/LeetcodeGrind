@@ -109,19 +109,38 @@ public class Heaps
                 if (r == 0 || (r > 0 && grid[r - 1][c] == 0))
                     count++;
 
-                if (r == grid.Length - 1 || 
+                if (r == grid.Length - 1 ||
                     (r < grid.Length - 1 && grid[r + 1][c] == 0))
                     count++;
 
                 if (c == 0 || (c > 0 && grid[r][c - 1] == 0))
                     count++;
 
-                if (c == grid[r].Length - 1 || 
+                if (c == grid[r].Length - 1 ||
                     (c < grid[r].Length - 1 && grid[r][c + 1] == 0))
                     count++;
             }
         }
 
         return count;
+    }
+
+
+    // 1464. Maximum Product of Two Elements in an Array
+    public int MaxProduct(int[] nums)
+    {
+        var pq = new PriorityQueue<int, int>();
+
+        for (int i = 0; i < nums.Length; i++)
+        {
+            // Store the index in the pq using the
+            // negated value as the priority
+            pq.Enqueue(i, -1 * (nums[i] - 1));
+        }
+
+        var max1 = nums[pq.Dequeue()] - 1;
+        var max2 = nums[pq.Peek()] - 1;
+   
+        return max1 * max2;
     }
 }
