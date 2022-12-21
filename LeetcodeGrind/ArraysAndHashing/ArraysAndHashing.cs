@@ -1152,9 +1152,31 @@ public class ArraysAndHashing
 
         for (int i = 1; i < sortedPoints.Count(); i++)
         {
-            maxDx = Math.Max(maxDx, sortedPoints[i][0] - sortedPoints[i - 1][0]);                
+            maxDx = Math.Max(maxDx, sortedPoints[i][0] - sortedPoints[i - 1][0]);
         }
 
         return maxDx;
+    }
+
+
+    // 763. Partition Labels
+    public IList<int> PartitionLabels(string s)
+    {
+        var ans = new List<int>();
+        var d = new Dictionary<char, int>();
+
+        for (int index = 0; index < s.Length; index++)
+        {
+            d[s[index]] = index; // store last index only
+        }
+
+        var idx1 = 0;
+        while (idx1 < s.Length)
+        {
+
+        }
+
+
+        return ans;
     }
 }
