@@ -792,24 +792,33 @@ public class ArraysAndHashing
 
 
     // 189. Rotate Array
+    // This solution is slow / barely pass
     public void Rotate(int[] nums, int k)
     {
-        if (nums.Length == 1 || k == 0)
+        if (k % nums.Length == 0 || nums.Length == 1)
             return;
 
         k %= nums.Length;
-        var i = k;
-        var startIndex = i;
-        var temp = nums[i];
 
-        while (true)
+        // save last k elements
+        var arr = new int[k];
+        int j = 0;
+        for (int i = nums.Length - k; i < nums.Length; i++)
         {
-            var j = i - k;
-            if (j < 0)
-                j += nums.Length;
-            nums[i] = nums[j];
+            arr[j] = nums[i];
+            j++;
         }
+
+        // rotate 0 to len - k elements
+        for (int i = nums.Length - 1; i > k - 1; i--)
+            nums[i] = nums[i - k];
+
+        // set first k elements
+        for (int i = 0; i < k; i++)
+            nums[i] = arr[i];
     }
+
+
 
 
     // 1047. Remove All Adjacent Duplicates In String
@@ -1143,6 +1152,7 @@ public class ArraysAndHashing
     }
 
 
+
     // 1637. Widest Vertical Area Between Two Points Containing No Points
     public int MaxWidthOfVerticalArea(int[][] points)
     {
@@ -1197,6 +1207,22 @@ public class ArraysAndHashing
     }
 
 
+    // 1409. Queries on a Permutation With Key
+    public int[] ProcessQueries(int[] queries, int m)
+    {
+        var p = Enumerable.Range(1, m).ToList();
+        var ans = new List<int>();
+
+        foreach (var query in queries)
+        {
+            var idx = p.IndexOf(query);
+            ans.Add(idx);
+            p.RemoveAt(idx);
+            p.Insert(0, query);
+        }
+        return ans.ToArray();
+    }
+
 
     // 1436. Destination City
     public string DestCity(IList<IList<string>> paths)
@@ -1213,4 +1239,26 @@ public class ArraysAndHashing
     }
 
 
+    // 2506. Count Pairs Of Similar Strings
+    public int SimilarPairs(string[] words)
+    {
+        var strs = new string[words.Length];
+        for (int i = 0; i < words.Length; i++)
+        {
+            var hs = new HashSet<char>(words[i]);
+            strs[i] = string.Join("", hs.OrderBy(x => x));
+            //strs[i] = new string(words[i].OrderBy(x => x).Distinct().ToArray());
+        }
+
+        var count = 0;
+        for (int i = 0; i < strs.Length - 1; i++)
+        {
+            for (int j = i + 1; j < strs.Length; j++)
+            {
+                if (strs[i] == strs[j])
+                    count++;
+            }
+        }
+        return count;
+    }
 }
