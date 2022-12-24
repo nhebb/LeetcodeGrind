@@ -445,44 +445,6 @@ public class Trees
     {
         var ans = new List<int>();
 
-        void DfsSingle(TreeNode node)
-        {
-            if (node.left != null)
-                DfsSingle(node.left);
-            ans.Add(node.val);
-            if(node.right!=null)
-                DfsSingle(node.right);
-        }
-
-        void DfsDouble(TreeNode node1, TreeNode node2)
-        {
-            // branches:
-            if (node1.left != null && node2.left != null)
-                DfsDouble(node1.left, node2.left);
-            else if (node1.left != null && node2.left == null)
-                DfsDouble(node1.left, node2);
-            else if (node1.left == null && node2.left != null)
-                DfsDouble(node1, node2.left);
-
-            ans.Add(Math.Min(node1.val, node2.val);
-            ans.Add(Math.Max(node1.val, node2.val);
-
-        }
-
-        if (root1 != null && root2 == null)
-            DfsSingle(root1);
-        else if (root1 == null && root2 != null)
-            DfsSingle(root2);
-        else
-            DfsDouble(root1, root2);
-
-        return ans;
-    }
-
-    public IList<int> GetAllElements2(TreeNode root1, TreeNode root2)
-    {
-        var ans = new List<int>();
-
         void Dfs(TreeNode node)
         {
             if (node.left != null)
@@ -496,7 +458,6 @@ public class Trees
             Dfs(root1);
         if (root2 != null)
             Dfs(root2);
-
 
         return ans.OrderBy(x => x).ToList();
     }
