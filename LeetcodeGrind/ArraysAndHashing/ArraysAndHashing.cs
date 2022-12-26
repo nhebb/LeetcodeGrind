@@ -1150,20 +1150,39 @@ public class ArraysAndHashing
     }
 
 
-
-    // 1637. Widest Vertical Area Between Two Points Containing No Points
-    public int MaxWidthOfVerticalArea(int[][] points)
+    // 560. Subarray Sum Equals K
+    public int SubarraySum(int[] nums, int k)
     {
-        var sortedPoints = points.OrderBy(x => x[0]).ToArray();
+        var d = new Dictionary<int, int>();
 
-        var maxDx = 0;
+        // track prefix sum counts in dictionary
+        var sum = nums[0];
+        var count = 0;
+        if (sum == k)
+            count++;
+        d[sum] = 1;
 
-        for (int i = 1; i < sortedPoints.Count(); i++)
+        for (int i = 1; i < nums.Length; i++)
         {
-            maxDx = Math.Max(maxDx, sortedPoints[i][0] - sortedPoints[i - 1][0]);
-        }
+            sum += nums[i];
 
-        return maxDx;
+            // check for base match
+            if (sum == k)
+                count++;
+
+            // check for other matches, i.e., prefix subarrays that
+            // we can remove to make matching subarray sums
+            var delta = sum - k;
+            if (d.TryGetValue(delta, out var deltaMatches))
+                count += deltaMatches;
+
+            // add prefix sum to dictionary
+            if (d.TryGetValue(sum, out var lastCount))
+                d[sum] = lastCount + 1;
+            else
+                d[sum] = 1;
+        }
+        return count;
     }
 
 
@@ -1259,6 +1278,22 @@ public class ArraysAndHashing
         }
 
         return ans;
+    }
+
+
+    // 1637. Widest Vertical Area Between Two Points Containing No Points
+    public int MaxWidthOfVerticalArea(int[][] points)
+    {
+        var sortedPoints = points.OrderBy(x => x[0]).ToArray();
+
+        var maxDx = 0;
+
+        for (int i = 1; i < sortedPoints.Count(); i++)
+        {
+            maxDx = Math.Max(maxDx, sortedPoints[i][0] - sortedPoints[i - 1][0]);
+        }
+
+        return maxDx;
     }
 
 
