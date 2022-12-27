@@ -73,20 +73,18 @@ internal class SlidingWindow
     // 424. Longest Repeating Character Replacement
     public int CharacterReplacement(string s, int k)
     {
-        var abc = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-        var abcCount = new Dictionary<char, int>();
-        foreach (char c in abc)
-            abcCount[c] = 0;
+        var abcCount = new int[26];
 
         int max = 0;
         int i = 0;
         int j = 0;
+
         while (j < s.Length)
         {
-            abcCount[s[j]]++;
-            if (j - i + 1 - abcCount.Values.Max() > k)
+            abcCount[s[j] - 'A']++;
+            if (j - i + 1 - abcCount.Max() > k)
             {
-                abcCount[s[i]]--;
+                abcCount[s[i] - 'A']--;
                 i++;
             }
             max = Math.Max(max, j - i + 1);
