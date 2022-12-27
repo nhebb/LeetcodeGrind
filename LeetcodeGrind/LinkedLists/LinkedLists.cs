@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Linq;
 
 namespace LeetcodeGrind.LinkedLists;
 
@@ -83,7 +84,7 @@ public class LinkedLists
         return prev.next;
     }
 
-    
+
     // 21. Merge Two Sorted Lists
     public ListNode MergeTwoLists(ListNode l1, ListNode l2)
     {
@@ -296,6 +297,46 @@ public class LinkedLists
         {
             var temp = slow.next;
 
+        }
+
+        return prev.next;
+    }
+
+
+    // 138. Copy List with Random Pointer
+    public RandomNode CopyRandomList(RandomNode head)
+    {
+        if (head == null)
+            return null;
+
+        var node1 = head;
+        var prev = new RandomNode(0);
+        var node2 = new RandomNode(head.val);
+        prev.next = node2;
+
+        var d = new Dictionary<RandomNode, RandomNode>();
+        d[node1] = node2;
+
+        // populate deep copy
+        while (node1.next != null)
+        {
+            node2.next = new RandomNode(node1.next.val);
+            node1 = node1.next;
+            node2 = node2.next;
+            d[node1] = node2;
+        }
+
+        node1 = head;
+        node2 = prev.next;
+
+        // populate random pointers
+        while (node1 != null)
+        {
+            if (node1.random != null)
+                node2.random = d[node1.random];
+
+            node1 = node1.next;
+            node2 = node2.next;
         }
 
         return prev.next;
