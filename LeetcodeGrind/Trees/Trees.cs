@@ -242,6 +242,41 @@ public class Trees
     }
 
 
+    // 508. Most Frequent Subtree Sum
+    public int[] FindFrequentTreeSum(TreeNode root)
+    {
+        var d = new Dictionary<int, int>();
+        var freq = new List<int>();
+        var maxFreq = 0;
+
+        int Dfs(TreeNode node)
+        {
+            if (node == null)
+                return 0;
+
+            var sum = node.val + Dfs(node.left) + Dfs(node.right);
+            if (!d.TryAdd(sum, 1))
+                d[sum]++;
+
+            if (d[sum] == maxFreq)
+            {
+                freq.Add(sum);
+            }
+            else if (d[sum] > maxFreq)
+            {
+                maxFreq = d[sum];
+                freq.Clear();
+                freq.Add(sum);
+            }
+
+            return sum;
+        }
+
+        Dfs(root);
+
+        return freq.ToArray();
+    }
+
 
     // 1448. Count Good Nodes in Binary Tree
     public int GoodNodes(TreeNode root)
