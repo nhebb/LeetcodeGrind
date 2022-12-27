@@ -255,8 +255,11 @@ public class Trees
                 return 0;
 
             var sum = node.val + Dfs(node.left) + Dfs(node.right);
-            if (!d.TryAdd(sum, 1))
-                d[sum]++;
+
+            if (d.TryGetValue(sum, out var val))
+                d[sum] = val + 1;
+            else
+                d[sum] = 1;
 
             if (d[sum] == maxFreq)
             {
