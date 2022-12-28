@@ -1393,6 +1393,22 @@ public class ArraysAndHashing
     }
 
 
+    // 2221. Find Triangular Sum of an Array
+    public int TriangularSum(int[] nums)
+    {
+        var last = nums.Length - 1;
+        while (last > 0)
+        {
+            for (int i = 0; i < last; i++)
+            {
+                nums[i] = (nums[i] + nums[i + 1]) % 10;
+            }
+            last--;
+        }
+        return nums[0];
+    }
+
+
     // 2500. Delete Greatest Value in Each Row
     public int DeleteGreatestValue(int[][] grid)
     {
