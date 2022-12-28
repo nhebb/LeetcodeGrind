@@ -126,6 +126,23 @@ public class Heaps
     }
 
 
+    // 621. Task Scheduler
+    public int LeastInterval(char[] tasks, int n)
+    {
+        var d = new Dictionary<char, int>();
+        var arr = new int[26];
+
+        foreach (var c in tasks)
+            arr[c - 'A']++;
+
+        // Approach:
+        // create an array of task counts
+
+        return 0;
+
+    }
+
+
     // 1464. Maximum Product of Two Elements in an Array
     public int MaxProduct(int[] nums)
     {
