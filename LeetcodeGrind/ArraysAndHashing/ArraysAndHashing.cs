@@ -259,7 +259,7 @@ public class ArraysAndHashing
             d[i] = new List<int>();
 
         var subLength = words.Length * words[0].Length;
-        for(int i = 0; i < s.Length - subLength; i++)
+        for (int i = 0; i < s.Length - subLength; i++)
             d[s[i]].Add(i);
 
         // create permutations of the words
@@ -941,6 +941,35 @@ public class ArraysAndHashing
                 sum += i;
 
         return sum;
+    }
+
+
+    // 1817. Finding the Users Active Minutes
+    public int[] FindingUsersActiveMinutes(int[][] logs, int k)
+    {
+        var idMinutesMap = new Dictionary<int, HashSet<int>>();
+        foreach (var log in logs)
+        {
+            if (idMinutesMap.TryGetValue(log[0], out var hs))
+            {
+                hs.Add(log[1]);
+            }
+            else
+            {
+                idMinutesMap[log[0]] = new HashSet<int>();
+                idMinutesMap[log[0]].Add(log[1]);
+            }
+        }
+
+        var ans = new int[k];
+        foreach (var kvp in idMinutesMap)
+        {
+            var numMinutes = kvp.Value.Count;
+            if (numMinutes <= k)
+                ans[numMinutes - 1]++;
+        }
+
+        return ans;
     }
 
 
