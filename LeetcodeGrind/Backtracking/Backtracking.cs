@@ -99,24 +99,23 @@ public class Backtracking
 
         void Backtrack()
         {
-            if (permutation.Count == nums.Length)
+            for (int i = 0; i < nums.Length; i++)
             {
-                permutations.Add(new List<int>(permutation));
-                return;
-            }
-            else
-            {
-                for (int i = 0; i < nums.Length; i++)
-                {
-                    if (chosen[i])
-                        continue;
+                if (chosen[i])
+                    continue;
 
-                    permutation.Add(nums[i]);
+                permutation.Add(nums[i]);
+                if (permutation.Count == nums.Length)
+                {
+                    permutations.Add(new List<int>(permutation));
+                }
+                else
+                {
                     chosen[i] = true;
                     Backtrack();
                     chosen[i] = false;
-                    permutation.RemoveAt(permutation.Count - 1);
                 }
+                permutation.RemoveAt(permutation.Count - 1);
             }
         }
 
@@ -243,19 +242,15 @@ public class Backtracking
 
                 if (combo.Count == k)
                     ans.Add(new List<int>(combo));
-                else if(j < n - k + combo.Count + 1)
+                else if (j < n - k + combo.Count + 1)
                     Backtrack(j + 1);
 
                 combo.RemoveAt(combo.Count - 1);
             }
         }
 
-        //for (int i = 1; i <= n - k + 1; i++)
-        //{
-            //combo.Add(i);
-            Backtrack(1);
-            //combo.RemoveAt(0);
-        //}
+        Backtrack(1);
+
         return ans;
     }
 
