@@ -58,9 +58,11 @@ public class Backtracking
     public IList<IList<int>> CombinationSum(int[] candidates, int target)
     {
         Array.Sort(candidates);
-        var ans = new List<IList<int>>();
 
-        void BackTrackSum(List<int> combo, int start, int sum)
+        var ans = new List<IList<int>>();
+        var combo = new List<int>();
+
+        void BackTrackSum(int start, int sum)
         {
             combo.Add(candidates[start]);
             sum += candidates[start];
@@ -72,7 +74,7 @@ public class Backtracking
             {
                 for (int i = start; i < candidates.Length; i++)
                 {
-                    BackTrackSum(combo, i, sum);
+                    BackTrackSum(i, sum);
                 }
             }
             sum -= candidates[start];
@@ -81,12 +83,43 @@ public class Backtracking
 
         for (int i = 0; i < candidates.Length; i++)
         {
-            var sum = 0;
-            var combo = new List<int>();
-            BackTrackSum(combo, i, sum);
+            BackTrackSum(i, 0);
         }
 
-        return ans.Distinct().ToList(); ;
+        return ans;
+    }
+
+
+    // 40. Combination Sum II
+    public IList<IList<int>> CombinationSum2(int[] candidates, int target)
+    {
+        Array.Sort(candidates);
+
+        var ans = new List<IList<int>>();
+        var combo = new List<int>();
+
+        void BackTrackSum(int i, int sum)
+        {
+            for (int j = i; j < candidates.Length; j++)
+            {
+                if (j > i && candidates[j] == candidates[j - 1])
+                    continue;
+
+                combo.Add(candidates[j]);
+                sum += candidates[j];
+
+                if (sum == target)
+                    ans.Add(new List<int>(combo));
+                else if (sum < target)
+                    BackTrackSum(j + 1, sum);
+
+                sum -= candidates[j];
+                combo.RemoveAt(combo.Count - 1);
+            }
+        }
+
+        BackTrackSum(0, 0);
+        return ans;
     }
 
 

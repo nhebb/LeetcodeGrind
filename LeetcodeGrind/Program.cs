@@ -5,15 +5,13 @@
         static void Main(string[] args)
         {
             var bt = new Backtracking.Backtracking();
-            var res1 = bt.Combine(6, 3);
-            var res2 = bt.Combine2(6, 3);
-
-            Console.WriteLine(res1.Count + " " + res2.Count);
+            var candidates = new int[] { 10, 1, 2, 7, 6, 1, 5 };
+            var target = 8;
+            var res1 = bt.CombinationSum2(candidates, target);
 
             for (int i = 0; i < res1.Count; i++)
             {
-                Console.WriteLine($"{string.Join(",", res1[i])}\t\t{string.Join(",", res2[i])}");
-
+                Console.WriteLine($"[{string.Join(",", res1[i])}]");
             }
         }
     }
