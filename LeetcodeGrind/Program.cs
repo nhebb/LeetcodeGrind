@@ -4,11 +4,17 @@
     {
         static void Main(string[] args)
         {
-            var piles = new int[] {4,3,6,7};
-            var k = 3;
-            var h = new Heaps.Heaps();
-            var sum = h.MinStoneSum(piles, k);
-            Console.WriteLine(sum);
+            var bt = new Backtracking.Backtracking();
+            var res1 = bt.Combine(6, 3);
+            var res2 = bt.Combine2(6, 3);
+
+            Console.WriteLine(res1.Count + " " + res2.Count);
+
+            for (int i = 0; i < res1.Count; i++)
+            {
+                Console.WriteLine($"{string.Join(",", res1[i])}\t\t{string.Join(",", res2[i])}");
+
+            }
         }
     }
 }

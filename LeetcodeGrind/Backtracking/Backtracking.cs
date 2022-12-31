@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -225,6 +226,68 @@ public class Backtracking
         Backtrack(0);
 
         return total;
+    }
+
+
+    // 77. Combinations
+    public IList<IList<int>> Combine(int n, int k)
+    {
+        var ans = new List<IList<int>>();
+        var combo = new List<int>();
+
+        void Backtrack(int i)
+        {
+            for (int j = i; j <= n - k + combo.Count + 1; j++)
+            {
+                combo.Add(j);
+
+                if (combo.Count == k)
+                    ans.Add(new List<int>(combo));
+                else if(j < n - k + combo.Count + 1)
+                    Backtrack(j + 1);
+
+                combo.RemoveAt(combo.Count - 1);
+            }
+        }
+
+        //for (int i = 1; i <= n - k + 1; i++)
+        //{
+            //combo.Add(i);
+            Backtrack(1);
+            //combo.RemoveAt(0);
+        //}
+        return ans;
+    }
+
+    public IList<IList<int>> Combine2(int n, int k)
+    {
+        var iterations = 0;
+        var result = new List<IList<int>>();
+        for (var startNum = 1; startNum <= n - k + 1; startNum++)
+        {
+            FindCombinations(new List<int> { startNum });
+        }
+
+        Console.WriteLine($"Combine2: {iterations}");
+        return result;
+
+        void FindCombinations(IList<int> acc)
+        {
+            if (acc.Count == k)
+            {
+                result.Add(new List<int>(acc));
+                return;
+            }
+
+            var lastNum = acc[^1];
+            for (var num = lastNum + 1; num <= n - (k - acc.Count - 1); num++)
+            {
+                acc.Add(num);
+                iterations++;
+                FindCombinations(acc);
+                acc.RemoveAt(acc.Count - 1);
+            }
+        }
     }
 
 
