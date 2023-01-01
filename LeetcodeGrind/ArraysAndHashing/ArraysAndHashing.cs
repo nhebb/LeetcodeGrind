@@ -886,6 +886,8 @@ public class ArraysAndHashing
         if (changed.Length % 2 == 1)
             return Array.Empty<int>();
 
+        var targetLength = changed.Length / 2;
+
         Array.Sort(changed);
         var d = new Dictionary<int, int>();
         foreach (var num in changed)
@@ -896,34 +898,44 @@ public class ArraysAndHashing
                 d[num] = 1;
         }
 
+        // special edge case of zeroes:
+        if (d.TryGetValue(0, out var zeroCount))
+        {
+            if (zeroCount == 1 || zeroCount % 2 == 1)
+                return Array.Empty<int>();
+        }
+
         var count = 0;
         var res = new List<int>();
-        for (int i = 0; i < changed.Length; i++)
+        for (int i = changed.Length - 1; i >= 0; i--)
         {
-            var dblNum = changed[i] * 2;
-            if (d.ContainsKey(changed[i]) &&
-                d.TryGetValue(dblNum, out int val))
-            {
-                res.Add(changed[i]);
-                count++;
-                d[dblNum] = val - 1;
-                if (d[dblNum] == 0)
-                    d.Remove(d[dblNum]);
+            if (changed[i] % 2 == 1 || changed[i] == 1)
+                continue;
 
-                if (d.TryGetValue(changed[i], out int val2))
-                {
-                    d[changed[i]] = val2 - 1;
-                    if (d[changed[i]] == 0)
-                        d.Remove(changed[i]);
-                }
-                else
-                {
-                    return Array.Empty<int>();
-                }
+            var half = changed[i] / 2;
+
+            if (d.TryGetValue(half, out var halfValCount) &&
+                d.TryGetValue(changed[i], out int changedValCount))
+            {
+                d[changed[i]]--;
+                if (d[changed[i]] == 0)
+                    d.Remove(changed[i]);
+
+                if (!d.ContainsKey(half))
+                    break;
+
+                d[half]--;
+                if (d[half] == 0)
+                    d.Remove(half);
+
+                res.Add(half);
+                count++;
+                if (count == targetLength)
+                    break;
             }
         }
 
-        if (count * 2 == changed.Length)
+        if (count == targetLength)
             return res.ToArray();
 
         return Array.Empty<int>();

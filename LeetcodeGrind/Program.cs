@@ -4,15 +4,13 @@
     {
         static void Main(string[] args)
         {
-            var bt = new Backtracking.Backtracking();
-            var candidates = new int[] { 10, 1, 2, 7, 6, 1, 5 };
-            var target = 8;
-            var res1 = bt.CombinationSum2(candidates, target);
+            var ah = new ArraysAndHashing.ArraysAndHashing();
+            var arr = new int[] { 4, 0, 3, 0 };
+            var res = ah.FindOriginalArray2(arr);
 
-            for (int i = 0; i < res1.Count; i++)
-            {
-                Console.WriteLine($"[{string.Join(",", res1[i])}]");
-            }
+
+            Console.WriteLine($"[{string.Join(",", res)}]");
+
         }
     }
 }
