@@ -521,6 +521,8 @@ public class ArraysAndHashing
         if (pattern.Length != words.Length)
             return false;
 
+        // Pattern => Word:
+        // Each pattern letter should match only one word
         var d = new Dictionary<char, string>();
         for (int i = 0; i < pattern.Length; i++)
         {
@@ -534,12 +536,16 @@ public class ArraysAndHashing
                 d[pattern[i]] = words[i];
             }
         }
+
+        // Word => Pattern:
+        // Each word should only correspond to one pattern value
         var hs = new HashSet<string>();
         foreach (var kvp in d)
         {
             if (!hs.Add(kvp.Value))
                 return false;
         }
+
         return true;
     }
 
