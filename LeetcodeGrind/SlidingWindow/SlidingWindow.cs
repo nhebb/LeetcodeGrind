@@ -8,7 +8,7 @@ namespace LeetcodeGrind.SlidingWindow;
 
 internal class SlidingWindow
 {
-    // TODO: finish this
+    // TODO: Finish this
     //1838. Frequency of the Most Frequent Element
     public int MaxFrequency(int[] nums, int k)
     {
@@ -18,7 +18,7 @@ internal class SlidingWindow
         int i = 0;
         int j = 1;
         var sum = nums[0];
-        var delta = Math.Abs(nums[j]-nums[i]);
+        var delta = Math.Abs(nums[j] - nums[i]);
 
         while (j < nums.Length)
         {

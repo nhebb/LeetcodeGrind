@@ -272,7 +272,7 @@ public class LinkedLists
         0 <= Node.val <= 1000
 
     */
-    // TODO: Finsih this problem
+    // TODO: Finish this problem
     public ListNode ReverseKGroup(ListNode head, int k)
     {
         var prev = new ListNode();
