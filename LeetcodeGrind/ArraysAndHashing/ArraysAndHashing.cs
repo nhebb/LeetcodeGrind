@@ -1540,4 +1540,17 @@ public class ArraysAndHashing
         }
         return count;
     }
+
+
+    // 944. Delete Columns to Make Sorted
+    public int MinDeletionSize(string[] strs)
+    {
+        var count = 0;
+        for (int row = 1; row < strs[0].Length; row++)
+        {
+
+
+        }
+        return count;
+    }
 }
