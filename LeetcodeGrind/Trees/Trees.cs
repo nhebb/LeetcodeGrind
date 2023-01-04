@@ -559,7 +559,7 @@ public class Trees
 
             var mid = idx1 + (idx2 - idx1) / 2;
 
-            var node =  nodeList[mid];
+            var node = nodeList[mid];
             node.left = BuildBst(idx1, mid - 1);
             node.right = BuildBst(mid + 1, idx2);
 
@@ -567,5 +567,30 @@ public class Trees
         }
 
         return BuildBst(0, nodeList.Count - 1);
+    }
+
+
+    // 404. Sum of Left Leaves
+    public int SumOfLeftLeaves(TreeNode root)
+    {
+        var sum = 0;
+
+        void Dfs(TreeNode node, bool isLeft)
+        {
+            if (node == null) return;
+
+            if (isLeft && node.left == null && node.right == null)
+            {
+                sum += node.val;
+                return;
+            }
+
+            Dfs(node.left, true);
+            Dfs(node.right, false);
+        }
+
+        Dfs(root, false);
+
+        return sum;
     }
 }
