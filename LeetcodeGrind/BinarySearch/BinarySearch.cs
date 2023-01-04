@@ -355,7 +355,7 @@ public class BinarySearch
             if (hours <= h)
             {
                 result = Math.Min(result, k);
-                maxK = k - 1;
+                maxK = k;
             }
             else
             {
