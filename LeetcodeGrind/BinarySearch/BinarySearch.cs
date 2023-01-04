@@ -131,8 +131,8 @@ public class BinarySearch
     // 162. Find Peak Element
     public int FindPeakElement(int[] nums)
     {
-        if (nums.Length == 1) return 0; 
-        if(nums[0] > nums[1]) return 0;
+        if (nums.Length == 1) return 0;
+        if (nums[0] > nums[1]) return 0;
         if (nums[^1] > nums[^2]) return nums.Length - 1;
 
         var left = 0;
@@ -334,5 +334,35 @@ public class BinarySearch
         }
 
         return MatrixBinarySearch(0, rows * cols - 1);
+    }
+
+
+    // 875. Koko Eating Bananas
+    public int MinEatingSpeed(int[] piles, int h)
+    {
+        var minK = piles.Length;
+        var maxK = piles.Max();
+        var result = maxK;
+
+        while (minK <= maxK)
+        {
+            var k = minK + (maxK - minK) / 2;
+            var hours = 0;
+
+            foreach (var pile in piles)
+                hours += (int)Math.Ceiling(pile / (double)k);
+
+            if (hours <= h)
+            {
+                result = Math.Min(result, k);
+                maxK = k - 1;
+            }
+            else
+            {
+                minK = k + 1;
+            }
+        }
+
+        return result;
     }
 }
