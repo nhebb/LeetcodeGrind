@@ -26,8 +26,8 @@
             points[2] = new int[] { 5, 6 };
             points[3] = new int[] { 7, 8 };
 
-            var intervals = new Intervals.Intervals();
-            var res = intervals.FindMinArrowShots(points);
+            var tp = new TwoPointers.TwoPointers();
+            var res = tp.SmallestNumber("IIIDIDDD");
             Console.WriteLine(res);
         }
     }
