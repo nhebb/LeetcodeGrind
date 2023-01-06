@@ -1788,11 +1788,24 @@ public class ArraysAndHashing
             if (d2.TryGetValue(kvp.Key, out var val))
             {
                 var count = Math.Min(kvp.Value, val);
-                for(int i = 0; i < count; i++)
+                for (int i = 0; i < count; i++)
                     res.Add(kvp.Key);
             }
         }
 
         return res.ToArray();
+    }
+
+
+    // 414. Third Maximum Number
+    public int ThirdMax(int[] nums)
+    {
+        var sorted = nums.OrderByDescending(x => x)
+                         .Distinct();
+
+        if (sorted.Count() < 3)
+            return sorted.First();
+        else
+            return sorted.Skip(2).Take(1).First();
     }
 }
