@@ -1732,7 +1732,7 @@ public class ArraysAndHashing
             return res;
         if (nums.Length == 1)
         {
-            res.Add(nums[0].ToString();
+            res.Add(nums[0].ToString());
             return res;
         }
 
