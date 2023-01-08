@@ -4,9 +4,10 @@
     {
         static void Main(string[] args)
         {
-            var matrices = new Matrices.Matrices();
-            matrices.GenerateMatrix(7);
-            //Console.WriteLine(res);
+            var words = new string[] { "Hello", "Alaska", "Dad", "Peace" };
+            var strings = new Strings.Strings();
+            var res = string.Join(", ", strings.FindWords(words));
+            Console.WriteLine(res);
         }
     }
 }
