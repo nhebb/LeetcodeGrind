@@ -309,7 +309,6 @@ internal class SlidingWindow
         long p2k = 1;
         int start = s.Length - 1;
 
-        // work backwards to avoid inverse modulo
         for (int i = s.Length - 1; i >= 0; i--)
         {
             int charval = s[i] - 'a' + 1;
