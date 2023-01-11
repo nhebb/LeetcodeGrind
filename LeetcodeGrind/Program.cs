@@ -13,9 +13,10 @@
             mass =
             
             */
-            var o = new MathAndGeometry.MathAndGeometry();
 
-            var res = o.CategorizeBox(2909, 3968, 3272, 727);
+            var sw = new SlidingWindow.SlidingWindow();
+            var nums = new int[] { 1, 1, 2, 1, 1 };
+            var res = sw.NumberOfSubarrays(nums, 3);
 
             Console.WriteLine(res);
         }
