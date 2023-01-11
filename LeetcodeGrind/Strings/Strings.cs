@@ -412,4 +412,15 @@ public class Strings
 
         return true;
     }
+
+
+    // 2351. First Letter to Appear Twice
+    public char RepeatedCharacter(string s)
+    {
+        var hs = new HashSet<char>();
+        foreach (var c in s)
+            if (!hs.Add(c))
+                return c;
+
+    }
 }
