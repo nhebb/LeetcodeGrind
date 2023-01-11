@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http.Headers;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -418,9 +419,15 @@ public class Strings
     public char RepeatedCharacter(string s)
     {
         var hs = new HashSet<char>();
+        char result = ' ';
         foreach (var c in s)
+        {
             if (!hs.Add(c))
-                return c;
-
+            {
+                result = c;
+                break;
+            }
+        }
+        return result;
     }
 }
