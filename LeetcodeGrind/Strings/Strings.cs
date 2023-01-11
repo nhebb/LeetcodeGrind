@@ -376,4 +376,40 @@ public class Strings
 
         return count;
     }
+
+
+    // 2000. Reverse Prefix of Word
+    public string ReversePrefix(string word, char ch)
+    {
+        var j = word.IndexOf(ch);
+        if (j < 0)
+            return word;
+
+        var chars = word.ToCharArray();
+        int i = 0;
+        while (i < j)
+        {
+            (chars[i], chars[j]) = (chars[j], chars[i]);
+            i++;
+            j--;
+        }
+        return new string(chars);
+    }
+
+
+    //1941. Check if All Characters Have Equal Number of Occurrences
+    public bool AreOccurrencesEqual(string s)
+    {
+        var d = new Dictionary<char, int>();
+        foreach (char c in s)
+            if (!d.TryAdd(c, 1))
+                d[c]++;
+
+        var count = d[s[0]];
+        foreach (var kvp in d)
+            if (kvp.Value != count)
+                return false;
+
+        return true;
+    }
 }
