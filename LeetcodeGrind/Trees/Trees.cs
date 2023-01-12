@@ -680,48 +680,48 @@ public class Trees
     // 1519. Number of Nodes in the Sub-Tree With the Same Label
     public int[] CountSubTrees(int n, int[][] edges, string labels)
     {
+        // Create answer array. Each node is its own suv=btree,
+        // so initialize it with 1's
         var ans = new int[n];
-        var adj = new Dictionary<int, List<int>>();
-        var lblMap = new Dictionary<char, HashSet<int>>();
-        var visited = new HashSet<int>();
+        Array.Fill(ans, 1);
 
+        // Create an adjacent list
+        var adj = new Dictionary<int, List<int>>();
+        for (int i = 0; i < n; i++)
+            adj[i] = new List<int>();
         foreach (var edge in edges)
         {
-            if (adj.TryGetValue(edge[0], out var list0))
-                list0.Add(edge[1]);
-            else
-                adj[edge[0]] = new List<int>() { edge[1] };
-
-            if (adj.TryGetValue(edge[1], out var list1))
-                list1.Add(edge[0]);
-            else
-                adj[edge[1]] = new List<int>() { edge[0] };
+            adj[edge[0]].Add(edge[1]);
+            adj[edge[1]].Add(edge[0]);
         }
 
+        // Create a visited labels map. Key: label.
+        // Value: hashset of visited nodes with that label
+        var lblMap = new Dictionary<int, HashSet<int>>();
         for (int i = 0; i < 26; i++)
-        {
-            lblMap[(char)('a' + i)] = new HashSet<int>();
-        }
+            lblMap[i] = new HashSet<int>();
 
-        void Dfs(int node)
+        void Dfs(int node, int parent)
         {
-            ans[node]++;
-
-            foreach (var index in lblMap[labels[node]])
+            // Lookup the current node's label in the visited
+            // label to indices map and increment each answer
+            // for the indices.
+            foreach (var index in lblMap[labels[node] - 'a'])
                 ans[index]++;
 
-            visited.Add(node);
-            lblMap[labels[node]].Add(node);
+            // Do backtracking on the lblMap and iterate through
+            // the child nodes. Because the adjacency list is 2-way,
+            // check that the child isn't the parent
+            lblMap[labels[node] - 'a'].Add(node);
             foreach (var child in adj[node])
             {
-                if (!visited.Contains(child))
-                    Dfs(child);
+                if (child != parent)
+                    Dfs(child, node);
             }
-            lblMap[labels[node]].Remove(node);
-            visited.Remove(node);
+            lblMap[labels[node] - 'a'].Remove(node);
         }
 
-        Dfs(0);
+        Dfs(0, -1);
 
         return ans;
     }
