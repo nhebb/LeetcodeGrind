@@ -4,7 +4,8 @@
     {
         static void Main(string[] args)
         {
-            var g = new Graphs.Graphs();
+            // { 0, 1 },[0, 2],[1, 4],[1, 5],[2, 3],[2, 6]
+            var g = new Greedy.Greedy();
             var edges = new int[6][];
             edges[0] = new int[] { 0, 1 };
             edges[1] = new int[] { 0, 2 };
@@ -13,14 +14,11 @@
             edges[4] = new int[] { 2, 3 };
             edges[5] = new int[] { 2, 6 };
 
-            var hasApple = new List<bool>()
-            {
-                false, false, true, false, true, true, false
-            };
+            var labels = "abaedcd";
 
-            var res = g.MinTime(7, edges, hasApple);
+            var res = g.CountSubTrees(7, edges, labels);
 
-            Console.WriteLine(res);
+            Console.WriteLine(string.Join(", ", res));
         }
     }
 }

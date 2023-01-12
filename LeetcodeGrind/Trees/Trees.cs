@@ -675,4 +675,54 @@ public class Trees
 
         return result;
     }
+
+
+    // 1519. Number of Nodes in the Sub-Tree With the Same Label
+    public int[] CountSubTrees(int n, int[][] edges, string labels)
+    {
+        var ans = new int[n];
+        var adj = new Dictionary<int, List<int>>();
+        var lblMap = new Dictionary<char, HashSet<int>>();
+        var visited = new HashSet<int>();
+
+        foreach (var edge in edges)
+        {
+            if (adj.TryGetValue(edge[0], out var list0))
+                list0.Add(edge[1]);
+            else
+                adj[edge[0]] = new List<int>() { edge[1] };
+
+            if (adj.TryGetValue(edge[1], out var list1))
+                list1.Add(edge[0]);
+            else
+                adj[edge[1]] = new List<int>() { edge[0] };
+        }
+
+        for (int i = 0; i < 26; i++)
+        {
+            lblMap[(char)('a' + i)] = new HashSet<int>();
+        }
+
+        void Dfs(int node)
+        {
+            ans[node]++;
+
+            foreach (var index in lblMap[labels[node]])
+                ans[index]++;
+
+            visited.Add(node);
+            lblMap[labels[node]].Add(node);
+            foreach (var child in adj[node])
+            {
+                if (!visited.Contains(child))
+                    Dfs(child);
+            }
+            lblMap[labels[node]].Remove(node);
+            visited.Remove(node);
+        }
+
+        Dfs(0);
+
+        return ans;
+    }
 }

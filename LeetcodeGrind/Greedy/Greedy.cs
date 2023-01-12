@@ -46,7 +46,7 @@ public class Greedy
         var target = nums.Length - 1;
         for (int i = nums.Length - 1; i >= 0; i--)
         {
-            var minIndex =  Math.Max(0, i - maxJumps);
+            var minIndex = Math.Max(0, i - maxJumps);
             var nextTarget = target;
             for (int j = i; j >= minIndex; j--)
             {
@@ -60,5 +60,38 @@ public class Greedy
             jumps++;
         }
         return jumps;
+    }
+
+
+    // 846. Hand of Straights
+    public bool IsNStraightHand(int[] hand, int groupSize)
+    {
+        /* Alice has some number of cards and she wants to 
+         * rearrange the cards into groups so that each group
+         * is of size groupSize, and consists of groupSize 
+         * consecutive cards.
+         * 
+         * Given an integer array hand where hand[i] is the 
+         * value written on the ith card and an integer 
+         * groupSize, return true if she can rearrange the 
+         * cards, or false otherwise.
+         */
+
+        if (groupSize > hand.Length) return false;
+
+        Array.Sort(hand);
+
+        var d = new Dictionary<int, int>();
+        foreach (var card in hand)
+        {
+            if (!d.TryAdd(card, 1))
+                d[card]++;
+
+            foreach (var kvp in d)
+                if (kvp.Value % groupSize != 0)
+                    return false;
+        }
+
+        return true;
     }
 }
