@@ -421,9 +421,9 @@ public class MathAndGeometry
         var heavy = mass >= 100;
 
         var volume = ((long)width) * length * height;
-        var bulky = width >= 10000 || 
-                    height >= 10000 || 
-                    length >= 10000 || 
+        var bulky = width >= 10000 ||
+                    height >= 10000 ||
+                    length >= 10000 ||
                     volume >= 1_000_000_000;
 
         string cat;
@@ -491,5 +491,23 @@ public class MathAndGeometry
             return false;
 
         return true;
+    }
+
+
+    // 2455. Average Value of Even Numbers That Are Divisible by Three
+    public int AverageValue(int[] nums)
+    {
+        var sum = 0;
+        var count = 0;
+        foreach (var num in nums)
+        {
+            if (num % 6 == 0)
+            {
+                sum += num;
+                count++;
+            }
+        }
+
+        return count == 0 ? 0 : sum / count;
     }
 }
