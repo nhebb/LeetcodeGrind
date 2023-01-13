@@ -736,7 +736,8 @@ public class Trees
         for (int i = 0; i < parent.Length; i++)
             adj[i] = new List<int>();
 
-        for (int i = 1; i < parent.Length; i++)        {
+        for (int i = 1; i < parent.Length; i++)
+        {
             adj[i].Add(parent[i]);
             adj[parent[i]].Add(i);
         }
@@ -752,11 +753,17 @@ public class Trees
                 if (child != prev)
                 {
                     var res = Dfs(child, node);
-                    if (res > max2)
-                        max2 = res;                    
+                    if (res > max1)
+                    {
+                        if (max1 > max2)
+                            max2 = max1;
+                        max1 = res;
+                    }
+                    else if (res > max2)
+                    {
+                        max2 = res;
+                    }
                 }
-                if (max2 > max1)
-                    (max1, max2) = (max2, max2 = 1);
             }
 
             max = Math.Max(max, 1 + max1 + max2);
@@ -769,5 +776,31 @@ public class Trees
 
         _ = Dfs(0, -1);
         return max;
+    }
+
+
+    // 515. Find Largest Value in Each Tree Row
+    public IList<int> LargestValues(TreeNode root)
+    {
+        var ans = new List<int>();
+        if (root == null)
+            return ans;
+
+        void Dfs(TreeNode node, int depth)
+        {
+            if (ans.Count == depth)
+                ans.Add(node.val);
+            else if (node.val > ans[depth])
+                ans[depth] = node.val;
+
+            if (node.left != null)
+                Dfs(node.left, depth + 1);
+
+            if (node.right != null)
+                Dfs(node.right, depth + 1);
+        }
+
+        Dfs(root, 0);
+        return ans;
     }
 }
