@@ -697,32 +697,77 @@ public class Trees
 
         // Create a visited labels map. Key: label.
         // Value: hashset of visited nodes with that label
-        var lblMap = new Dictionary<int, HashSet<int>>();
+        var lblMap = new Dictionary<char, HashSet<int>>();
         for (int i = 0; i < 26; i++)
-            lblMap[i] = new HashSet<int>();
+            lblMap[(char)('a' + i)] = new HashSet<int>();
 
         void Dfs(int node, int parent)
         {
             // Lookup the current node's label in the visited
             // label to indices map and increment each answer
             // for the indices.
-            foreach (var index in lblMap[labels[node] - 'a'])
+            foreach (var index in lblMap[labels[node]])
                 ans[index]++;
 
             // Do backtracking on the lblMap and iterate through
             // the child nodes. Because the adjacency list is 2-way,
             // check that the child isn't the parent
-            lblMap[labels[node] - 'a'].Add(node);
+            lblMap[labels[node]].Add(node);
             foreach (var child in adj[node])
             {
                 if (child != parent)
                     Dfs(child, node);
             }
-            lblMap[labels[node] - 'a'].Remove(node);
+            lblMap[labels[node]].Remove(node);
         }
 
         Dfs(0, -1);
 
         return ans;
+    }
+
+
+    // 2246. Longest Path With Different Adjacent Characters
+    public int LongestPath(int[] parent, string s)
+    {
+        if (parent.Length == 1) return 1;
+
+        var adj = new Dictionary<int, List<int>>();
+        for (int i = 0; i < parent.Length; i++)
+            adj[i] = new List<int>();
+
+        for (int i = 1; i < parent.Length; i++)        {
+            adj[i].Add(parent[i]);
+            adj[parent[i]].Add(i);
+        }
+
+        int max = 0;
+        int Dfs(int node, int prev)
+        {
+            int max1 = 0;
+            int max2 = 0;
+
+            foreach (var child in adj[node])
+            {
+                if (child != prev)
+                {
+                    var res = Dfs(child, node);
+                    if (res > max2)
+                        max2 = res;                    
+                }
+                if (max2 > max1)
+                    (max1, max2) = (max2, max2 = 1);
+            }
+
+            max = Math.Max(max, 1 + max1 + max2);
+
+            if (prev != -1 && s[prev] == s[node])
+                return 0;
+            else
+                return 1 + Math.Max(max1, max2);
+        }
+
+        _ = Dfs(0, -1);
+        return max;
     }
 }
