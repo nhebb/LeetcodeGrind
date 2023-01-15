@@ -277,9 +277,85 @@ public class Matrices
         //PrintMatrix(matrix);
         return matrix;
     }
-    private void PrintMatrix(int[][] matrix)
+
+
+    // 1041. Robot Bounded In Circle
+    public bool IsRobotBounded(string instructions)
     {
-        foreach (var row in matrix)
-            Console.WriteLine(string.Join("\t", row));
+        var d = 'N';
+        var x = 0;
+        var y = 0;
+
+        var DR = new Dictionary<char, char>();
+        DR['N'] = 'E';
+        DR['E'] = 'S';
+        DR['S'] = 'W';
+        DR['W'] = 'N';
+
+        var DL = new Dictionary<char, char>();
+        DL['N'] = 'W';
+        DL['E'] = 'N';
+        DL['S'] = 'E';
+        DL['W'] = 'S';
+
+        var radii = new List<int>();
+
+        for (int i = 0; i < 4; i++)
+        {
+            foreach (char c in instructions)
+            {
+                if (c == 'G')
+                {
+                    if (d == 'N')
+                        y++;
+                    else if (d == 'S')
+                        y--;
+                    else if (d == 'E')
+                        x++;
+                    else
+                        x--;
+                }
+                else if (c == 'L')
+                    d = DL[d];
+                else //if (c == 'R')
+                    d = DR[d];
+            }
+            if (x == 0 && y == 0)
+                return true;
+
+            radii.Add(x * x + y * y);
+        }
+
+        if (radii[^1] > radii[0])
+            return false;
+
+        return true;
+    }
+
+
+    // 657. Robot Return to Origin
+    public bool JudgeCircle(string moves)
+    {
+        var x = 0;
+        var y = 0;
+
+        for (int i = 0; i < moves.Length; i++)
+        {
+            var m = moves[i];
+            if (m == 'U')
+                y++;
+            else if (m == 'D')
+                y--;
+            else if (m == 'L')
+                x--;
+            else if (m == 'R')
+                x++;
+        }
+        return x == 0 && y == 0;
+    }
+    public bool JudgeCircleLINQ(string moves)
+    {
+        return moves.Count(x => x == 'L') == moves.Count(x => x == 'R')
+            && moves.Count(x => x == 'U') == moves.Count(x => x == 'D');
     }
 }
