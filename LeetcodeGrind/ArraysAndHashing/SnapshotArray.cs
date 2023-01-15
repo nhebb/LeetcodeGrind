@@ -8,7 +8,6 @@ using System.Xml.Linq;
 
 namespace LeetcodeGrind.ArraysAndHashing;
 
-// TODO: Improve efficiency. This barely passed the time limit.
 // 1146. Snapshot Array
 /**
  * Your SnapshotArray object will be instantiated and called as such:
