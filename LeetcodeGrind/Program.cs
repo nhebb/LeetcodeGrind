@@ -20,10 +20,7 @@ namespace LeetcodeGrind
 
             //var res = g.CountSubTrees(7, edges, labels);
 
-            var strs = new Strings.Strings();
-            var arr = new int[] { 1, 2, 3, 4 };
-            var res = strs.LargestTimeFromDigits2(arr);
-            Console.WriteLine(res);
+            //Console.WriteLine(res);
         }
     }
 }
