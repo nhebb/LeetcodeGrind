@@ -505,84 +505,8 @@ public class Strings
     // 949. Largest Time for Given Digits
     public string LargestTimeFromDigits(int[] arr)
     {
-        var sb = new StringBuilder();
-        var d = new Dictionary<int, int>();
+        if (arr.Min() >= 3) return "";
 
-        foreach (var num in arr)
-            if (!d.TryAdd(num, 1))
-                d[num]++;
-
-        if (d.ContainsKey(2))
-        {
-            if (d.ContainsKey(3))
-            {
-                sb.Append(23);
-                d[2]--;
-                d[3]--;
-            }
-            else if (d[2] > 1)
-            {
-                sb.Append(22);
-                d[2]--;
-                d[2]--;
-            }
-            else if (d.ContainsKey(1))
-            {
-                sb.Append(21);
-                d[2]--;
-                d[1]--;
-            }
-            else if (d.ContainsKey(0))
-            {
-                sb.Append(20);
-                d[2]--;
-                d[0]--;
-            }
-        }
-
-        if (sb.Length == 0 && d.ContainsKey(1))
-        {
-            var maxVal = -1;
-            var maxKey = -1;
-            foreach (var kvp in d)
-            {
-                if (kvp.Key == 1 && kvp.Value == 1)
-                    continue;
-                if (kvp.Value > maxVal)
-                {
-                    maxVal = kvp.Value;
-                    maxKey = kvp.Key;
-                }
-            }
-            sb.Append(1).Append(maxVal);
-            d[1]--;
-            d[maxKey]--;
-        }
-
-        var mins = "";
-        foreach (var kvp in d)
-        {
-            if (kvp.Value == 2)
-            {
-                mins += $"{kvp.Key}{kvp.Key}";
-                d[kvp.Key] = 0;
-                break;
-            }
-            else if (kvp.Value > 0)
-            {
-                mins += kvp.Key.ToString();
-            }
-        }
-        sb.Append(':');
-        if (mins[1] - '0' < 6 && mins[1] > mins[0])
-            sb.Append(mins[1]).Append(mins[0]);
-        else
-            sb.Append(mins[0]).Append(mins[1]);
-        return sb.ToString();
-    }
-
-    public string LargestTimeFromDigits2(int[] arr)
-    {
         var time = new List<int>();
         var chosen = new bool[4];
         var maxHrs = 0;
@@ -618,6 +542,10 @@ public class Strings
         }
 
         Backtrack();
-        return maxHrs.ToString() + ":" + maxMins.ToString();
+
+        if (maxHrs == 0 && maxMins == 0 && arr.Any(x => x > 0))
+            return "";
+
+        return maxHrs.ToString("00") + ":" + maxMins.ToString("00");
     }
 }
