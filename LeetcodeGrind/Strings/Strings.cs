@@ -614,7 +614,7 @@ public class Strings
             }
             else
             {
-                val = s[1] - '0';
+                val = s[i] - '0';
             }
             sb.Append((char)('a' + val - 1));
         }
