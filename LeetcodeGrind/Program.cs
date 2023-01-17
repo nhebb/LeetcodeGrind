@@ -19,12 +19,11 @@ namespace LeetcodeGrind
             //var labels = "abaedcd";
 
             //var res = g.CountSubTrees(7, edges, labels);
-            var s = "((()())(()))";
-            string res = s;
-            while (res.Contains("((") && res.Contains("))"))
-                res = res.Replace("((", "(").Replace("))", ")");
-            Console.WriteLine(s);
-            Console.WriteLine(res);
+            var nums = new int[] { 4, 5, 2, 1 };
+            var queries = new int[] { 3, 10, 21 };
+            var g = new Greedy.Greedy();
+            var res = g.AnswerQueries(nums, queries);
+            Console.WriteLine(string.Join(",", res));
         }
     }
 }

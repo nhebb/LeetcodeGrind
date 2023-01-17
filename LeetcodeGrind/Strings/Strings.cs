@@ -620,4 +620,11 @@ public class Strings
         }
         return string.Join("", sb.ToString().Reverse());
     }
+
+    //TODO: finish
+    // 1641. Count Sorted Vowel Strings
+    //public int CountVowelStrings(int n)
+    //{
+
+    //}
 }

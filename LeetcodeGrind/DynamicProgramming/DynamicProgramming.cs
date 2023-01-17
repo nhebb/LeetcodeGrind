@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
+using System.Net.Http.Headers;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -338,5 +339,28 @@ public class DynamicProgramming
         }
 
         return dp[0][0];
+    }
+
+
+    // 926. Flip String to Monotone Increasing
+    public int MinFlipsMonoIncr(string s)
+    {
+        var numZeroes = s.Count(c => c == '0');
+        var numOnes = s.Length - numZeroes;
+        var minFlips = Math.Min(numZeroes, numOnes);
+        var rightZeroes = numZeroes;
+        var leftOnes = 0;
+
+        for (int i = 0; i < s.Length; i++)
+        {
+            if (s[i] == '0')
+                rightZeroes--;
+            else
+                leftOnes++;
+
+            minFlips = Math.Min(minFlips, leftOnes + rightZeroes);
+        }
+        
+        return minFlips;
     }
 }
