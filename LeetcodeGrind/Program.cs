@@ -6,21 +6,16 @@ namespace LeetcodeGrind
     {
         static void Main(string[] args)
         {
-            // { 0, 1 },[0, 2],[1, 4],[1, 5],[2, 3],[2, 6]
-            //var g = new Greedy.Greedy();
-            //var edges = new int[6][];
-            //edges[0] = new int[] { 0, 1 };
-            //edges[1] = new int[] { 0, 2 };
-            //edges[2] = new int[] { 1, 4 };
-            //edges[3] = new int[] { 1, 5 };
-            //edges[4] = new int[] { 2, 3 };
-            //edges[5] = new int[] { 2, 6 };
+            var heights = new int[5][];
+            heights[0] = new int[] { 1, 2, 2, 3, 5 };
+            heights[1] = new int[] { 3, 2, 3, 4, 4 };
+            heights[2] = new int[] { 2, 4, 5, 3, 1 };
+            heights[3] = new int[] { 6, 7, 1, 4, 5 };
+            heights[4] = new int[] { 5, 1, 1, 2, 4 };
 
-            //var labels = "abaedcd";
+            var g = new Graphs.Graphs();
+            var res = g.PacificAtlantic(heights);
 
-            //var res = g.CountSubTrees(7, edges, labels);
-            var b = new Backtracking.Backtracking();
-            var res = b.Partition("aab");
             Console.WriteLine(string.Join(",", res));
         }
     }
