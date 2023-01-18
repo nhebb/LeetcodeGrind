@@ -6,14 +6,9 @@ namespace LeetcodeGrind
     {
         static void Main(string[] args)
         {
-            var dp = new DynamicProgramming.DynamicProgramming();
-
-            for (int i = 0; i <= 5; i++)
-            {
-                var res = dp.GetRow(i);
-                Console.WriteLine(string.Join(",", res));
-                Console.WriteLine();
-            }
+            var ah = new ArraysAndHashing.ArraysAndHashing();
+            var res = ah.MaxSubarraySumCircular(new int[] { 5, -3, 5 });
+            Console.WriteLine(res);
         }
     }
 }
