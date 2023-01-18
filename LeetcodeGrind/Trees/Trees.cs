@@ -853,4 +853,17 @@ public class Trees
         }
         return dp[n];
     }
+
+
+    // 700. Search in a Binary Search Tree
+    public TreeNode SearchBST(TreeNode root, int val)
+    {
+        if (root == null || root.val == val)
+            return root;
+
+        if (val < root.val)
+            return SearchBST(root.left, val);
+
+        return SearchBST(root.right, val);
+    }
 }
