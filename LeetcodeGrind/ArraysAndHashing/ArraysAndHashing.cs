@@ -786,19 +786,21 @@ public class ArraysAndHashing
     private class StringJoinComparer : IComparer<string>
     {
         public int Compare(string? x, string? y)
-        {
-            return (x + y).CompareTo(y + x);
-        }
+            => (x + y).CompareTo(y + x);
     }
 
     public string LargestNumber(int[] nums)
     {
-        if (nums.All(x => x == 0)) return "0";
+        if (nums.All(x => x == 0))
+            return "0";
 
-        var vals = nums.Select(x => x.ToString())
-                       .OrderByDescending(x => x, new StringJoinComparer());
+        Array.Sort(nums, (x, y) => ($"{x}{y}").CompareTo($"{y}{x}"));
+        return string.Join("", nums);
 
-        return string.Join("", vals);
+        //var vals = nums.Select(x => x.ToString())
+        //               .OrderByDescending(x => x, new StringJoinComparer());
+
+        //return string.Join("", vals);
     }
 
 
