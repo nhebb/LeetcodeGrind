@@ -2341,4 +2341,14 @@ public class ArraysAndHashing
 
         return -1;
     }
+
+
+    // 2057. Smallest Index With Equal Value
+    public int SmallestEqual(int[] nums)
+    {
+        for (int i = 0; i < nums.Length; i++)
+            if (i % 10 == nums[i])
+                return i;
+        return -1;
+    }
 }
