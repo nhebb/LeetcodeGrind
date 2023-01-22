@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
@@ -426,5 +427,13 @@ public class Matrices
             ans[i / n][i % n] = original[i];
 
         return ans;
+    }
+
+
+    // 2545. Sort the Students by Their Kth Score
+    public int[][] SortTheStudents(int[][] score, int k)
+    {
+        Array.Sort(score, (x, y) => y[k].CompareTo(x[k]));
+        return score;
     }
 }
