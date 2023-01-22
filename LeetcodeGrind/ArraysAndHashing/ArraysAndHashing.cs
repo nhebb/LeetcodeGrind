@@ -2351,4 +2351,49 @@ public class ArraysAndHashing
                 return i;
         return -1;
     }
+
+
+    // 2404. Most Frequent Even Element
+    public int MostFrequentEven(int[] nums)
+    {
+        var evens = nums.Where(x => x % 2 == 0);
+        if (!evens.Any())
+            return -1;
+
+        var grps = evens.GroupBy(x => x);
+        var num = grps.FirstOrDefault().Key;
+        var maxFreq = 0;
+
+        foreach (var grp in grps)
+        {
+            var count = grp.Count();
+            if (count > maxFreq
+                || (count == maxFreq && grp.Key < num))
+            {
+                maxFreq = count;
+                num = grp.Key;
+            }
+        }
+        return num;
+    }
+
+
+    // 1356. Sort Integers by The Number of 1 Bits
+    public int[] SortByBits(int[] arr)
+    {
+        int GetBits(int n)
+        {
+            var bits = 0;
+            while (n > 0)
+            {
+                if ((n & 1) == 1)
+                    bits++;
+                n >>= 1;
+            }
+            return bits;
+        }
+        return arr.OrderBy(x => GetBits(x))
+                  .ThenBy(x => x)
+                  .ToArray();      
+    }
 }
