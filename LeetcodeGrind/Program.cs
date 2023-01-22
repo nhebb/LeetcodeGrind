@@ -6,8 +6,8 @@ namespace LeetcodeGrind
     {
         static void Main(string[] args)
         {
-            var ah = new ArraysAndHashing.ArraysAndHashing();
-            var res = ah.MaxSubarraySumCircular(new int[] { 5, -3, 5 });
+            var math = new MathAndGeometry.MathAndGeometry();
+            var res = math.SumOfNumberAndReverse(63);
             Console.WriteLine(res);
         }
     }
