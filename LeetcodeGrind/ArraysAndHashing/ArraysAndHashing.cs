@@ -2401,45 +2401,22 @@ public class ArraysAndHashing
     // 997. Find the Town Judge
     public int FindJudge(int n, int[][] trust)
     {
-        // The town judge trusts nobody.
-        // Everybody (except for the town judge) trusts the town judge.
-
-        // edge case
-        if (n == 1 && trust.Length == 0)
-            return 1;
-
         // naming: "vote" is a vote of trust
         var voted = new bool[n + 1];
-        var voteCount = new Dictionary<int, int>(); // could've used array instead
+        var voteCount = new int[n + 1];
+
         foreach (var vote in trust)
         {
             voted[vote[0]] = true;
-
-            if (voteCount.TryGetValue(vote[1], out var val))
-                voteCount[vote[1]] = val + 1;
-            else
-                voteCount[vote[1]] = 1;
+            voteCount[vote[1]]++;
         }
 
-        var judge = -1;
         for (int i = 1; i <= n; i++)
         {
-            // Find the possible judge and check if there is more than
-            // 1 person who did not give a vote of trust to others
-            if (!voted[i])
-            {
-                if (judge == -1)
-                    judge = i;
-                else
-                    return -1;
-            }
+            // Find the possible judge and check their vote count
+            if (!voted[i] && voteCount[i] == n - 1)
+                return i;
         }
-
-        // everyone (except the judge) trusts the judge,
-        // therefore the judge should have n-1 votes
-        if (voteCount.ContainsKey(judge) &&
-            voteCount[judge] == n - 1)
-            return judge;
 
         return -1;
     }
