@@ -424,4 +424,11 @@ public class LinkedLists
         nodes[headIndex - 1].next = null;
         return nodes[headIndex];
     }
+
+
+    // 92. Reverse Linked List II
+    public ListNode ReverseBetween(ListNode head, int left, int right)
+    {
+
+    }
 }
