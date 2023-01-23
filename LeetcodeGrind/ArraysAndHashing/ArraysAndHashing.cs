@@ -2420,4 +2420,44 @@ public class ArraysAndHashing
 
         return -1;
     }
+
+
+    // 2496. Maximum Value of a String in an Array
+    public int MaximumValue(string[] strs)
+    {
+        var maxScore = int.MinValue;
+
+        foreach (var s in strs)
+        {
+            var score = int.TryParse(s, out var val)
+                ? val 
+                : s.Length;
+
+            maxScore = Math.Max(maxScore, score);
+        }
+
+        return maxScore;
+    }
+
+
+    // 2540. Minimum Common Value
+    public int GetCommon(int[] nums1, int[] nums2)
+    {
+        var both = nums1.Intersect(nums2);
+        if (both.Count() == 0)
+            return -1;
+        return both.Min();
+    }
+
+
+    // 2215. Find the Difference of Two Arrays
+    public IList<IList<int>> FindDifference(int[] nums1, int[] nums2)
+    {
+        var ans = new List<IList<int>>();
+
+        ans.Add(nums1.Except(nums2).Distinct().ToList());
+        ans.Add(nums2.Except(nums1).Distinct().ToList());
+
+        return ans;
+    }
 }

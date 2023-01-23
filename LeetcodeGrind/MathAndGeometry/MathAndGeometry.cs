@@ -498,4 +498,21 @@ public class MathAndGeometry
         }
         return false;
     }
+
+
+    // 2544. Alternating Digit Sum
+    public int AlternateDigitSum(int n)
+    {
+        var sum = 0;
+        var s = n.ToString();
+        for (int i = 0; i < s.Length; i++)
+        {
+            var val = s[i] - '0';
+            if (i % 2 == 0)
+                sum += val;
+            else
+                sum -= val;
+        }
+        return sum;
+    }
 }
