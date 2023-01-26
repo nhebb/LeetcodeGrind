@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Linq;
 
 namespace LeetcodeGrind.Graphs;
 
@@ -593,5 +594,228 @@ public class Graphs
         }
 
         return ans;
+    }
+
+    // TODO: Review this. My solution is a mess
+    // 2359. Find Closest Node to Given Two Nodes
+    public int ClosestMeetingNode(int[] edges, int node1, int node2)
+    {
+        if (node1 == node2)
+            return 0;
+        else if (edges[node1] == -1)
+            return HasPathToTarget(node2, node1);
+        else if (edges[node2] == -1)
+            return HasPathToTarget(node1, node2);
+
+
+        int HasPathToTarget(int startNode, int targetNode)
+        {
+            var node = edges[startNode];
+            while (node != -1)
+            {
+                if (node == targetNode)
+                    return targetNode;
+                node = edges[node];
+            }
+            return -1;
+        }
+
+        var v1 = new int[edges.Length];
+        Array.Fill(v1, -1);
+        var v2 = new int[edges.Length];
+        Array.Fill(v2, -1);
+
+        var minDist = int.MaxValue;
+        var minNode = int.MaxValue;
+
+        v1[node1] = 0;
+        var next = edges[node1];
+        var dist = 1;
+
+        while (next != -1)
+        {
+            // cycle detected
+            if (v1[next] != -1)
+                break;
+
+            v1[next] = dist;
+            dist++;
+            next = edges[next];
+        }
+
+        if (edges[node2] == -1)
+        {
+            return v1[node2] == -1
+                ? -1
+                : node2;
+        }
+
+        v2[node2] = 0;
+        dist = 1;
+        next = edges[node2];
+
+        while (next != -1)
+        {
+            if (v1[next] != -1)
+            {
+                var localMax = Math.Max(v1[next], v2[next]);
+                minDist = Math.Min(minDist, localMax);
+                if (localMax < minDist)
+                {
+                    minDist = localMax;
+                    minNode = next;
+                }
+                else if (localMax == minDist && next < minNode)
+                {
+                    minNode = next;
+                }
+            }
+
+            if (v2[next] != -1)
+            {
+                break;
+            }
+
+            v2[next] = dist;
+
+            next = edges[next];
+            dist++;
+        }
+
+        if (minNode == int.MaxValue)
+            return -1;
+        return minNode;
+    }
+    public int ClosestMeetingNode2(int[] edges, int node1, int node2)
+    {
+        var dist1 = new int[edges.Length];
+        int dist = 1;
+        var node = node1;
+        while (node != -1 && dist1[node] == 0)
+        {
+            dist1[node] = dist;
+            node = edges[node];
+            dist++;
+        }
+
+        var dist2 = new int[edges.Length];
+        node = node2;
+        while (node != -1 && dist2[node] == 0)
+        {
+            dist2[node] = dist;
+            node = edges[node];
+            dist++;
+        }
+
+        int minMaxDist = int.MaxValue;
+        int meetingNode = -1;
+
+        for (int i = 0; i < edges.Length; i++)
+        {
+            if (dist1[i] == 0 || dist2[i] == 0)
+                continue;
+
+            int localMax = Math.Max(dist1[i], dist2[i]);
+            if (localMax < minMaxDist)
+            {
+                minMaxDist = localMax;
+                meetingNode = i;
+            }
+        }
+
+        return meetingNode;
+    }
+    public int ClosestMeetingNode3(int[] edges, int node1, int node2)
+    {
+        int[] n1Path = GetPath(node1);
+        int[] n2Path = GetPath(node2);
+
+        int distance = int.MaxValue;
+        int result = -1;
+        for (int i = 0; i < edges.Length; i++)
+        {
+            if (n1Path[i] == 0 || n2Path[i] == 0)
+                continue;
+
+            int max = Math.Max(n1Path[i], n2Path[i]);
+            if (max < distance)
+            {
+                distance = max;
+                result = i;
+            }
+        }
+        return result;
+
+        int[] GetPath(int node)
+        {
+            int[] path = new int[edges.Length];
+            int steps = 1;
+            while (node != -1 && path[node] == 0)
+            {
+                path[node] = steps++;
+                node = edges[node];
+            }
+            return path;
+        }
+    }
+
+
+    // TODO: Study this. It uses Dijkstra's algorithm
+    // 787. Cheapest Flights Within K Stops
+    public int FindCheapestPrice(int n, int[][] flights, int src, int dst, int k)
+    {
+        // flights[i] = [from_i, to_i, price_i]
+        var adj = new Dictionary<int, List<int[]>>();
+        foreach (var flight in flights)
+        {
+            if (!adj.ContainsKey(flight[0]))
+                adj[flight[0]] = new List<int[]>();
+
+            // key: from_i, value: int[to_i, price_i]
+            adj[flight[0]].Add(new int[] { flight[1], flight[2] });
+        }
+
+        // record min # stops to arrive at each airport (node)
+        var stops = new int[n];
+        Array.Fill(stops, int.MaxValue);
+
+        // 0 = total cost from src, 1 = airport, 2 = # stops from src
+        var firstLeg = new int[] { 0, src, 0 };
+
+        // custom comparer on index 0 - the price
+        var pq = new PriorityQueue<int[], int[]>(Comparer<int[]>.Create((a, b) => a[0] - b[0]));
+        pq.Enqueue(firstLeg, firstLeg);
+
+        while (pq.Count > 0)
+        {
+            var flight = pq.Dequeue();
+            var price = flight[0];
+            var airport = flight[1];
+            var curStops = flight[2];
+
+            // Current path costs more than the lowest,
+            // or too many stops
+            if (curStops > stops[airport] || curStops > k + 1)
+                continue;
+
+            stops[airport] = curStops;
+
+            // the eagle has landed
+            if (airport == dst)
+                return price;
+
+            // dead end
+            if (!adj.ContainsKey(airport))
+                continue;
+
+            // BFS on neighboring flight legs
+            foreach (var neighbor in adj[airport])
+            {
+                var nextLeg = new int[] { price + neighbor[1], neighbor[0], curStops + 1 };
+                pq.Enqueue(nextLeg, nextLeg);
+            }
+        }
+
+        return -1;
     }
 }

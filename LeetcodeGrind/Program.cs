@@ -6,8 +6,12 @@ namespace LeetcodeGrind
     {
         static void Main(string[] args)
         {
-            var math = new MathAndGeometry.MathAndGeometry();
-            var res = math.SumOfNumberAndReverse(63);
+            var edges = new int[] { 1, 2, -1 };
+            var node1 = 0;
+            var node2 = 2;
+
+            var g = new Graphs.Graphs();
+            var res = g.ClosestMeetingNode(edges, node1, node2);
             Console.WriteLine(res);
         }
     }
