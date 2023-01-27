@@ -6,13 +6,10 @@ namespace LeetcodeGrind
     {
         static void Main(string[] args)
         {
-            var edges = new int[] { 1, 2, -1 };
-            var node1 = 0;
-            var node2 = 2;
-
-            var g = new Graphs.Graphs();
-            var res = g.ClosestMeetingNode(edges, node1, node2);
-            Console.WriteLine(res);
+            var words = new string[] { "cat", "cats", "catsdogcats", "dog", "dogcatsdog", "hippopotamuses", "rat", "ratcatdogcat" };
+            var tries = new Tries.Tries();
+            var res = tries.FindAllConcatenatedWordsInADict(words);
+            Console.WriteLine(string.Join(", ", res));
         }
     }
 }
