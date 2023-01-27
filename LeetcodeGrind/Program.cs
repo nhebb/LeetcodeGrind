@@ -6,9 +6,10 @@ namespace LeetcodeGrind
     {
         static void Main(string[] args)
         {
-            var words = new string[] { "cat", "cats", "catsdogcats", "dog", "dogcatsdog", "hippopotamuses", "rat", "ratcatdogcat" };
+            var s = "catsanddog";
+            var wordDict = new string[] { "cat", "cats", "and", "sand", "dog" };
             var tries = new Tries.Tries();
-            var res = tries.FindAllConcatenatedWordsInADict(words);
+            var res = tries.WordBreakII(s, wordDict);
             Console.WriteLine(string.Join(", ", res));
         }
     }
