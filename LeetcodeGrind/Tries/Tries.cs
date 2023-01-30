@@ -133,4 +133,43 @@ public class Tries
 
         return ans;
     }
+
+
+    // 212. Word Search II
+    public IList<string> FindWords(char[][] board, string[] words)
+    {
+        var ans = new List<string>();
+        var root = new TrieNode();
+        var visited = new bool[board.Length][];
+        for (int r = 0; r < board.Length; r++)
+            visited[r] = new bool[board[r].Length];
+
+        foreach (var word in words)
+            AddWord(word);
+
+        void AddWord(string word)
+        {
+            var node = root;
+            for (int i = 0; i < word.Length; i++)
+            {
+                var index = word[i] - 'a';
+                if (node.Children[index] == null)
+                    node.Children[index] = new TrieNode();
+
+                node = node.Children[index];
+
+                if (i == word.Length - 1)
+                    node.EndOfWord = true;
+            }
+        }
+
+        bool Backtrack(int i, int j)
+        {
+
+
+            return false;
+        }
+
+        return ans;
+    }
 }

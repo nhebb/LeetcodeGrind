@@ -515,4 +515,59 @@ public class MathAndGeometry
         }
         return sum;
     }
+
+
+    // 171. Excel Sheet Column Number
+    public int TitleToNumber(string columnTitle)
+    {
+        var number = 0;
+        var pow = 1;
+        for (int i = columnTitle.Length - 1; i >= 0; i--)
+        {
+            number += (columnTitle[i] - 'A' + 1) * pow;
+            pow *= 26;
+        }
+
+        return number;
+    }
+
+
+    //172. Factorial Trailing Zeroes
+    public int TrailingZeroes(int n)
+    {
+        int count = 0;
+        while (n > 0)
+        {
+            count += n / 5;
+            n /= 5;
+        }
+        return count;
+    }
+
+
+    // 204. Count Primes
+    public int CountPrimes(int n)
+    {
+        // Sieve of Erathmus
+        if (n <= 2) return n;
+        var count = 0;
+        var nonprimes = new bool[n];
+
+        for (int i = 2; i < n; i++)
+        {
+            if (nonprimes[i])
+                continue;
+
+            count++;
+
+            var factor = 2;
+            while (i * factor < n)
+            {
+                nonprimes[i * factor] = true;
+                factor++;
+            }
+        }
+
+        return count;
+    }
 }
