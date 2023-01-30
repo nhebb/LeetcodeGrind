@@ -1,16 +1,25 @@
 ﻿using System.ComponentModel.Design;
 
-namespace LeetcodeGrind
+namespace LeetcodeGrind;
+
+internal class Program
 {
-    internal class Program
+    static void Main(string[] args)
     {
-        static void Main(string[] args)
-        {
-            var s = "catsanddog";
-            var wordDict = new string[] { "cat", "cats", "and", "sand", "dog" };
-            var tries = new Tries.Tries();
-            var res = tries.WordBreakII(s, wordDict);
-            Console.WriteLine(string.Join(", ", res));
-        }
+        var wd = new Tries.WordDictionary();
+
+        wd.AddWord("bad");
+        wd.AddWord("dad");
+        wd.AddWord("mad");
+
+        var res1 = wd.Search("pad");
+        var res2 = wd.Search("bad");
+        var res3 = wd.Search(".ad");
+        var res4 = wd.Search("b..");
+
+        Console.WriteLine(res1);
+        Console.WriteLine(res2);
+        Console.WriteLine(res3);
+        Console.WriteLine(res4);
     }
 }
