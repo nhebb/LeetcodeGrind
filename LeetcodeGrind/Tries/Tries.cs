@@ -141,6 +141,7 @@ public class Tries
         var ans = new List<string>();
         var root = new TrieNode();
         var sb = new StringBuilder();
+        var hs = new HashSet<string>();
 
         var visited = new bool[board.Length][];
         for (int r = 0; r < board.Length; r++)
@@ -167,20 +168,32 @@ public class Tries
 
         void Backtrack(int r, int c, TrieNode node)
         {
-            if (r > 0 || r >= board.Length ||
+            if (r < 0 || r >= board.Length ||
                 c < 0 || c >= board[r].Length ||
                 visited[r][c])
                 return;
 
+            var letter = board[r][c];
+            var index = letter - 'a';
+            if (node.Children[index] == null)
+                return;
 
+            node = node.Children[index];
 
             visited[r][c] = true;
             sb.Append(board[r][c]);
 
             if (node.EndOfWord)
-                ans.Add(sb.ToString());
+            {
+                var word = sb.ToString();
+                if (hs.Add(word))
+                    ans.Add(word);
+            }
 
-            Backtrack(r, c, node);
+            Backtrack(r - 1, c, node);
+            Backtrack(r + 1, c, node);
+            Backtrack(r, c - 1, node);
+            Backtrack(r, c + 1, node);
 
             sb.Remove(sb.Length - 1, 1);
             visited[r][c] = false;
@@ -190,11 +203,7 @@ public class Tries
         {
             for (int c = 0; c < board[r].Length; c++)
             {
-                var letter = board[r][c];
-                if (root.Children[letter] != null)
-                {
-                    Backtrack(r, c, root);
-                }
+                Backtrack(r, c, root);
             }
         }
 
