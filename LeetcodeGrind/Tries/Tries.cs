@@ -140,6 +140,8 @@ public class Tries
     {
         var ans = new List<string>();
         var root = new TrieNode();
+        var sb = new StringBuilder();
+
         var visited = new bool[board.Length][];
         for (int r = 0; r < board.Length; r++)
             visited[r] = new bool[board[r].Length];
@@ -163,11 +165,37 @@ public class Tries
             }
         }
 
-        bool Backtrack(int i, int j)
+        void Backtrack(int r, int c, TrieNode node)
         {
+            if (r > 0 || r >= board.Length ||
+                c < 0 || c >= board[r].Length ||
+                visited[r][c])
+                return;
 
 
-            return false;
+
+            visited[r][c] = true;
+            sb.Append(board[r][c]);
+
+            if (node.EndOfWord)
+                ans.Add(sb.ToString());
+
+            Backtrack(r, c, node);
+
+            sb.Remove(sb.Length - 1, 1);
+            visited[r][c] = false;
+        }
+
+        for (int r = 0; r < board.Length; r++)
+        {
+            for (int c = 0; c < board[r].Length; c++)
+            {
+                var letter = board[r][c];
+                if (root.Children[letter] != null)
+                {
+                    Backtrack(r, c, root);
+                }
+            }
         }
 
         return ans;
