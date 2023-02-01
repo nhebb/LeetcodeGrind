@@ -664,7 +664,7 @@ public class Strings
         var words = sentence.Split(' ');
         for (int i = 0; i < words.Length - 1; i++)
         {
-            if(words[i][^1] != words[i+1][0])
+            if (words[i][^1] != words[i + 1][0])
                 return false;
         }
         return words[0][0] == words[^1][^1];
@@ -674,6 +674,15 @@ public class Strings
     // 1071. Greatest Common Divisor of Strings
     public string GcdOfStrings(string str1, string str2)
     {
-        return "";
+        if (str1 + str2 != str2 + str1)
+            return "";
+
+        int Gcd(int a, int b) => (b == 0) ? a : Gcd(b, a % b);
+
+        var gcdLen = Gcd(str1.Length, str2.Length);
+        var subStr1 = str1.Substring(0, gcdLen);
+        var subStr2 = str2.Substring(0, gcdLen);
+
+        return subStr1 == subStr2 ? subStr1 : "";
     }
 }
