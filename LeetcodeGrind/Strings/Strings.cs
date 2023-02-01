@@ -690,7 +690,28 @@ public class Strings
     // 1704. Determine if String Halves Are Alike
     public bool HalvesAreAlike(string s)
     {
-        var vowels = new char[] { 'a', 'e', 'i', 'o', 'u', 'A', 'E', 'I', 'O', 'U' };
+        // solution 1
+        //var vowels = new char[] { 'a', 'e', 'i', 'o', 'u', 'A', 'E', 'I', 'O', 'U' };
+        //var count1 = 0;
+        //var count2 = 0;
+        //var halfLen = s.Length / 2;
+
+        //for (int i = 0; i < halfLen; i++)
+        //{
+        //    if (vowels.Contains(s[i]))
+        //        count1++;
+        //}
+        //for (int i = halfLen; i < s.Length; i++)
+        //{
+        //    if (vowels.Contains(s[i]))
+        //        count2++;
+        //}
+
+        //return count1 == count2;
+
+        // solution 2 (62 ms)
+        s = s.ToLower();
+        var vowels = new char[] { 'a', 'e', 'i', 'o', 'u' };
         var count1 = 0;
         var count2 = 0;
         var halfLen = s.Length / 2;
@@ -699,14 +720,20 @@ public class Strings
         {
             if (vowels.Contains(s[i]))
                 count1++;
-        }
-        for (int i = halfLen; i < s.Length; i++)
-        {
-            if (vowels.Contains(s[i]))
+            if (vowels.Contains(s[i + halfLen]))
                 count2++;
         }
-
         return count1 == count2;
+
+        // solution 3 (86 ms)
+        //s = s.ToLower();
+        //var vowels = new char[] { 'a', 'e', 'i', 'o', 'u' };
+        //var halfLen = s.Length / 2;
+        //var count1 = s.Substring(0, halfLen).Count(c => vowels.Contains(c));
+        //var count2 = s.Substring(halfLen, halfLen).Count(c => vowels.Contains(c));
+        //return count1 == count2;
+
+
     }
 
 }
