@@ -685,4 +685,28 @@ public class Strings
 
         return subStr1 == subStr2 ? subStr1 : "";
     }
+
+
+    // 1704. Determine if String Halves Are Alike
+    public bool HalvesAreAlike(string s)
+    {
+        var vowels = new char[] { 'a', 'e', 'i', 'o', 'u', 'A', 'E', 'I', 'O', 'U' };
+        var count1 = 0;
+        var count2 = 0;
+        var halfLen = s.Length / 2;
+
+        for (int i = 0; i < halfLen; i++)
+        {
+            if (vowels.Contains(s[i]))
+                count1++;
+        }
+        for (int i = halfLen; i < s.Length; i++)
+        {
+            if (vowels.Contains(s[i]))
+                count2++;
+        }
+
+        return count1 == count2;
+    }
+
 }
