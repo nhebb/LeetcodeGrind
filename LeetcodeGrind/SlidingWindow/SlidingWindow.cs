@@ -403,4 +403,50 @@ internal class SlidingWindow
 
         return count;
     }
+
+
+    // 2024. Maximize the Confusion of an Exam
+    public int MaxConsecutiveAnswers(string answerKey, int k)
+    {
+        var t = 0;
+        var f = 0;
+
+        if (answerKey[0] == 'T')
+            t++;
+        else
+            f++;
+        var maxConseq = 1;
+
+        var i = 0;
+        var j = 0;
+        while (j < answerKey.Length)
+        {
+            if (Math.Abs(t - f) > k)
+            {
+                if (answerKey[i] == 'T')
+                    t--;
+                else
+                    f--;
+                i++;
+                if (i > j)
+                    j = i;
+            }
+            else
+            {
+                var conseq = Math.Abs(t - f) + k;
+                maxConseq = Math.Max(maxConseq, conseq);
+
+                j++;
+                if (j == answerKey.Length)
+                    break;
+
+                if (answerKey[j] == 'T')
+                    t++;
+                else
+                    f++;
+            }
+        }
+
+        return maxConseq;
+    }
 }

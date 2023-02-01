@@ -669,4 +669,11 @@ public class Strings
         }
         return words[0][0] == words[^1][^1];
     }
+
+
+    // 1071. Greatest Common Divisor of Strings
+    public string GcdOfStrings(string str1, string str2)
+    {
+        return "";
+    }
 }

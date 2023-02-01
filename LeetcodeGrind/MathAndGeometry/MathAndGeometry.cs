@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics.Metrics;
 using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
@@ -548,7 +549,7 @@ public class MathAndGeometry
     // 204. Count Primes
     public int CountPrimes(int n)
     {
-        // Sieve of Erathmus
+        // Sieve of Eratosthenes
         if (n <= 2) return n;
         var count = 0;
         var nonprimes = new bool[n];
@@ -583,5 +584,18 @@ public class MathAndGeometry
             time += dx > dy ? dx : dy;
         }
         return time;
+    }
+
+
+    // 292. Nim Game
+    public bool CanWinNim(int n)
+    {
+        // Explanation: If there are 4 remaining sticks,
+        // no matter how many you choose, the opponent
+        // can always pick up the remainder and win.
+        // If tyou follow the pattern out, any multiple
+        // of 4 lets the opponent choose a number that
+        // leaves you with another multiple of 4.
+        return n % 4 != 0;
     }
 }
