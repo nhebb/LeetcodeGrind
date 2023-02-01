@@ -418,33 +418,28 @@ internal class SlidingWindow
         var maxConseq = 1;
 
         var i = 0;
-        var j = 0;
+        var j = 1;
         while (j < answerKey.Length)
         {
-            if (Math.Abs(t - f) > k)
+            if (answerKey[j] == 'T')
+                t++;
+            else
+                f++;
+
+            if (Math.Min(t, f) > k)
             {
                 if (answerKey[i] == 'T')
                     t--;
                 else
                     f--;
                 i++;
-                if (i > j)
-                    j = i;
             }
             else
             {
-                var conseq = Math.Abs(t - f) + k;
+                var conseq = j - i + 1;
                 maxConseq = Math.Max(maxConseq, conseq);
-
-                j++;
-                if (j == answerKey.Length)
-                    break;
-
-                if (answerKey[j] == 'T')
-                    t++;
-                else
-                    f++;
             }
+            j++;
         }
 
         return maxConseq;
