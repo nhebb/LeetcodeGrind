@@ -6,10 +6,10 @@ internal class Program
 {
     static void Main(string[] args)
     {
-        var answerKey = "TF";
-        var k = 1;
-        var sw = new SlidingWindow.SlidingWindow();
-        var res = sw.MaxConsecutiveAnswers(answerKey, k);
+        var words = new string[] { "kuvp", "q" };
+        var order = "ngxlkthsjuoqcpavbfdermiywz";
+        var ah = new ArraysAndHashing.ArraysAndHashing();
+        var res = ah.IsAlienSorted(words, order);
         Console.WriteLine(res);
     }
 }
