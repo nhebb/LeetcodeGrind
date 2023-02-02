@@ -2534,6 +2534,15 @@ public class ArraysAndHashing
         }
         return true;
     }
+
+
+    // 540. Single Element in a Sorted Array
+    public int SingleNonDuplicate(int[] nums)
+    {
+        var xor = 0;
+        foreach (var num in nums)
+            xor ^= num;
+        return xor;
+    }
 }
-//if (!d.TryAdd(order[i], i))
-//        return false;
+
