@@ -736,4 +736,11 @@ public class Strings
 
     }
 
+
+    // 1556. Thousand Separator
+    public string ThousandSeparator(int n)
+    {
+        return n.ToString("#,##0")
+                .Replace(',', '.');
+    }
 }
