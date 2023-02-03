@@ -452,31 +452,6 @@ public class DynamicProgramming
 
 
     // 334. Increasing Triplet Subsequence
-    public bool IncreasingTriplet2(int[] nums)
-    {
-        var dp = new int[nums.Length];
-        dp[^1] = 1;
-        var maxLIS = 1;
-
-        for (int i = nums.Length - 2; i >= 0; i--)
-        {
-            var curLIS = 1;
-            for (int j = i + 1; j < dp.Length; j++)
-            {
-                if (nums[i] < nums[j])
-                {
-                    curLIS = Math.Max(curLIS, 1 + dp[j]);
-                    if (curLIS >= 3)
-                        return true;
-                }
-            }
-            dp[i] = curLIS;
-            maxLIS = Math.Max(maxLIS, curLIS);
-        }
-
-        return false;
-    }
-
     public bool IncreasingTriplet(int[] nums)
     {
 
@@ -485,7 +460,7 @@ public class DynamicProgramming
 
         // Create prefix array of minimum values to the left
         mins[0] = nums[0];
-        for (int i = 1; i <nums.Length; i++)
+        for (int i = 1; i < nums.Length; i++)
         {
             mins[i] = Math.Min(nums[i], mins[i - 1]);
         }
