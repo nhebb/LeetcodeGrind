@@ -449,4 +449,61 @@ public class DynamicProgramming
         // return the highest team score in the dp tabulation
         return dp.Max();
     }
+
+
+    // 334. Increasing Triplet Subsequence
+    public bool IncreasingTriplet2(int[] nums)
+    {
+        var dp = new int[nums.Length];
+        dp[^1] = 1;
+        var maxLIS = 1;
+
+        for (int i = nums.Length - 2; i >= 0; i--)
+        {
+            var curLIS = 1;
+            for (int j = i + 1; j < dp.Length; j++)
+            {
+                if (nums[i] < nums[j])
+                {
+                    curLIS = Math.Max(curLIS, 1 + dp[j]);
+                    if (curLIS >= 3)
+                        return true;
+                }
+            }
+            dp[i] = curLIS;
+            maxLIS = Math.Max(maxLIS, curLIS);
+        }
+
+        return false;
+    }
+
+    public bool IncreasingTriplet(int[] nums)
+    {
+
+        var mins = new int[nums.Length];
+        var maxs = new int[nums.Length];
+
+        // Create prefix array of minimum values to the left
+        mins[0] = nums[0];
+        for (int i = 1; i <nums.Length; i++)
+        {
+            mins[i] = Math.Min(nums[i], mins[i - 1]);
+        }
+
+        // Create postfix array of maximum values to the right
+        maxs[^1] = nums[^1];
+        for (int i = nums.Length - 2; i >= 0; i--)
+        {
+            maxs[i] = Math.Max(nums[i], maxs[i + 1]);
+        }
+
+        // check if current value is between mins and maxs
+        for (int i = 1; i < nums.Length - 1; i++)
+        {
+            if (mins[i - 1] < nums[i] && nums[i] < maxs[i + 1])
+                return true;
+        }
+
+        return false;
+    }
 }
