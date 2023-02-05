@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using static System.Net.Mime.MediaTypeNames;
 using System.Xml.Linq;
 using System.Net.Http.Headers;
+using System.Reflection.Metadata.Ecma335;
 
 namespace LeetcodeGrind.ArraysAndHashing;
 
@@ -2584,6 +2585,102 @@ public class ArraysAndHashing
         }
 
         return citations.Length - i;
+    }
+
+
+    // 438. Find All Anagrams in a String
+    public IList<int> FindAnagrams(string s, string p)
+    {
+        var ans = new List<int>();
+        var sd = new Dictionary<char, int>();
+        var pd = new Dictionary<char, int>();
+        foreach (var c in p)
+        {
+            sd[c] = 0;
+            if (pd.ContainsKey(c))
+                pd[c]++;
+            else
+                pd[c] = 1;
+        }
+
+        var need = p.Length;
+        for (int i = 0; i < p.Length; i++)
+        {
+            if (sd.ContainsKey(s[i]))
+            {
+                sd[s[i]]++;
+                if (sd[s[i]] <= pd[s[i]])
+                    need--;
+            }
+        }
+
+        if (need == 0)
+            ans.Add(0);
+
+        for (int i = 1, j = p.Length; j < s.Length; i++, j++)
+        {
+
+            if (sd.ContainsKey(s[i - 1]))
+            {
+                var lastChar = s[i - 1];
+                sd[lastChar]--;
+                if (sd[lastChar] < pd[lastChar])
+                    need++;
+            }
+
+            if (sd.ContainsKey(s[j]))
+            {
+                var nextChar = s[j];
+                sd[nextChar]++;
+                if (sd[nextChar] <= pd[nextChar])
+                    need--;
+            }
+
+            if (need == 0)
+                ans.Add(i);
+        }
+
+        return ans;
+    }
+
+
+    // 2554. Maximum Number of Integers to Choose From a Range I
+    public int MaxCount(int[] banned, int n, int maxSum)
+    {
+        var nums = Enumerable.Range(1, n).Except(banned).ToArray();
+        var sum = 0;
+        var count = 0;
+        for (int i = 0; i < nums.Length; i++)
+        {
+            if (sum + nums[i] <= maxSum)
+            {
+                sum += nums[i];
+                count++;
+            }
+            else
+            {
+                break;
+            }
+        }
+        return count;
+    }
+
+
+    // 2553. Separate the Digits in an Array
+    public int[] SeparateDigits(int[] nums)
+    {
+        var ans = new List<int>();
+        for (int i = nums.Length - 1; i >= 0; i--)
+        {
+            var n = nums[i];
+            while (n > 0)
+            {
+                ans.Add(n % 10);
+                n /= 10;
+            }
+        }
+        ans.Reverse();
+        return ans.ToArray();
     }
 }
 
