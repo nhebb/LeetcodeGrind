@@ -6,14 +6,10 @@ internal class Program
 {
     static void Main(string[] args)
     {
-        var mat = new int[3][];
-        mat[0] = new int[] { 1, 2, 3 };
-        mat[1] = new int[] { 4, 5, 6 };
-        mat[2] = new int[] { 7, 8, 9 };
+        var fruits = new int[] { 3, 3, 3, 1, 2, 1, 1, 2, 3, 3, 4 };
+        var sw = new SlidingWindow.SlidingWindow();
+        var res = sw.TotalFruit(fruits);
 
-        var m = new Matrices.Matrices();
-        var res = m.FindDiagonalOrder2(mat);
-
-        Console.WriteLine(string.Join(",", res));
+        Console.WriteLine(res);
     }
 }
