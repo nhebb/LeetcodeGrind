@@ -2682,5 +2682,47 @@ public class ArraysAndHashing
         ans.Reverse();
         return ans.ToArray();
     }
-}
 
+
+    // 1461. Check If a String Contains All Binary Codes of Size K
+    public bool HasAllCodes(string s, int k)
+    {
+        var hs = new HashSet<int>();
+        for (int i = 0; i <= s.Length - k; i++)
+        {
+            hs.Add(Convert.ToInt32(s.Substring(i, k), 2));
+        }
+
+        var limit = (int)Math.Pow(2, k);
+        for (int i = 0; i < limit; i++)
+        {
+            if (!hs.Contains(i))
+                return false;
+        }
+        return true;
+    }
+
+    // TODO: This fails test case { 3,4,2,3 }
+    // 665. Non-decreasing Array
+    public bool CheckPossibility(int[] nums)
+    {
+        var changed = false;
+
+        for (int i = 0; i < nums.Length - 1; i++)
+        {
+            if (nums[i] <= nums[i + 1])
+                continue;
+
+            if (changed)
+                return false;
+
+            if (i == 0 || nums[i + 1] >= nums[i - 1])
+                nums[i] = nums[i + 1];
+            else
+                nums[i + 1] = nums[i];
+
+            changed = true;
+        }
+        return true;
+    }
+}
