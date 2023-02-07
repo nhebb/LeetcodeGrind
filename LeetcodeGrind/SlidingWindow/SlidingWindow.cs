@@ -463,6 +463,8 @@ internal class SlidingWindow
                     d[fruits[i]]++;
             }
 
+            // remove begining fruits until only 2 keys (baskets)
+            // remain in dictionary
             while (d.Count > 2)
             {
                 if (d.ContainsKey(fruits[j]))
@@ -474,10 +476,11 @@ internal class SlidingWindow
                 }
                 j++;
             }
+
             maxCount = Math.Max(d.Values.Sum(), maxCount);
             i++;
         }
+
         return maxCount;
     }
-
 }
