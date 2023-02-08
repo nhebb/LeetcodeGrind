@@ -50,7 +50,7 @@ public class Stacks
 
         for (int cur = 0; cur < temperatures.Length; cur++)
         {
-            while (stack.Count > 0 && 
+            while (stack.Count > 0 &&
                    temperatures[cur] > temperatures[stack.Peek()])
             {
                 var prev = stack.Pop();
@@ -61,5 +61,33 @@ public class Stacks
         }
 
         return days;
+    }
+
+
+    // 853. Car Fleet
+    public int CarFleet(int target, int[] position, int[] speed)
+    {
+        // convert position to remaining distance
+        for (int i = 0; i < position.Length; i++)
+            position[i] = target - position[i];
+
+        // sort ascending by remaining distance with
+        // speed sorted in parallel array
+        Array.Sort(position, speed);
+
+        // create an array of travel times for each
+        // car to reach the target
+        var times = new double[position.Length];
+        for (int i = 0; i < position.Length; i++)
+            times[i] = position[i] / (double)(speed[i]);
+
+        // a car cannot go faster than the car ahead of it, 
+        // so set the travel time to the max of itslef and
+        // the previous car
+        for (int i = 1; i < times.Length; i++)
+            times[i] = Math.Max(times[i - 1], times[i]);
+
+        // Count the distinct time groups (fleets)
+        return times.Distinct().Count();
     }
 }
