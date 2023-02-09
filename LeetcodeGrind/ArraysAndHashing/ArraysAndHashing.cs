@@ -2725,4 +2725,29 @@ public class ArraysAndHashing
         }
         return true;
     }
+
+
+    // 2306. Naming a Company
+    public long DistinctNames(string[] ideas)
+    {
+        var suffixes = new HashSet<string>[26];
+        for (int i = 0; i < 26; i++)
+            suffixes[i] = new HashSet<string>();
+
+        foreach (var idea in ideas)
+            suffixes[idea[0] - 'a'].Add(idea.Substring(1));
+
+        long result = 0;
+        for (int i = 0; i < 25; ++i)
+        {
+            var iCount = suffixes[i].Count;
+            for (int j = i + 1; j < 26; ++j)
+            {
+                long common = suffixes[i].Intersect(suffixes[j]).Count();
+                var jCount = suffixes[j].Count;
+                result += 2 * (iCount - common) * (jCount - common); ;
+            }
+        }
+        return result;
+    }
 }
