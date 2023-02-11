@@ -6,13 +6,10 @@ internal class Program
 {
     static void Main(string[] args)
     {
-        var grid = new int[3][];
-        grid[0] = new int[] { 1, 0, 0 };
-        grid[1] = new int[] { 0, 0, 0 };
-        grid[2] = new int[] { 0, 0, 0 };
+        var nums = new int[] { 3, 1, 5, 8 };
 
         var dp = new DynamicProgramming.DynamicProgramming();
-        var res = dp.MaxDistance(grid);
+        var res = dp.MaxCoins(nums);
         Console.WriteLine(res);
         // Console.WriteLine(string.Join(",",res));
     }

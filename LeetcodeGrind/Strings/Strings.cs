@@ -743,4 +743,44 @@ public class Strings
         return n.ToString("#,##0")
                 .Replace(',', '.');
     }
+
+
+    // 1768. Merge Strings Alternately
+    public string MergeAlternately(string word1, string word2)
+    {
+        return string.Join("", word1.Zip(word2, (first, second) => first + second));
+        var len = Math.Max(word1.Length, word2.Length);
+        int i = 0;
+        int j = 0;
+        var sb = new StringBuilder(word1.Length + word2.Length);
+
+        while (i < len)
+        {
+            if (i < word1.Length)
+                sb.Append(word1[i]);
+            if (j < word2.Length)
+                sb.Append(word2[j]);
+            i++;
+            j++;
+        }
+        return sb.ToString();
+    }
+
+
+    // 541. Reverse String II
+    public string ReverseStr(string s, int k)
+    {
+        var sb = new StringBuilder(s.Length);
+        var skip = 0;
+        var taken = 0;
+        while (taken < s.Length)
+        {
+            var strk = s.Skip(skip * 2 * k).Take(k);
+            sb.Append(string.Join("", strk.Reverse()));
+            sb.Append(string.Join("", s.Skip(skip * 2 * k + k).Take(k)));
+            taken += 2 * k;
+            skip++;
+        }
+        return sb.ToString();
+    }
 }

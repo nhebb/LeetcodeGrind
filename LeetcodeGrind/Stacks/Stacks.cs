@@ -90,4 +90,11 @@ public class Stacks
         // Count the distinct time groups (fleets)
         return times.Distinct().Count();
     }
+
+
+    // 402. Remove K Digits
+    public string RemoveKdigits(string num, int k)
+    {
+        return num;
+    }
 }
