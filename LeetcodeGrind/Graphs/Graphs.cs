@@ -818,4 +818,112 @@ public class Graphs
 
         return -1;
     }
+
+
+    // 1129. Shortest Path with Alternating Colors
+    public int[] ShortestAlternatingPaths(int n, int[][] redEdges, int[][] blueEdges)
+    {
+        var redNodes = new List<int>[n];
+        var blueNodes = new List<int>[n];
+
+        for (var i = 0; i < n; i++)
+        {
+            redNodes[i] = new List<int>();
+            blueNodes[i] = new List<int>();
+        }
+
+        foreach (var edge in redEdges)
+            redNodes[edge[0]].Add(edge[1]);
+
+        foreach (var edge in blueEdges)
+            blueNodes[edge[0]].Add(edge[1]);
+
+        var result = new int[n];
+        Array.Fill(result, -1);
+
+        var queue = new Queue<(int node, bool isBlue)>();
+        queue.Enqueue((0, true));
+        queue.Enqueue((0, false));
+
+        var visited = new HashSet<(int node, bool isBlue)>();
+        visited.Add((0, true));
+        visited.Add((0, false));
+
+        var level = 0;
+        while (queue.Count > 0)
+        {
+            var count = queue.Count;
+            for (var i = 0; i < count; i++)
+            {
+                var (node, isBlue) = queue.Dequeue();
+                if (result[node] == -1) 
+                    result[node] = level;
+
+                // if current node is blue, add unvisited red edges,
+                // or if current node is red, add unvisited blue edges
+                if (isBlue)
+                {
+                    foreach (var next in redNodes[node])
+                        if (!visited.Contains((next, false)))
+                        {
+                            queue.Enqueue((next, false));
+                            visited.Add((next, false));
+                        }
+                }
+                else
+                {
+                    foreach (var next in blueNodes[node])
+                        if (!visited.Contains((next, true)))
+                        {
+                            queue.Enqueue((next, true));
+                            visited.Add((next, true));
+                        }
+                }
+            }
+
+            level++;
+        }
+
+        return result;
+    }
+
+
+    // 2477. Minimum Fuel Cost to Report to the Capital
+    public long MinimumFuelCost(int[][] roads, int seats)
+    {
+        long fuel = 0;
+        var adj = new Dictionary<int, List<int>>();
+
+        // bidirectional roads == undirected graph
+        foreach (var road in roads)
+        {
+            if (!adj.ContainsKey(road[0]))
+                adj[road[0]] = new List<int>();
+            adj[road[0]].Add(road[1]);
+
+            if (!adj.ContainsKey(road[1]))
+                adj[road[1]] = new List<int>();
+            adj[road[1]].Add(road[0]);
+        }
+
+        long Dfs(int node, int parent)
+        {
+            long reps = 1; // city representatives. Current city has 1
+            if (!adj.ContainsKey(node))
+                return reps;
+
+            foreach (var child in adj[node])
+                if (child != parent)
+                    reps += Dfs(child, node);
+
+            if (node != 0)
+                fuel += (long)Math.Ceiling(reps / (double)seats);
+
+            return reps;
+        }
+
+        Dfs(0, -1);
+
+        return fuel;
+    }
 }
