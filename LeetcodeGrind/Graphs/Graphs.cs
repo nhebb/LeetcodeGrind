@@ -839,7 +839,7 @@ public class Graphs
             blueNodes[edge[0]].Add(edge[1]);
 
         var result = new int[n];
-        Array.Fill(result, -1);
+        new Span<int>(result).Fill(-1);
 
         var queue = new Queue<(int node, bool isBlue)>();
         queue.Enqueue((0, true));
