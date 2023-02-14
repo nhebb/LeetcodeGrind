@@ -106,7 +106,7 @@ public class Stacks
         var stack = new Stack<int[]>();
         var maxArea = 0;
 
-        for (int i = 1; i < heights.Length; i++)
+        for (int i = 0; i < heights.Length; i++)
         {
             var startIndex = i;
             while (stack.Count > 0 && stack.Peek()[1] > heights[i])
@@ -125,7 +125,7 @@ public class Stacks
             var rect = stack.Pop();
             var index = rect[0];
             var height = rect[1];
-            maxArea = Math.Max(maxArea, height * (heights.Length - index);
+            maxArea = Math.Max(maxArea, height * (heights.Length - index));
         }
 
         return maxArea;
