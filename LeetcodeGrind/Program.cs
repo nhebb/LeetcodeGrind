@@ -6,14 +6,21 @@ internal class Program
 {
     static void Main(string[] args)
     {
+        var n = 9;
 
+        var res = 1;
+        while (n > 0)
+        {
+            res *= n;
+            n--;
+        }
         //int[] nums = { 1,2,12 };
         //var ah = new ArraysAndHashing.ArraysAndHashing();
         //var res = ah.CheckSubarraySum(nums, 7);
-        //Console.WriteLine(res);
+        Console.WriteLine(res);
         // Console.WriteLine(string.Join(",",res));
 
-        CalcLCPerDay();
+        //CalcLCPerDay();
     }
 
 
