@@ -6,17 +6,13 @@ internal class Program
 {
     static void Main(string[] args)
     {
-        int[] nums = { 1, 2, 4, 6 };
-        var operations = new int[3][];
-        operations[0] = new int[] { 1, 3 };
-        operations[1] = new int[] { 4, 7 };
-        operations[2] = new int[] { 6, 1 };
-        var ah = new ArraysAndHashing.ArraysAndHashing();
-        var res = ah.ArrayChange(nums, operations);
+        //var board = new string[] { "XXX", "OOX", "OOX" };
+        //var ah = new ArraysAndHashing.ArraysAndHashing();
+        //var res = ah.ValidTicTacToe(board);
         //Console.WriteLine(res);
-        Console.WriteLine(string.Join(",", res));
+        //Console.WriteLine(string.Join(",", res));
 
-        //CalcLCPerDay();
+        CalcLCPerDay();
     }
 
 
@@ -36,7 +32,10 @@ internal class Program
             return;
         }
 
-        var problemsPerDay = Math.Round((1000 - solved) / (double)ts.Days, 2);
-        Console.WriteLine($"You must solve {problemsPerDay} problems per day to meet the target.");
+        var problemsPerDay = Math.Round((1000 - solved) / (double)ts.Days, 1);
+        var problemsPerMonth = Math.Round(30 * (1000 - solved) / ((double)ts.Days), 0);
+        var message = $"You must solve {problemsPerDay} problems per day" +
+            $" ({problemsPerMonth} per month) to meet the target.";
+        Console.WriteLine(message);
     }
 }
