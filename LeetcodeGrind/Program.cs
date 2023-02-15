@@ -15,7 +15,6 @@ internal class Program
         CalcLCPerDay();
     }
 
-
     // Calculate the number of Leetcode problems / day 
     // to hit the 1000 problems nilestone 1 year after
     // starting the current session.

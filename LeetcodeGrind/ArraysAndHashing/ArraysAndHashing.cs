@@ -2854,7 +2854,7 @@ public class ArraysAndHashing
         var d = new Dictionary<int, HashSet<int>>();
         var res = new int[nums.Length];
         Array.Copy(nums, res, nums.Length);
-
+        
         for (int i = 0; i < nums.Length; i++)
         {
             if (!d.ContainsKey(nums[i]))
@@ -2996,5 +2996,31 @@ public class ArraysAndHashing
 
         res.Reverse();
         return res;
+    }
+
+
+    // 187. Repeated DNA Sequences
+    public IList<string> FindRepeatedDnaSequences(string s)
+    {
+        if (s.Length <= 10)
+            return new List<string>();
+
+        var res = new HashSet<string>();
+        var hs = new HashSet<string>();
+        Span<char> dna = s.ToCharArray();
+        var i = 0;
+        var j = 10;
+        while (j <= s.Length)
+        {
+            var seq = dna.Slice(i, j - i).ToString();
+            // 2 hashsets - first detects duplicates,
+            // and second ensures unique results
+            if (!hs.Add(seq))
+                res.Add(seq);
+            i++;
+            j++;
+        }
+
+        return res.ToList();
     }
 }
