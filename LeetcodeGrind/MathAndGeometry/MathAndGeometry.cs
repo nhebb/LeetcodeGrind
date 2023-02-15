@@ -598,4 +598,60 @@ public class MathAndGeometry
         // leaves you with another multiple of 4.
         return n % 4 != 0;
     }
+
+
+    // 728. Self Dividing Numbers
+    public IList<int> SelfDividingNumbers(int left, int right)
+    {
+        bool IsSelfDividing(int n)
+        {
+            var val = n;
+            while (n > 0)
+            {
+                var digit = n % 10;
+                if (digit == 0)
+                    return false;
+
+                if (val % digit != 0)
+                    return false;
+
+                n /= 10;
+            }
+            return true;
+        }
+
+        var res = new List<int>();
+        while (left <= right)
+        {
+            if (IsSelfDividing(left))
+                res.Add(left);
+            left++;
+        }
+
+        return res;
+    }
+
+
+    // 1979. Find Greatest Common Divisor of Array
+    public int FindGCD(int[] nums)
+    {
+        var min = int.MaxValue;
+        var max = int.MinValue;
+        for (int i = 0; i < nums.Length; i++)
+        {
+            if (nums[i] < min)
+                min = nums[i];
+            else if (nums[i] > max)
+                max = nums[i];
+        }
+
+        // Euclid's Algorithm
+        while (max % min > 0)
+        {
+            var rem = max % min;
+            max = min;
+            min = rem;
+        }
+        return min;
+    }
 }

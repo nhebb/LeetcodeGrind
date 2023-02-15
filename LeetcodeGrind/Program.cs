@@ -6,19 +6,19 @@ internal class Program
 {
     static void Main(string[] args)
     {
-        var grid = new int[2][];
-        grid[0] = new int[] { 20, 3, 20, 17, 2, 12, 15, 17, 4, 15 };
-        grid[1] = new int[] { 20, 10, 13, 14, 15, 5, 2, 3, 14, 3 };
-        var m = new Matrices.Matrices();
-        var res = m.GridGame(grid);
+        //var grid = new int[2][];
+        //grid[0] = new int[] { 20, 3, 20, 17, 2, 12, 15, 17, 4, 15 };
+        //grid[1] = new int[] { 20, 10, 13, 14, 15, 5, 2, 3, 14, 3 };
+        //var m = new Matrices.Matrices();
+        //var res = m.GridGame(grid);
 
         //var board = new string[] { "XXX", "OOX", "OOX" };
         //var ah = new ArraysAndHashing.ArraysAndHashing();
         //var res = ah.ValidTicTacToe(board);
-        Console.WriteLine(res);
+        //Console.WriteLine(res);
         //Console.WriteLine(string.Join(",", res));
 
-        //CalcLCPerDay();
+        CalcLCPerDay();
     }
 
     // Calculate the number of Leetcode problems / day 
