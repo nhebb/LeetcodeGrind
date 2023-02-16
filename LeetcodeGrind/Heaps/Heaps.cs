@@ -316,4 +316,15 @@ public class Heaps
 
         return remaining;
     }
+
+
+    // 658. Find K Closest Elements
+    public IList<int> FindClosestElements(int[] arr, int k, int x)
+    {
+        return arr.OrderBy(a => Math.Abs(x - a))
+                  .ThenBy(a => a)
+                  .Take(k)
+                  .OrderBy(a => a)
+                  .ToList();
+    }
 }

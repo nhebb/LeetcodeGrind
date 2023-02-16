@@ -3056,16 +3056,22 @@ public class ArraysAndHashing
     public int ArrayNesting(int[] nums)
     {
         var hs = new HashSet<int>();
-        var i = 0;
-        var val = nums[i];
-        int count = 0;
-
-        while (hs.Add(val))
+        var maxCount = 0;
+        for (int i = 0; i < nums.Length; i++)
         {
-            count++;
-            i = val;
-            val = nums[i];
+            var val = nums[i];
+            int count = 0;
+
+            while (hs.Add(val))
+            {
+                count++;
+                i = val;
+                val = nums[i];
+            }
+            if (count > maxCount)
+                maxCount = count;
         }
-        return count;
+        return maxCount;
+
     }
 }
