@@ -3050,4 +3050,22 @@ public class ArraysAndHashing
         res.Sort();
         return res;
     }
+
+
+    // 565. Array Nesting
+    public int ArrayNesting(int[] nums)
+    {
+        var hs = new HashSet<int>();
+        var i = 0;
+        var val = nums[i];
+        int count = 0;
+
+        while (hs.Add(val))
+        {
+            count++;
+            i = val;
+            val = nums[i];
+        }
+        return count;
+    }
 }
