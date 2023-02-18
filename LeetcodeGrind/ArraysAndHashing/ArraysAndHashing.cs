@@ -2854,7 +2854,7 @@ public class ArraysAndHashing
         var d = new Dictionary<int, HashSet<int>>();
         var res = new int[nums.Length];
         Array.Copy(nums, res, nums.Length);
-        
+
         for (int i = 0; i < nums.Length; i++)
         {
             if (!d.ContainsKey(nums[i]))
@@ -3031,7 +3031,7 @@ public class ArraysAndHashing
         var res = new List<int>();
         Array.Sort(nums);
         var index = Array.BinarySearch(nums, target);
-        if(index <0)
+        if (index < 0)
             return res;
 
         var i = index;
@@ -3072,6 +3072,26 @@ public class ArraysAndHashing
                 maxCount = count;
         }
         return maxCount;
+    }
 
+
+    // 1823. Find the Winner of the Circular Game
+    public int FindTheWinner(int n, int k)
+    {
+        var q = new Queue<int>();
+        for (int i = 1; i <= n; i++)
+            q.Enqueue(i);
+
+        while (q.Count > 1)
+        {
+            var count = k;
+            while (count > 0)
+            {
+                q.Enqueue(q.Dequeue());
+                count--;
+            }
+            _ = q.Dequeue();
+        }
+        return q.Dequeue();
     }
 }
