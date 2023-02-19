@@ -971,7 +971,7 @@ public class Trees
     {
         TreeNode DeleteLeaf(TreeNode node)
         {
-            if (node == null) 
+            if (node == null)
                 return null;
 
             node.left = DeleteLeaf(node.left);
@@ -998,5 +998,61 @@ public class Trees
         }
 
         return root;
+    }
+
+
+    // 103. Binary Tree Zigzag Level Order Traversal
+    public IList<IList<int>> ZigzagLevelOrder(TreeNode root)
+    {
+        var levels = new List<IList<int>>();
+        if (root == null) { return levels; }
+
+        var q = new Queue<(TreeNode node, int level)>();
+        q.Enqueue((root, 0));
+
+        while (q.Count > 0)
+        {
+            var curNode = q.Dequeue();
+
+            if (levels.Count == curNode.level)
+                levels.Add(new List<int>());
+            levels[^1].Add(curNode.node.val);
+
+            if (curNode.node.left != null)
+                q.Enqueue((curNode.node.left, curNode.level + 1));
+            if (curNode.node.right != null)
+                q.Enqueue((curNode.node.right, curNode.level + 1));
+        }
+
+        for (int i = 0; i < levels.Count; i++)
+        {
+            if (i % 2 == 1)
+                levels[i] = levels[i].Reverse().ToList();
+        }
+
+        return levels;
+    }
+
+
+    // 563. Binary Tree Tilt
+    public int FindTilt(TreeNode root)
+    {
+        if (root == null) 
+            return 0;
+
+        var tilt = 0;
+
+        int Dfs(TreeNode node)
+        {
+            if (node == null) return 0;
+            var leftSum = Dfs(node.left);
+            var rightSum = Dfs(node.right);
+            tilt += Math.Abs(leftSum - rightSum);
+            return leftSum + rightSum + node.val;
+        }
+
+        Dfs(root);
+
+        return tilt;
     }
 }

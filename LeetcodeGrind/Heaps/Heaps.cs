@@ -84,15 +84,6 @@ public class Heaps
         return prev.next;
     }
 
-    //417. Pacific Atlantic Water Flow
-    public IList<IList<int>> PacificAtlantic(int[][] heights)
-    {
-        var ans = new List<IList<int>>();
-
-
-        return ans;
-    }
-
 
     // 463. Island Perimeter
     public int IslandPerimeter(int[][] grid)
