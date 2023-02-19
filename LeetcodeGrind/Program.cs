@@ -6,17 +6,17 @@ internal class Program
 {
     static void Main(string[] args)
     {
-        var nums = new int[] { 3, 4, 4, 5 };
-        var b = new Backtracking.Backtracking();
-        var res = b.SquareFreeSubsets(nums);
+        //var nums = new int[] { 3, 4, 4, 5 };
+        //var b = new Backtracking.Backtracking();
+        //var res = b.SquareFreeSubsets(nums);
 
         //var board = new string[] { "XXX", "OOX", "OOX" };
         //var ah = new ArraysAndHashing.ArraysAndHashing();
         //var res = ah.ValidTicTacToe(board);
-        Console.WriteLine(res);
+        //Console.WriteLine(res);
         //Console.WriteLine(string.Join(",", res));
 
-        //CalcLCPerDay();
+        CalcLCPerDay();
     }
 
     // Calculate the number of Leetcode problems / day 
