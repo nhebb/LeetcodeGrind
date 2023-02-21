@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.Design;
+﻿using LeetcodeGrind.Trees;
+using System.ComponentModel.Design;
 
 namespace LeetcodeGrind;
 
@@ -16,7 +17,10 @@ internal class Program
         //Console.WriteLine(res);
         //Console.WriteLine(string.Join(",", res));
 
-        CalcLCPerDay();
+        //CalcLCPerDay();
+
+        var nr = new NextRightTree();
+        nr.TestNRNode();
     }
 
     // Calculate the number of Leetcode problems / day 
