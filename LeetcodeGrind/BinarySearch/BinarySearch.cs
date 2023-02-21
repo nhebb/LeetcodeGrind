@@ -407,7 +407,7 @@ public class BinarySearch
         return BinSearch(0, nums.Length - 1);
     }
 
-    // O(log n) non-recursive binary search approach
+    // Fastest: O(log n) non-recursive binary search approach
     public int SingleNonDuplicate3(int[] nums)
     {
         var lo = 0;
