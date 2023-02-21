@@ -3142,4 +3142,38 @@ public class ArraysAndHashing
 
         return need;
     }
+
+
+    // 575. Distribute Candies
+    public int DistributeCandies(int[] candyType)
+    {
+        var hs = candyType.ToHashSet();
+        return Math.Min(hs.Count, candyType.Length / 2);
+    }
+
+
+    // 747. Largest Number At Least Twice of Others
+    public int DominantIndex(int[] nums)
+    {
+        var max = int.MinValue;
+        var maxIndex = -1;
+
+        for (int i = 0; i < nums.Length; i++)
+        {
+            if (nums[i] > max)
+            {
+                max = nums[i];
+                maxIndex = i;
+            }
+        }
+
+        for (int i = 0; i < nums.Length; i++)
+        {
+            if (nums[i] * 2 > max)
+            {
+                return -1;
+            }
+        }
+        return maxIndex;
+    }
 }

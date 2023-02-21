@@ -7,13 +7,38 @@ internal class Program
 {
     static void Main(string[] args)
     {
-
+        //var input = "[[1,4],[4,7],[3,6]]";
+        //var intervals = Leetcode2DArray(input);
+        //var iv = new Intervals.Intervals();
+        //var res = iv.RemoveCoveredIntervals(intervals);
         //Console.WriteLine(res);
         //Console.WriteLine(string.Join(",", res));
 
         CalcLCPerDay();
 
     }
+
+    private static int[][] Leetcode2DArray(string s)
+    {
+        //[[1,4],[3,6],[2,8]]
+
+        s = s.Replace("[[", "");
+        s = s.Replace("]]", "");
+        s = s.Replace("],[", ";");
+
+        var parts = s.Split(';');
+        var res = new int[parts.Length][];
+        for (int i = 0; i < parts.Length; i++)
+        {
+            res[i] = new int[parts[i].Length];
+            var vals = parts[i].Split(",");
+            for (int j = 0; j < vals.Length; j++)
+                res[i][j] = int.Parse(vals[j]);
+        }
+
+        return res;
+    }
+
 
     // Calculate the number of Leetcode problems / day 
     // to hit the 1000 problems nilestone 1 year after
