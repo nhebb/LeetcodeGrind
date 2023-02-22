@@ -7,14 +7,8 @@ internal class Program
 {
     static void Main(string[] args)
     {
-        var input = "[1,2,3,1,1]";
-        var weights = Leetcode1DArray(input);
-        var bs = new BinarySearch.BinarySearch();
-        var res = bs.ShipWithinDays(weights, 4);
-        //var input = "[[1,4],[4,7],[3,6]]";
-        //var intervals = Leetcode2DArray(input);
-        //var iv = new Intervals.Intervals();
-        //var res = iv.RemoveCoveredIntervals(intervals);
+        var math = new MathAndGeometry.MathAndGeometry();
+        var res = math.CheckPerfectNumber(1);
         Console.WriteLine(res);
         //Console.WriteLine(string.Join(",", res));
 
@@ -23,7 +17,6 @@ internal class Program
     }
 
 
-    // [1,2,3,1,1]
     private static int[] Leetcode1DArray(string s)
     {
         s = s.Replace("[", "").Replace("]", "");
