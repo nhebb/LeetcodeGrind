@@ -66,30 +66,42 @@ public class Greedy
     // 846. Hand of Straights
     public bool IsNStraightHand(int[] hand, int groupSize)
     {
-        /* Alice has some number of cards and she wants to 
-         * rearrange the cards into groups so that each group
-         * is of size groupSize, and consists of groupSize 
-         * consecutive cards.
-         * 
-         * Given an integer array hand where hand[i] is the 
-         * value written on the ith card and an integer 
-         * groupSize, return true if she can rearrange the 
-         * cards, or false otherwise.
-         */
+        if (hand.Length % groupSize != 0)
+            return false;
 
-        if (groupSize > hand.Length) return false;
-
-        Array.Sort(hand);
-
+        var pq = new PriorityQueue<int, int>();
         var d = new Dictionary<int, int>();
+
         foreach (var card in hand)
         {
-            if (!d.TryAdd(card, 1))
+            if (d.ContainsKey(card))
+            {
                 d[card]++;
+            }
+            else
+            {
+                d[card] = 1;
+                pq.Enqueue(card, card);
+            }
+        }
 
-            foreach (var kvp in d)
-                if (kvp.Value % groupSize != 0)
+        var count = 0;
+        while (pq.Count > 0)
+        {
+            count = 0;
+            var nextCard = pq.Peek();
+            while (count < groupSize)
+            {
+                if (!d.ContainsKey(nextCard))
                     return false;
+
+                d[nextCard]--;
+                if (d[nextCard] == 0)
+                    _ = pq.Dequeue();
+
+                count++;
+                nextCard++;
+            }
         }
 
         return true;

@@ -30,7 +30,7 @@ public class TwoPointers
         return text == reverse;
     }
 
-    // TODO: Accepted but very slow (beats only 5.25%). Can it be improved?
+
     // 680. Valid Palindrome II
     public bool ValidPalindrome(string s)
     {

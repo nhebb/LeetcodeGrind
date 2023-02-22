@@ -596,7 +596,7 @@ public class Graphs
         return ans;
     }
 
-    // TODO: Review this. My solution is a mess
+
     // 2359. Find Closest Node to Given Two Nodes
     public int ClosestMeetingNode(int[] edges, int node1, int node2)
     {

@@ -1,6 +1,7 @@
 ﻿using LeetcodeGrind.LinkedLists;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.Design.Serialization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -1085,5 +1086,44 @@ public class Trees
         }
 
         return true;
+    }
+
+
+    // 653. Two Sum IV - Input is a BST
+    public bool FindTarget(TreeNode root, int k)
+    {
+        var hs = new HashSet<int>();
+
+        bool Dfs(TreeNode node)
+        {
+            if (node.left != null && Dfs(node.left))
+                return true;
+
+            if (hs.Contains(k - node.val))
+                return true;
+
+            hs.Add(node.val);
+
+            if (node.right != null && Dfs(node.right))
+                return true;
+
+            return false;
+        }
+
+        return Dfs(root);
+    }
+
+
+    // 701. Insert into a Binary Search Tree
+    public TreeNode InsertIntoBST(TreeNode root, int val)
+    {
+        if (root == null)
+            return new TreeNode(val);
+        else if (val < root.val)
+            root.left = InsertIntoBST(root.left, val);
+        else
+            root.right = InsertIntoBST(root.right, val);
+
+        return root;
     }
 }

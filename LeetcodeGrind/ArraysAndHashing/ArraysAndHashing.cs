@@ -2774,13 +2774,6 @@ public class ArraysAndHashing
 
 
     // 523. Continuous Subarray Sum
-    // TODO: I fucking hated this problem. Revisit and simplify.
-    // Notes to self:
-    // This solution started with half the present lines of code.
-    // Then I hit edge case after edge case. I looked at other
-    // solutions afterward, and they look very similar to how
-    // this one started. Obviously I missed somthing, so I need
-    // to re-think this type of problem.
     public bool CheckSubarraySum(int[] nums, int k)
     {
         // edge cases
