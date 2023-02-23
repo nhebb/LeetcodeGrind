@@ -3178,4 +3178,25 @@ public class ArraysAndHashing
             ? -1
             : Math.Max(a.Length, b.Length);
     }
+
+
+    public int NumSubarrayProductLessThanK(int[] nums, int k)
+    {
+        int count = 0;
+        int q = 0;
+        int product = 1;
+        for (int i = 0; i < nums.Length; i++)
+        {
+            // 1. Calculate product
+            product *= nums[i];
+
+            // 2. While the product is > target, increase left.
+            while (product >= k && q < i)
+            {
+                product /= nums[q];
+                q++;
+            }
+        }
+        return count;
+    }
 }

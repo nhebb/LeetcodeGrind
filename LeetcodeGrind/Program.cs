@@ -7,12 +7,10 @@ internal class Program
 {
     static void Main(string[] args)
     {
-        //var math = new MathAndGeometry.MathAndGeometry();
-        //var res = math.CheckPerfectNumber(1);
         //Console.WriteLine(res);
         //Console.WriteLine(string.Join(",", res));
 
-        CalcLCPerDay();
+        //CalcLCPerDay();
 
     }
 

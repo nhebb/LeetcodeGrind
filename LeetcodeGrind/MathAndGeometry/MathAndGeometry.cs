@@ -674,4 +674,21 @@ public class MathAndGeometry
 
         return divisors.Sum() == num;
     }
+
+    int GetMostSignificantBit(int n)
+    {
+        if (n == 0)
+            return 0;
+
+        int msb = 0;
+        n /= 2;
+
+        while (n != 0)
+        {
+            n /= 2;
+            msb++;
+        }
+
+        return (1 << msb);
+    }
 }
