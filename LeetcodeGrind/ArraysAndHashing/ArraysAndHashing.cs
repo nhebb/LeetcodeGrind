@@ -3199,4 +3199,43 @@ public class ArraysAndHashing
         }
         return count;
     }
+
+
+    // 1980. Find Unique Binary String
+    public string FindDifferentBinaryString(string[] nums)
+    {
+        var vals = nums.Select(x => Convert.ToInt32(x, 2));
+        var max = vals.Max();
+        var all = Enumerable.Range(0, max + 1);
+        var missing = all.Except(vals);
+
+        var len = nums[0].Length;
+        return missing.Count() == 0
+            ? Convert.ToString((max + 1), 2).PadLeft(len, '0')
+            : Convert.ToString(missing.First(), 2).PadLeft(len, '0');
+    }
+
+
+    // 2283. Check if Number Has Equal Digit Count and Digit Value
+    public bool DigitCount(string num)
+    {
+        var d = new Dictionary<int, int>();
+        for (int i = 0; i < num.Length; i++)
+        {
+            var number = num[i] - '0';
+            if (d.TryGetValue(number, out int count))
+                d[number] = count + 1;
+            else
+                d[number] = 1;
+        }
+
+        for (int i = 0; i < num.Length; i++)
+        {
+            var count = d.ContainsKey(i) ? d[i] : 0;
+            var val = num[i] - '0';
+            if (val != count)
+                return false;
+        }
+        return true;
+    }
 }

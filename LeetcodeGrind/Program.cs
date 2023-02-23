@@ -7,10 +7,12 @@ internal class Program
 {
     static void Main(string[] args)
     {
+        //var ah = new ArraysAndHashing.ArraysAndHashing();
+        //var res = ah.DigitCount("1210");
         //Console.WriteLine(res);
         //Console.WriteLine(string.Join(",", res));
 
-        //CalcLCPerDay();
+        CalcLCPerDay();
 
     }
 
