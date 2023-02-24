@@ -7,12 +7,16 @@ internal class Program
 {
     static void Main(string[] args)
     {
+        var input = "[4,1,5,20,3]";
+        var nums = Leetcode1DArray(input);
+        var heaps = new Heaps.Heaps();
+        var res = heaps.MinimumDeviation(nums);
         //var ah = new ArraysAndHashing.ArraysAndHashing();
         //var res = ah.DigitCount("1210");
-        //Console.WriteLine(res);
+        Console.WriteLine(res);
         //Console.WriteLine(string.Join(",", res));
 
-        CalcLCPerDay();
+        //CalcLCPerDay();
 
     }
 
