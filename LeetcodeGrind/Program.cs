@@ -9,17 +9,6 @@ internal class Program
 {
     static void Main(string[] args)
     {
-        var root = new TreeNode(1);
-        root.left = new TreeNode(2);
-        root.left.left = new TreeNode(4);
-        root.right = new TreeNode(3);
-        root.right.left = new TreeNode(2);
-        root.right.left.left = new TreeNode(4);
-        root.right.right = new TreeNode(4);
-        var t = new Trees.Trees();
-        var res = t.FindDuplicateSubtrees(root);
-        foreach(var tn in res) 
-            Console.WriteLine(tn.val.ToString());
         //Console.WriteLine(res);
         //Console.WriteLine(string.Join(",", res));
 

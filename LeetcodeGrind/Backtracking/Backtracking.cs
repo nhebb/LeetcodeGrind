@@ -724,23 +724,39 @@ public class Backtracking
         }
 
         // number of empty squares
-        var empty = rows * cols - obs - 2;
+        var numEmpty = rows * cols - obs;
         var count = 0;
         var visited = new bool[rows][];
         for (int r = 0; r < rows; r++)
             visited[r] = new bool[cols];
-        var sb = new StringBuilder();
-        var hs = new HashSet<string>();
 
-        void Backtrack(int r, int c)
+        void Backtrack(int r, int c, int numVisited)
         {
             if (r < 0 || r == rows) return;
             if (c < 0 || c == cols) return;
-            if (visited[r][c]) return;
+            if (visited[r][c] || grid[r][c] == -1) return;
+
+            numVisited++;
+            if (grid[r][c] == 2)
+            {
+                if (numVisited == numEmpty)
+                    count++;
+                numVisited--;
+                return;
+            }
+
             visited[r][c] = true;
+
+            Backtrack(r - 1, c, numVisited);
+            Backtrack(r + 1, c, numVisited);
+            Backtrack(r, c - 1, numVisited);
+            Backtrack(r, c + 1, numVisited);
+
+            visited[r][c] = false;
+            numVisited--;
         }
 
-        Backtrack(0, 0);
+        Backtrack(startR, startC, 0);
 
         return count;
     }
