@@ -1,5 +1,7 @@
 ﻿using LeetcodeGrind.Trees;
 using System.ComponentModel.Design;
+using System.Runtime.CompilerServices;
+using System.Text;
 
 namespace LeetcodeGrind;
 
@@ -7,13 +9,18 @@ internal class Program
 {
     static void Main(string[] args)
     {
-        var input = "[4,1,5,20,3]";
-        var nums = Leetcode1DArray(input);
-        var heaps = new Heaps.Heaps();
-        var res = heaps.MinimumDeviation(nums);
-        //var ah = new ArraysAndHashing.ArraysAndHashing();
-        //var res = ah.DigitCount("1210");
-        Console.WriteLine(res);
+        var root = new TreeNode(1);
+        root.left = new TreeNode(2);
+        root.left.left = new TreeNode(4);
+        root.right = new TreeNode(3);
+        root.right.left = new TreeNode(2);
+        root.right.left.left = new TreeNode(4);
+        root.right.right = new TreeNode(4);
+        var t = new Trees.Trees();
+        var res = t.FindDuplicateSubtrees(root);
+        foreach(var tn in res) 
+            Console.WriteLine(tn.val.ToString());
+        //Console.WriteLine(res);
         //Console.WriteLine(string.Join(",", res));
 
         //CalcLCPerDay();

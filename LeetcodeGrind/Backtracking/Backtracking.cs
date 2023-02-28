@@ -728,7 +728,7 @@ public class Backtracking
         var count = 0;
         var visited = new bool[rows][];
         for (int r = 0; r < rows; r++)
-            visited[r] = new bool[cols]];
+            visited[r] = new bool[cols];
         var sb = new StringBuilder();
         var hs = new HashSet<string>();
 
@@ -740,5 +740,8 @@ public class Backtracking
             visited[r][c] = true;
         }
 
+        Backtrack(0, 0);
+
+        return count;
     }
 }

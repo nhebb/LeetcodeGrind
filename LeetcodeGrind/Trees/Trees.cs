@@ -1126,4 +1126,74 @@ public class Trees
 
         return root;
     }
+
+
+    // 652. Find Duplicate Subtrees
+    public IList<TreeNode> FindDuplicateSubtrees(TreeNode root)
+    {
+        if(root == null)
+            return new List<TreeNode>();
+
+        // 2 hashsets - 1st to find duplicates, and 2nd 
+        // to avoid multiple duplicates in result list.
+        var hsFound = new HashSet<string>();
+        var hsResult = new HashSet<string> ();
+        var res = new List<TreeNode> ();
+
+        // Create "L" & "R" delimted string of node values
+        // and check at each node whether same pattern
+        // exists in hsFound. If not, attempt to add to
+        // result set.
+        string Dfs(TreeNode node)
+        {
+            var cur = $"{node.val}";
+            if (node.left != null)
+                cur = $"{Dfs(node.left)}L{cur}";
+            if (node.right != null)
+                cur = $"{cur}R{Dfs(node.right)}";
+
+            if (!hsFound.Add(cur) && hsResult.Add(cur))
+                res.Add(node);
+
+            return cur;
+        }
+
+        Dfs(root);
+        return res;
+    }
+
+    public IList<TreeNode> FindDuplicateSubtrees2(TreeNode root)
+    {
+
+        var res = new List<TreeNode>();
+        var resultSet = new HashSet<string>();
+        var seenSet = new HashSet<string>();
+
+        string CheckNode(TreeNode node)
+        {
+            var nodeKey = $"{node.val}";
+
+            if (node.left != null)
+                nodeKey = $"{CheckNode(node.left)}<{nodeKey}";
+            if (node.right != null)
+                nodeKey = $"{nodeKey}>{CheckNode(node.right)}";
+
+            nodeKey = $"[{nodeKey}]";
+
+            if (seenSet.Contains(nodeKey) && !resultSet.Contains(nodeKey))
+            {
+                resultSet.Add(nodeKey);
+                res.Add(node);
+            }
+
+            seenSet.Add(nodeKey);
+
+            return nodeKey;
+        }
+
+        CheckNode(root);
+
+        return res;
+    }
+
 }
