@@ -699,12 +699,28 @@ public class MathAndGeometry
         int GetHammingWeight(int n)
         {
             var binary = Convert.ToString(n, 2);
-            return binary.Count(c => c== '1');
+            return binary.Count(c => c == '1');
         }
-        
+
         var val1 = GetHammingWeight((GetMostSignificantBit(n) * 2)) + 1;
         var val2 = GetHammingWeight(n);
 
         return Math.Min(val1, val2);
+    }
+
+
+    // 2575. Find the Divisibility Array of a String
+    public int[] DivisibilityArray(string word, int m)
+    {
+        var res = new int[word.Length];
+        var prefix = 0;
+        for (int i = 0; i < word.Length; i++)
+        {
+            prefix = (10 * prefix) % m + (word[i] - '0') % m;
+            if (prefix % m == 0)
+                res[i] = 1;
+        }
+
+        return res;
     }
 }

@@ -697,4 +697,48 @@ public class Backtracking
         Backtrack(0);
         return count;
     }
+
+
+    // 980. Unique Paths III
+    public int UniquePathsIII(int[][] grid)
+    {
+        var rows = grid.Length;
+        var cols = grid[0].Length;
+        var startR = -1;
+        var startC = -1;
+        var obs = 0;
+        for (int r = 0; r < rows; r++)
+        {
+            for (int c = 0; c < cols; c++)
+            {
+                if (grid[r][c] == -1)
+                {
+                    obs++;
+                }
+                else if (grid[r][c] == 1)
+                {
+                    startR = r;
+                    startC = c;
+                }
+            }
+        }
+
+        // number of empty squares
+        var empty = rows * cols - obs - 2;
+        var count = 0;
+        var visited = new bool[rows][];
+        for (int r = 0; r < rows; r++)
+            visited[r] = new bool[cols]];
+        var sb = new StringBuilder();
+        var hs = new HashSet<string>();
+
+        void Backtrack(int r, int c)
+        {
+            if (r < 0 || r == rows) return;
+            if (c < 0 || c == cols) return;
+            if (visited[r][c]) return;
+            visited[r][c] = true;
+        }
+
+    }
 }

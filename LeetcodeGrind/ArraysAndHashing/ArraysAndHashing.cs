@@ -53,19 +53,21 @@ public class ArraysAndHashing
 
         var dict = new Dictionary<char, int>();
 
-        foreach (char c in s)
+        for (int i = 0; i < s.Length; i++)
         {
-            if (!dict.TryAdd(c, 1))
-                dict[c]++;
+            if (dict.TryGetValue(s[i], out var val))
+                dict[s[i]] = val + 1;
+            else
+                dict[s[i]] = 1;
         }
-        foreach (char c in t)
+        for (int i = 0; i < t.Length; i++)
         {
-            if (!dict.ContainsKey(c))
+            if (!dict.ContainsKey(t[i]))
                 return false;
 
-            dict[c] -= 1;
-            if (dict[c] == 0)
-                dict.Remove(c);
+            dict[t[i]] -= 1;
+            if (dict[t[i]] == 0)
+                dict.Remove(t[i]);
         }
         return true;
     }
@@ -3286,5 +3288,56 @@ public class ArraysAndHashing
         }
 
         return minLen == nums.Length ? -1 : minLen;
+    }
+
+
+    // 383. Ransom Note
+    public bool CanConstruct(string ransomNote, string magazine)
+    {
+        var dm = new Dictionary<char, int>();
+        for (int i = 0; i < magazine.Length; i++)
+        {
+            if (dm.TryGetValue(magazine[i], out int val))
+                dm[magazine[i]] = val + 1;
+            else
+                dm[magazine[i]] = 1;
+        }
+
+        for (int i = 0; i < ransomNote.Length; i++)
+        {
+            if (dm.TryGetValue(ransomNote[i], out int val))
+            {
+                dm[ransomNote[i]] = val - 1;
+                if (dm[ransomNote[i]] == 0)
+                    dm.Remove(ransomNote[i]);
+            }
+            else
+            {
+                return false;
+            }
+        }
+        return true;
+    }
+
+
+    // 387. First Unique Character in a String
+    public int FirstUniqChar(string s)
+    {
+        var counts = new Dictionary<char, int>();
+        for (int i = 0; i < s.Length; i++)
+        {
+            if (counts.TryGetValue(s[i], out var val))
+                counts[s[i]] = val + 1;
+            else
+                counts[s[i]] = 1;
+        }
+
+        for (int i = 0; i < s.Length; i++)
+        {
+            if (counts[s[i]] == 1)
+                return i;
+        }
+
+        return -1;
     }
 }
