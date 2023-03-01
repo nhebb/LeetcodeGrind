@@ -484,4 +484,22 @@ public class LinkedLists
 
         return prev.next;
     }
+
+
+    // 83. Remove Duplicates from Sorted List
+    public ListNode DeleteDuplicates(ListNode head)
+    {
+        if (head == null)
+            return head;
+
+        var node = head;
+        while (node.next != null)
+        {
+            if (node.val == node.next.val)
+                node.next = node.next.next;
+            else
+                node = node.next;
+        }
+        return head;
+    }
 }
