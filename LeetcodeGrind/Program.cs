@@ -1,4 +1,5 @@
-﻿using LeetcodeGrind.Trees;
+﻿using LeetcodeGrind.LinkedLists;
+using LeetcodeGrind.Trees;
 using System.ComponentModel.Design;
 using System.Runtime.CompilerServices;
 using System.Text;
@@ -9,10 +10,15 @@ internal class Program
 {
     static void Main(string[] args)
     {
-        var s = "aabbccc".ToCharArray();
-        var strings = new Strings.Strings();
-        var res = strings.Compress(s);
-        Console.WriteLine(res);
+        var ll = new LinkedLists.LinkedLists();
+        var head = new ListNode(1);
+        head.next = new ListNode(2);
+        head.next.next = new ListNode(3);
+        head.next.next.next = new ListNode(4);
+        head.next.next.next.next = new ListNode(5);
+
+        var res = ll.OddEvenList(head);
+        //Console.WriteLine(res);
         //Console.WriteLine(string.Join(",", res));
 
         //CalcLCPerDay();
