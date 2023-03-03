@@ -10,14 +10,10 @@ internal class Program
 {
     static void Main(string[] args)
     {
-        var ll = new LinkedLists.LinkedLists();
-        var head = new ListNode(1);
-        head.next = new ListNode(2);
-        head.next.next = new ListNode(3);
-        head.next.next.next = new ListNode(4);
-        head.next.next.next.next = new ListNode(5);
-
-        var res = ll.OddEvenList(head);
+        var buildings = new int[1][];
+        buildings[0] = new int[] { 0, 2147483647, 2147483647 };
+        var ah = new ArraysAndHashing.ArraysAndHashing();
+        var res = ah.GetSkyline(buildings);
         //Console.WriteLine(res);
         //Console.WriteLine(string.Join(",", res));
 
