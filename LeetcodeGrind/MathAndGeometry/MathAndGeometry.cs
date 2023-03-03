@@ -753,4 +753,22 @@ public class MathAndGeometry
 
         return res;
     }
+
+
+    // TODO: 279. Perfect Squares
+    public int NumSquares(int n)
+    {
+        var squares = new List<int>();
+        var i = 1;
+
+        while (i * i <= n)
+        {
+            squares.Add(i * i);
+            i++;
+        }
+
+        var ans = new List<int>();
+
+        return ans.Count;
+    }
 }

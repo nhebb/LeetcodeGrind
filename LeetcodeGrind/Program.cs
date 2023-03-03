@@ -9,7 +9,10 @@ internal class Program
 {
     static void Main(string[] args)
     {
-        //Console.WriteLine(res);
+        var s = "aabbccc".ToCharArray();
+        var strings = new Strings.Strings();
+        var res = strings.Compress(s);
+        Console.WriteLine(res);
         //Console.WriteLine(string.Join(",", res));
 
         //CalcLCPerDay();
@@ -17,7 +20,16 @@ internal class Program
     }
 
 
-    private static int[] Leetcode1DArray(string s)
+    private static char[] Leetcode1DCharArray(string s)
+    {
+        var sq = "'";
+        var dq = "\"";
+        s = s.Replace("[", "").Replace("]", "");
+        s = s.Replace(dq, sq).Replace(" ", ""); ;
+        return s.ToCharArray();
+    }
+
+    private static int[] Leetcode1DIntArray(string s)
     {
         s = s.Replace("[", "").Replace("]", "");
         var parts = s.Split(',', StringSplitOptions.RemoveEmptyEntries);
@@ -28,7 +40,7 @@ internal class Program
         return result.ToArray();
     }
 
-    private static int[][] Leetcode2DArray(string s)
+    private static int[][] Leetcode2DIntArray(string s)
     {
         s = s.Replace("[[", "");
         s = s.Replace("]]", "");

@@ -249,8 +249,8 @@ public class ArraysAndHashing
     }
 
 
-    // 30. Substring with Concatenation of All Words
-    // TODO: This approach won't work. words[] has a length of up
+    // TODO: 30. Substring with Concatenation of All Words
+    // This approach won't work. words[] has a length of up
     // to 5000, which means there are 5000! possible permutations.
     public IList<int> FindSubstring(string s, string[] words)
     {
@@ -2030,8 +2030,7 @@ public class ArraysAndHashing
         return ans[n];
     }
 
-    // TODO: finish
-    // 2537. Count the Number of Good Subarrays
+    // TODO: 2537. Count the Number of Good Subarrays
     public long CountGood(int[] nums, int k)
     {
         var d = new Dictionary<int, List<int>>();
@@ -2694,8 +2693,8 @@ public class ArraysAndHashing
         return true;
     }
 
-    // TODO: This fails test case { 3,4,2,3 }
-    // 665. Non-decreasing Array
+    // TODO: 665. Non-decreasing Array
+    // This fails test case { 3,4,2,3 }
     public bool CheckPossibility(int[] nums)
     {
         var changed = false;
