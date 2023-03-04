@@ -187,18 +187,47 @@ public class Trees
         return LowestCommonAncestor(root.right, p, q);
     }
 
+    // 101. Symmetric Tree
+    public bool IsSymmetric(TreeNode root)
+    {
+        if (root == null)
+            return true;
+
+        bool DFS(TreeNode node1, TreeNode node2)
+        {
+            if (node1 == null && node2 == null)
+                return true;
+
+            if ((node1 == null && node2 != null) ||
+                (node1 != null && node2 == null))
+                return false;
+
+            if (node1.val != node2.val)
+                return false;
+
+            return DFS(node1.left, node2.right) &&
+                   DFS(node1.right, node2.left);
+        }
+
+        return DFS(root.left, root.right);
+    }
+
 
     // 102. Binary Tree Level Order Traversal
     public IList<IList<int>> LevelOrder(TreeNode root)
     {
         var lists = new List<IList<int>>();
-        if (root == null) { return lists; }
+        if (root == null)
+            return lists;
 
         var queue = new Queue<TreeNode>();
         queue.Enqueue(root);
 
         while (queue.Count > 0)
         {
+            // Get the count before enqueueing new nodes,
+            // then the next 'count' nodes dequeued will
+            // be on the same level
             var count = queue.Count;
             var list = new List<int>();
 
