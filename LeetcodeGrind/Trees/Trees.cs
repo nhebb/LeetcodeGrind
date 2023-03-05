@@ -187,6 +187,7 @@ public class Trees
         return LowestCommonAncestor(root.right, p, q);
     }
 
+
     // 101. Symmetric Tree
     public bool IsSymmetric(TreeNode root)
     {
@@ -270,6 +271,22 @@ public class Trees
         }
         var root = Dfs(0, inorder.Length - 1);
         return root;
+    }
+
+
+    // 112. Path Sum
+    public bool HasPathSum(TreeNode root, int targetSum)
+    {
+        if (root == null)
+            return false;
+
+        if (root.left == null && root.right == null)
+            return root.val == targetSum;
+
+        targetSum -= root.val;
+
+        return HasPathSum(root.left, targetSum)
+            || HasPathSum(root.right, targetSum);
     }
 
 
