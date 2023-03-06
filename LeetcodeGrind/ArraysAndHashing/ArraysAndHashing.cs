@@ -7,7 +7,6 @@ using static System.Net.Mime.MediaTypeNames;
 using System.Xml.Linq;
 using System.Net.Http.Headers;
 using System.Reflection.Metadata.Ecma335;
-using static System.Runtime.InteropServices.JavaScript.JSType;
 using System.Collections;
 
 namespace LeetcodeGrind.ArraysAndHashing;
@@ -3572,5 +3571,21 @@ public class ArraysAndHashing
         }
 
         return n;
+    }
+
+
+    // 1539. Kth Missing Positive Number
+    public int FindKthPositive(int[] arr, int k)
+    {
+        if (k < arr[0])
+            return k;
+        var last = arr[^1];
+        var vals = Enumerable.Range(1, last);
+        var missing = vals.Except(arr).ToArray();
+
+        if (missing.Length >= k)
+            return missing[k - 1];
+        else
+            return arr[^1] + k - missing.Length;
     }
 }

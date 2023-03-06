@@ -92,8 +92,7 @@ public class Stacks
     }
 
 
-    // TODO: Finish (or at least get started)
-    // 402. Remove K Digits
+    // TODO: 402. Remove K Digits
     public string RemoveKdigits(string num, int k)
     {
         return num;

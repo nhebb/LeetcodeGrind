@@ -9,8 +9,7 @@ namespace LeetcodeGrind.SlidingWindow;
 
 internal class SlidingWindow
 {
-    // TODO: Finish this
-    //1838. Frequency of the Most Frequent Element
+    // TODO: 1838. Frequency of the Most Frequent Element
     public int MaxFrequency(int[] nums, int k)
     {
         if (nums.Length == 1) return 1;

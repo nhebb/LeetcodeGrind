@@ -10,11 +10,10 @@ internal class Program
 {
     static void Main(string[] args)
     {
-        var buildings = new int[1][];
-        buildings[0] = new int[] { 0, 2147483647, 2147483647 };
+        var arr = Leetcode1DIntArray("[2,3,4,7,11]");
         var ah = new ArraysAndHashing.ArraysAndHashing();
-        var res = ah.GetSkyline(buildings);
-        //Console.WriteLine(res);
+        var res = ah.FindKthPositive(arr, 5);
+        Console.WriteLine(res);
         //Console.WriteLine(string.Join(",", res));
 
         //CalcLCPerDay();

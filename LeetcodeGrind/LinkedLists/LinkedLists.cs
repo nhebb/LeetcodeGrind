@@ -256,7 +256,6 @@ public class LinkedLists
     }
 
 
-    // 25. Reverse Nodes in k-Group
     /* Given the head of a linked list, reverse the nodes of the list k at a time,
      * and return the modified list.
 
@@ -273,7 +272,7 @@ public class LinkedLists
         0 <= Node.val <= 1000
 
     */
-    // TODO: Finish this problem
+    // TODO: 25. Reverse Nodes in k-Group
     public ListNode ReverseKGroup(ListNode head, int k)
     {
         var prev = new ListNode();
@@ -426,8 +425,7 @@ public class LinkedLists
     }
 
 
-    // TODO: Finish Reverse Linked List II
-    // 92. Reverse Linked List II
+    // TODO: 92. Reverse Linked List II
     //public ListNode ReverseBetween(ListNode head, int left, int right)
     //{
 
