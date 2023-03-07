@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel.Design.Serialization;
 using System.Linq;
+using System.Net.WebSockets;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Linq;
@@ -1140,6 +1141,9 @@ public class Trees
     {
         var hs = new HashSet<int>();
 
+        // Inorder traversal checking for:
+        //      target + node.val = k
+        //   => target = k - node.val
         bool Dfs(TreeNode node)
         {
             if (node.left != null && Dfs(node.left))
