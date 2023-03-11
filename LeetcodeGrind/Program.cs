@@ -10,14 +10,14 @@ internal class Program
 {
     static void Main(string[] args)
     {
-        var g = new Greedy.Greedy();
-        var n = 3;
-        var k = 27;
-        var res = g.GetSmallestString(n, k);
-        Console.WriteLine(res);
+        //var g = new Greedy.Greedy();
+        //var n = 3;
+        //var k = 27;
+        //var res = g.GetSmallestString(n, k);
+        //Console.WriteLine(res);
         //Console.WriteLine(string.Join(",", res));
 
-        //CalcLCPerDay();
+        CalcLCPerDay();
     }
 
 
