@@ -783,4 +783,37 @@ public class Matrices
 
         return count;
     }
+
+
+    // 542. 01 Matrix
+    public int[][] UpdateMatrix(int[][] mat)
+    {
+        var rows = mat.Length;
+        var cols = mat[0].Length;
+        var ans = Enumerable.Range(0, rows)
+                            .Select(x => new int[cols])
+                            .ToArray();
+        var visited = new bool[rows, cols];
+
+        int Dfs(int r, int c, int dist)
+        {
+            if (mat[r][c] == 1 || visited[r,c])
+                return int.MaxValue;
+
+            visited[r, c] = true;
+
+
+            visited[r, c] = false;
+        }
+
+        for (int i = 0; i < rows; i++)
+        {
+            for (int j = 0; j < cols; j++)
+            {
+                if (mat[i][j] == 1)
+                    ans[i][j] = Dfs(i, j, 1);
+            }
+        }
+
+    }
 }

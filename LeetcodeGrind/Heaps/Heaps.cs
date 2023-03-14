@@ -55,11 +55,9 @@ public class Heaps
     // 23. Merge k Sorted Lists
     public ListNode MergeKLists(ListNode[] lists)
     {
-
         if (lists == null || lists.Length == 0) { return null; }
 
-        var pq = new PriorityQueue<ListNode, int>();
-
+       var pq = new PriorityQueue<ListNode, int>();
         foreach (var enqueNode in lists)
         {
             if (enqueNode != null)
@@ -68,17 +66,17 @@ public class Heaps
             }
         }
 
-        var prev = new ListNode(0);
+        var prev = new ListNode(Int32.MinValue);
         var node = prev;
 
         while (pq.Count > 0)
         {
             node.next = pq.Dequeue();
+            node = node.next;
             if (node.next != null)
             {
                 pq.Enqueue(node.next, node.next.val);
             }
-            node = node.next;
         }
 
         return prev.next;

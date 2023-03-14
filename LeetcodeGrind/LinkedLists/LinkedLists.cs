@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Linq;
@@ -208,37 +209,6 @@ public class LinkedLists
     }
 
 
-    // 23. Merge k Sorted Lists
-    public ListNode MergeKLists(ListNode[] lists)
-    {
-        if (lists == null || lists.Length == 0) { return null; }
-
-        PriorityQueue<ListNode, int> pq = new PriorityQueue<ListNode, int>();
-        foreach (ListNode enqueNode in lists)
-        {
-            if (enqueNode != null)
-            {
-                pq.Enqueue(enqueNode, enqueNode.val);
-            }
-        }
-
-        ListNode prev = new ListNode(Int32.MinValue);
-        ListNode node = prev;
-
-        while (pq.Count > 0)
-        {
-            node.next = pq.Dequeue();
-            node = node.next;
-            if (node.next != null)
-            {
-                pq.Enqueue(node.next, node.next.val);
-            }
-        }
-
-        return prev.next;
-    }
-
-
     //24. Swap Nodes in Pairs
     public ListNode SwapPairs(ListNode head)
     {
@@ -255,6 +225,28 @@ public class LinkedLists
         return prev.next;
     }
 
+
+    //  876. Middle of the Linked List
+    public ListNode MiddleNode(ListNode head)
+    {
+        if (head == null) { return head; }
+
+        var slow = head;
+        var fast = head;
+        while (fast.next != null && fast.next.next != null)
+        {
+            slow = slow.next;
+            fast = fast.next.next;
+        }
+
+        if (fast.next != null)
+        {
+            slow = slow.next;
+        }
+
+        return slow;
+
+    }
 
     /* Given the head of a linked list, reverse the nodes of the list k at a time,
      * and return the modified list.
