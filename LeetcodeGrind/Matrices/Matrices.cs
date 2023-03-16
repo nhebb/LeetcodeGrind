@@ -804,6 +804,7 @@ public class Matrices
 
 
             visited[r, c] = false;
+            return -1; // Dummy result for now
         }
 
         for (int i = 0; i < rows; i++)
@@ -815,5 +816,6 @@ public class Matrices
             }
         }
 
+        return ans;
     }
 }

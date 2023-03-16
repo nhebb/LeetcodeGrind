@@ -10,14 +10,18 @@ internal class Program
 {
     static void Main(string[] args)
     {
-        //var g = new Greedy.Greedy();
-        //var n = 3;
-        //var k = 27;
-        //var res = g.GetSmallestString(n, k);
-        //Console.WriteLine(res);
+        var root = new TreeNode(1);
+        root.left = new TreeNode(2);
+        root.right = new TreeNode(3);
+        root.left.left = new TreeNode(4);
+        root.left.right = new TreeNode(5);
+        root.right.right = new TreeNode(7);
+        var trees = new Trees.Trees();
+        var res = trees.IsCompleteTree(root);
+        Console.WriteLine(res);
         //Console.WriteLine(string.Join(",", res));
 
-        CalcLCPerDay();
+        //CalcLCPerDay();
     }
 
 
