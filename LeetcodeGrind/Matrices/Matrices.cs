@@ -797,7 +797,7 @@ public class Matrices
 
         int Dfs(int r, int c, int dist)
         {
-            if (mat[r][c] == 1 || visited[r,c])
+            if (mat[r][c] == 1 || visited[r, c])
                 return int.MaxValue;
 
             visited[r, c] = true;
@@ -817,5 +817,73 @@ public class Matrices
         }
 
         return ans;
+    }
+
+
+    // 733. Flood Fill
+    public int[][] FloodFill(int[][] image, int sr, int sc, int newColor)
+    {
+        if (image == null || image.Length == 0 || image[sr][sc] == newColor)
+            return image;
+
+        var oldColor = image[sr][sc];
+
+        void FillCell(int sr, int sc)
+        {
+            if (sr < 0 || sc < 0 || sr >= image.Length || sc >= image[0].Length)
+                return;
+
+            if (image[sr][sc] == oldColor)
+            {
+                image[sr][sc] = newColor;
+
+                FillCell(sr - 1, sc);
+                FillCell(sr + 1, sc);
+                FillCell(sr, sc - 1);
+                FillCell(sr, sc + 1);
+            }
+        }
+
+        FillCell(sr, sc);
+        return image;
+    }
+
+
+    // 695. Max Area of Island
+    public int MaxAreaOfIsland(int[][] grid)
+    {
+        if (grid == null)
+            return 0;
+
+        int maxArea = 0;
+
+        int IslandDFS(int[][] grid, int i, int j)
+        {
+            if (i < 0 || i >= grid.Length ||
+                j < 0 || j >= grid[i].Length ||
+                grid[i][j] == 0)
+                return 0;
+
+            grid[i][j] = 0;
+
+            return 1 + IslandDFS(grid, i + 1, j)
+                     + IslandDFS(grid, i - 1, j)
+                     + IslandDFS(grid, i, j + 1)
+                     + IslandDFS(grid, i, j - 1);
+        }
+
+        for (int i = 0; i < grid.Length; i++)
+        {
+            for (int j = 0; j < grid[i].Length; j++)
+            {
+                if (grid[i][j] == 1)
+                {
+                    var area = IslandDFS(grid, i, j);
+                    maxArea = Math.Max(maxArea, area);
+                }
+            }
+        }
+
+        return maxArea;
     }
 }
