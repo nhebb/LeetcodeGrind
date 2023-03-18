@@ -1,6 +1,4 @@
-﻿using LeetcodeGrind.LinkedLists;
-using LeetcodeGrind.Trees;
-using System.ComponentModel.Design;
+﻿using System.ComponentModel.Design;
 using System.Runtime.CompilerServices;
 using System.Text;
 
@@ -10,15 +8,19 @@ internal class Program
 {
     static void Main(string[] args)
     {
-        var root = new TreeNode(1);
-        root.left = new TreeNode(2);
-        root.right = new TreeNode(3);
-        root.left.left = new TreeNode(4);
-        root.left.right = new TreeNode(5);
-        root.right.right = new TreeNode(7);
-        var trees = new Trees.Trees();
-        var res = trees.IsCompleteTree(root);
-        Console.WriteLine(res);
+        var bh = new Stacks.BrowserHistory("leetcode.com");
+       
+        bh.Visit("google.com");
+        bh.Visit("facebook.com");
+        bh.Visit("youtube");
+        Console.WriteLine(bh.Back(1));
+        Console.WriteLine(bh.Back(1));
+        Console.WriteLine(bh.Forward(1));
+        bh.Visit("linkedin.com");
+        Console.WriteLine(bh.Forward(2));
+        Console.WriteLine(bh.Back(2));
+        Console.WriteLine(bh.Back(7));
+
         //Console.WriteLine(string.Join(",", res));
 
         //CalcLCPerDay();
