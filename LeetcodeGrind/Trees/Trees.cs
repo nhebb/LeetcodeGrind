@@ -1300,14 +1300,14 @@ public class Trees
     {
         // Base constraints state that there will be at least 1
         // node, but required for recursive calls.
-        if (inorder.Length == 0 && postorder.Length == 0) 
+        if (inorder.Length == 0 && postorder.Length == 0)
             return null;
 
         // The last node in a post order traversal
         // is the tree's root.
         var root = new TreeNode(postorder[^1]);
 
-        if (inorder.Length == 1) 
+        if (inorder.Length == 1)
             return root;
 
         int rootIndex = Array.IndexOf(inorder, root.val);
@@ -1322,5 +1322,33 @@ public class Trees
         root.right = BuildTree(inorderRight, postorderRight);
 
         return root;
+    }
+
+
+    // 671. Second Minimum Node In a Binary Tree
+    public int FindSecondMinimumValue(TreeNode root)
+    {
+        var min2 = -1;
+
+        void Dfs(TreeNode node, int parentVal)
+        {
+            if (node == null) return;
+
+            if (node.val != parentVal)
+            {
+                if (min2 == -1)
+                    min2 = node.val;
+                else if (node.val < min2)
+                    min2 = node.val;
+            }
+
+            Dfs(node.left, node.val);
+            Dfs(node.right, node.val);
+        }
+
+        Dfs(root.left, root.val);
+        Dfs(root.right, root.val);
+
+        return min2;
     }
 }

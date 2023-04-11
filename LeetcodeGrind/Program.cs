@@ -8,20 +8,33 @@ internal class Program
 {
     static void Main(string[] args)
     {
-        var bh = new Stacks.BrowserHistory("leetcode.com");
-       
-        bh.Visit("google.com");
-        bh.Visit("facebook.com");
-        bh.Visit("youtube");
-        Console.WriteLine(bh.Back(1));
-        Console.WriteLine(bh.Back(1));
-        Console.WriteLine(bh.Forward(1));
-        bh.Visit("linkedin.com");
-        Console.WriteLine(bh.Forward(2));
-        Console.WriteLine(bh.Back(2));
-        Console.WriteLine(bh.Back(7));
+        //var mytestcase = Leetcode2DIntArray("[[1,0,1],[1,1,1],[1,1,1]]");
+        ////var mat = Leetcode2DIntArray("[[1,0,1,1,0,0,1,0,0,1],[0,1,1,0,1,0,1,0,1,1],[0,0,1,0,1,0,0,1,0,0],[1,0,1,0,1,1,1,1,1,1],[0,1,0,1,1,0,0,0,0,1],[0,0,1,0,1,1,1,0,1,0],[0,1,0,1,0,1,0,0,1,1],[1,0,0,0,1,1,1,1,0,1],[1,1,1,1,1,1,1,0,1,0],[1,1,1,1,0,1,0,0,1,1]]");
+        //var m = new Matrices.Matrices();
+        //var res = m.UpdateMatrix(mytestcase);
+        ////var res = m.UpdateMatrix(mat);
+        //Print2DIntArray(res);
 
-        //Console.WriteLine(string.Join(",", res));
+        //var nums = Leetcode1DIntArray("[1,3,0,0,2,0,0,4]");
+        //var ah = new ArraysAndHashing.ArraysAndHashing();
+        //var res = ah.ZeroFilledSubarray(nums);
+        //Console.WriteLine(res);
+
+        //var arr = new string[] { "one", "four", "two", "three" };
+        //Array.Sort(arr);
+        //Console.WriteLine(string.Join(",", arr));
+
+        var s = "leet**cod*e";
+        var sb = new StringBuilder();
+        foreach (var c in s)
+            if (c == '*')
+                sb.Length--;
+            else
+                sb.Append(c);
+
+        Console.WriteLine(sb.ToString());
+
+        //Console.WriteLine(string.Join("", res));
 
         //CalcLCPerDay();
     }
@@ -57,13 +70,21 @@ internal class Program
         var res = new int[parts.Length][];
         for (int i = 0; i < parts.Length; i++)
         {
-            res[i] = new int[parts[i].Length];
             var vals = parts[i].Split(",");
+            res[i] = new int[vals.Length];
             for (int j = 0; j < vals.Length; j++)
                 res[i][j] = int.Parse(vals[j]);
         }
 
         return res;
+    }
+
+    private static void Print2DIntArray(int[][] arr)
+    {
+        foreach (var row in arr)
+        {
+            Console.WriteLine(string.Join(",", row));
+        }
     }
 
 

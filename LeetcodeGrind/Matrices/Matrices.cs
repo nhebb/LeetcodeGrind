@@ -785,41 +785,6 @@ public class Matrices
     }
 
 
-    // 542. 01 Matrix
-    public int[][] UpdateMatrix(int[][] mat)
-    {
-        var rows = mat.Length;
-        var cols = mat[0].Length;
-        var ans = Enumerable.Range(0, rows)
-                            .Select(x => new int[cols])
-                            .ToArray();
-        var visited = new bool[rows, cols];
-
-        int Dfs(int r, int c, int dist)
-        {
-            if (mat[r][c] == 1 || visited[r, c])
-                return int.MaxValue;
-
-            visited[r, c] = true;
-
-
-            visited[r, c] = false;
-            return -1; // Dummy result for now
-        }
-
-        for (int i = 0; i < rows; i++)
-        {
-            for (int j = 0; j < cols; j++)
-            {
-                if (mat[i][j] == 1)
-                    ans[i][j] = Dfs(i, j, 1);
-            }
-        }
-
-        return ans;
-    }
-
-
     // 733. Flood Fill
     public int[][] FloodFill(int[][] image, int sr, int sc, int newColor)
     {
@@ -885,5 +850,70 @@ public class Matrices
         }
 
         return maxArea;
+    }
+
+
+    // 542. 01 Matrix
+    public int[][] UpdateMatrix(int[][] mat)
+    {
+        var rows = mat.Length;
+        var cols = mat[0].Length;
+
+        var ans = new int[rows][];
+        for (int r = 0; r < rows; r++)
+        {
+            ans[r] = new int[cols];
+            Array.Fill(ans[r], int.MaxValue);
+        }
+
+        // initialize ans with 0's
+        for (int r = 0; r < rows; r++)
+        {
+            for (int c = 0; c < cols; c++)
+            {
+                if (mat[r][c] == 0)
+                    ans[r][c] = 0;
+            }
+        }
+
+        var target = 0;
+        var updated = true;
+        var visited = new HashSet<(int, int)>();
+
+        bool UpdateCell(int r, int c, int dist)
+        {
+            if (r < 0 || r == rows) return false;
+            if (c < 0 || c == cols) return false;
+            if (ans[r][c] <= dist) return false;
+            if (visited.Contains((r, c))) return false;
+
+            ans[r][c] = Math.Min(ans[r][c], dist + 1);
+            visited.Add((r, c));
+
+            return true;
+        }
+
+        while (updated)
+        {
+            updated = false;
+
+            for (int r = 0; r < rows; r++)
+            {
+                for (int c = 0; c < cols; c++)
+                {
+                    if (mat[r][c] != target)
+                        continue;
+
+                    updated |= UpdateCell(r - 1, c, target);
+                    updated |= UpdateCell(r + 1, c, target);
+                    updated |= UpdateCell(r, c - 1, target);
+                    updated |= UpdateCell(r, c + 1, target);
+                }
+            }
+            target++;
+            visited.Clear();
+        }
+
+        return ans;
     }
 }
