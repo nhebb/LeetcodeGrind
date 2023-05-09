@@ -8,31 +8,11 @@ internal class Program
 {
     static void Main(string[] args)
     {
-        //var mytestcase = Leetcode2DIntArray("[[1,0,1],[1,1,1],[1,1,1]]");
-        ////var mat = Leetcode2DIntArray("[[1,0,1,1,0,0,1,0,0,1],[0,1,1,0,1,0,1,0,1,1],[0,0,1,0,1,0,0,1,0,0],[1,0,1,0,1,1,1,1,1,1],[0,1,0,1,1,0,0,0,0,1],[0,0,1,0,1,1,1,0,1,0],[0,1,0,1,0,1,0,0,1,1],[1,0,0,0,1,1,1,1,0,1],[1,1,1,1,1,1,1,0,1,0],[1,1,1,1,0,1,0,0,1,1]]");
-        //var m = new Matrices.Matrices();
-        //var res = m.UpdateMatrix(mytestcase);
-        ////var res = m.UpdateMatrix(mat);
-        //Print2DIntArray(res);
+        var routes = ConvertTo2DIntArray("[[1,2,7],[3,6,7]]");
+        var g = new Graphs.Graphs();
+        var res = g.NumBusesToDestination(routes, 1, 6);
 
-        //var nums = Leetcode1DIntArray("[1,3,0,0,2,0,0,4]");
-        //var ah = new ArraysAndHashing.ArraysAndHashing();
-        //var res = ah.ZeroFilledSubarray(nums);
-        //Console.WriteLine(res);
-
-        //var arr = new string[] { "one", "four", "two", "three" };
-        //Array.Sort(arr);
-        //Console.WriteLine(string.Join(",", arr));
-
-        var s = "leet**cod*e";
-        var sb = new StringBuilder();
-        foreach (var c in s)
-            if (c == '*')
-                sb.Length--;
-            else
-                sb.Append(c);
-
-        Console.WriteLine(sb.ToString());
+        Console.WriteLine(res);
 
         //Console.WriteLine(string.Join("", res));
 
@@ -60,7 +40,7 @@ internal class Program
         return result.ToArray();
     }
 
-    private static int[][] Leetcode2DIntArray(string s)
+    private static int[][] ConvertTo2DIntArray(string s)
     {
         s = s.Replace("[[", "");
         s = s.Replace("]]", "");
