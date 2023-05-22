@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace LeetcodeGrind.Matrices;
 
-// TODO Use this for jagged array decalartion:
+// TODO: Use this for jagged array declaration:
 // var array2D = Enumerable.Range(0, m).Select(x => new int[n]).ToArray();
 public class Matrices
 {

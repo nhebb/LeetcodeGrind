@@ -8,11 +8,18 @@ internal class Program
 {
     static void Main(string[] args)
     {
-        var routes = ConvertTo2DIntArray("[[1,2,7],[3,6,7]]");
-        var g = new Graphs.Graphs();
-        var res = g.NumBusesToDestination(routes, 1, 6);
-
+        int x = 10;
+        var orig = x.ToString();
+        var reverse = string.Join("", orig.Reverse());
+        var rev = new string(orig.Reverse().ToArray());
+        var res = orig == reverse;
         Console.WriteLine(res);
+
+        //var routes = ConvertTo2DIntArray("[[1,2,7],[3,6,7]]");
+        //var g = new Graphs.Graphs();
+        //var res = g.NumBusesToDestination(routes, 1, 6);
+
+        //Console.WriteLine(res);
 
         //Console.WriteLine(string.Join("", res));
 

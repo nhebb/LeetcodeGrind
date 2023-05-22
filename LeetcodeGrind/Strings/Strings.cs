@@ -748,7 +748,7 @@ public class Strings
     // 1768. Merge Strings Alternately
     public string MergeAlternately(string word1, string word2)
     {
-        return string.Join("", word1.Zip(word2, (first, second) => first + second));
+        //return string.Join("", word1.Zip(word2, (first, second) => first + second));
         var len = Math.Max(word1.Length, word2.Length);
         int i = 0;
         int j = 0;
