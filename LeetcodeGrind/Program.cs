@@ -8,20 +8,14 @@ internal class Program
 {
     static void Main(string[] args)
     {
-        int x = 10;
-        var orig = x.ToString();
-        var reverse = string.Join("", orig.Reverse());
-        var rev = new string(orig.Reverse().ToArray());
-        var res = orig == reverse;
-        Console.WriteLine(res);
 
-        //var routes = ConvertTo2DIntArray("[[1,2,7],[3,6,7]]");
-        //var g = new Graphs.Graphs();
-        //var res = g.NumBusesToDestination(routes, 1, 6);
-
+        var nums = new int[] { 7,4,3,9,1,8,5,2,6};
+        var k = 3;
+        var sw = new SlidingWindow.SlidingWindow();
+        var res = sw.GetAverages(nums,k);
         //Console.WriteLine(res);
 
-        //Console.WriteLine(string.Join("", res));
+        Console.WriteLine(string.Join(", ", res));
 
         //CalcLCPerDay();
     }
