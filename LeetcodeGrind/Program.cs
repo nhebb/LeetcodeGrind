@@ -64,6 +64,7 @@ internal class Program
     {
         foreach (var row in arr)
         {
+           
             Console.WriteLine(string.Join(",", row));
         }
     }

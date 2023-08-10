@@ -3820,11 +3820,104 @@ public class ArraysAndHashing
         }
 
         // handle last line
-        sb.Append( string.Join(' ', lines[^1].items));
+        sb.Append(string.Join(' ', lines[^1].items));
         var rightPadding = maxWidth - sb.Length;
         sb.Append(new string(' ', rightPadding));
         result.Add(sb.ToString());
 
         return result;
+    }
+
+
+    // 1027. Longest Arithmetic Subsequence
+    public int LongestArithSeqLength(int[] nums)
+    {
+        var max = 1;
+        var i = 0;
+        var j = 1;
+        while (j < nums.Length)
+        {
+            var delta = nums[j] - nums[i];
+            while (j < nums.Length && nums[j] - nums[j - 1] == delta)
+            {
+                j++;
+            }
+            var len = j - i;
+            max = Math.Max(max, len);
+            i = j;
+            j++;
+        }
+
+        return max;
+    }
+
+
+    // 1493. Longest Subarray of 1's After Deleting One Element
+    public int LongestSubarray(int[] nums)
+    {
+        var inOnes = false;     // tracks whether we are in consecutive 1's
+        var onesCount = 0;      // current 1's count
+        var lastOnesCount = 0;  // previous 1's count
+        var maxOnes = 0;        // longest pair of subarrays separated by 1 character
+        var maxStreak = 0;      // max contiguous subarray of 1's
+        var nonOnesCount = 0;   // current non-one characters count
+        var lastNonOnesCount = 0;   // previous non-one character count
+
+        for (int i = 0; i < nums.Length; i++)
+        {
+            if (nums[i] == 1)
+            {
+                onesCount++;
+                if (!inOnes)
+                {
+                    inOnes = true;
+                    if (nonOnesCount == 1)
+                    {
+
+                    }
+                    lastNonOnesCount = nonOnesCount;
+                    nonOnesCount = 0;
+                }
+            }
+            else
+            {
+                if (inOnes)
+                {
+                    inOnes = false;
+                    maxStreak = Math.Max(maxStreak, onesCount);
+                    lastOnesCount = onesCount;
+                }
+                else
+                {
+
+                }
+            }
+        }
+
+        return Math.Max(maxOnes, maxStreak - 1);
+    }
+
+
+    // 2549. Count Distinct Numbers on Board
+    public int DistinctIntegers(int n)
+    {
+        var board = new HashSet<int>() { n };
+        var cache = new HashSet<int>();
+
+        for (int i = 2; i <= n; i++)
+        {
+            foreach (var num in board)
+            {
+                if (num % i == 1)
+                    cache.Add(num);
+            }
+            foreach (var num in cache)
+            {
+                board.Add(num);
+            }
+            cache.Clear();
+        }
+
+        return board.Count;
     }
 }

@@ -88,6 +88,13 @@ public class BinarySearch
     }
 
 
+    // 81. Search in Rotated Sorted Array II
+    public bool SearchII(int[] nums, int target)
+    {
+        return nums.Any(x => x == target);
+    }
+
+
     // 35. Search Insert Position
     public int SearchInsert(int[] nums, int target)
     {
@@ -452,7 +459,7 @@ public class BinarySearch
 
         for (int i = 0; i < weights.Length; i++)
         {
-            if(weights[i] > lo)
+            if (weights[i] > lo)
                 lo = weights[i];
             hi += weights[i];
         }
