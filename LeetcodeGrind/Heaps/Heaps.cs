@@ -1,11 +1,5 @@
 ﻿using LeetcodeGrind.LinkedLists;
-using System;
-using System.Collections.Generic;
-using System.Globalization;
-using System.Linq;
-using System.Security.Cryptography.X509Certificates;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace LeetcodeGrind.Heaps;
 
@@ -57,7 +51,7 @@ public class Heaps
     {
         if (lists == null || lists.Length == 0) { return null; }
 
-       var pq = new PriorityQueue<ListNode, int>();
+        var pq = new PriorityQueue<ListNode, int>();
         foreach (var enqueNode in lists)
         {
             if (enqueNode != null)
@@ -452,5 +446,79 @@ public class Heaps
         }
 
         return result;
+    }
+
+
+    // 1615. Maximal Network Rank
+    public int MaximalNetworkRank(int n, int[][] roads)
+    {
+        var counts = new int[n];
+        var hs = new HashSet<(int, int)>();
+
+        for (int i = 0; i < roads.Length; i++)
+        {
+            counts[roads[i][0]]++;
+            counts[roads[i][1]]++;
+            hs.Add((roads[i][0], roads[i][1]));
+        }
+
+        var pq = new PriorityQueue<int, int>();
+        for (int i = 0; i < counts.Length - 1; i++)
+        {
+            for (int j = i + 1; j < counts.Length; j++)
+            {
+                var count = counts[i] + counts[j];
+                if (hs.Contains((i, j)) || hs.Contains((j, i)))
+                {
+                    count--;
+                }
+                pq.Enqueue(count, -count);
+            }
+        }
+        return pq.Dequeue();
+    }
+
+
+    // 767. Reorganize String
+    public string ReorganizeString(string s)
+    {
+        var chars = new int[26];
+        foreach (var c in s)
+        {
+            chars[c - 'a']++;
+        }
+
+        var pq = new PriorityQueue<int, int>();
+        for (int i = 0; i < chars.Length; i++)
+        {
+            if (chars[i] > 0)
+                pq.Enqueue(i, -chars[i]);
+        }
+
+        var sb = new StringBuilder();
+        var lastVal = -1;
+        while (pq.Count > 0)
+        {
+            var val = pq.Dequeue();
+            if (val == lastVal)
+            {
+                if (pq.Count == 0)
+                {
+                    return "";
+                }
+                else
+                {
+                    var temp = val;
+                    val = pq.Dequeue();
+                    pq.Enqueue(temp, -chars[temp]);
+                }
+            }
+            lastVal = val;
+            sb.Append((char)('a' + val));
+            chars[val]--;
+            if (chars[val] > 0)
+                pq.Enqueue(val, -chars[val]);
+        }
+        return sb.ToString();
     }
 }

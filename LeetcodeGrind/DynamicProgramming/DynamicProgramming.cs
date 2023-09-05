@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.Design.Serialization;
 using System.Globalization;
 using System.Linq;
 using System.Net.Http.Headers;
