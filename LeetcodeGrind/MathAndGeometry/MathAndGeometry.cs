@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics.Metrics;
+using System.Formats.Asn1;
 using System.Linq;
+using System.Runtime.Intrinsics.X86;
 using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
@@ -770,5 +772,32 @@ public class MathAndGeometry
         var ans = new List<int>();
 
         return ans.Count;
+    }
+
+
+    // 191. Number of 1 Bits
+    public int HammingWeight(uint n)
+    {
+        //int count = 0;
+        //while (n > 0)
+        //{
+        //    if ((n & 1) == 1) { count++; }
+        //    n >>= 1;
+        //}
+        //return count;
+
+        return System.Numerics.BitOperations.PopCount(n);
+    }
+
+
+    // 389. Find the Difference
+    public char FindTheDifference(string s, string t)
+    {
+        var num = 0;
+
+        for (int i = 0; i < s.Length; i++)
+            num ^= s[i] ^ t[i];
+
+        return (char)(num ^ t[^1]);
     }
 }

@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.Design;
+﻿using LeetcodeGrind.LinkedLists;
+using System.ComponentModel.Design;
 using System.Runtime.CompilerServices;
 using System.Text;
 
@@ -8,12 +9,21 @@ internal class Program
 {
     static void Main(string[] args)
     {
-        var heaps = new Heaps.Heaps();
-        var s = "aaba";
-        var res = heaps.ReorganizeString(s);
+        var prev = new ListNode(0);
+        prev.next = new ListNode(1);
+        prev.next.next = new ListNode(2);
+        prev.next.next.next = new ListNode(3);
+        prev.next.next.next.next = new ListNode(4);
+        prev.next.next.next.next.next = new ListNode(5);
 
-        Console.WriteLine($"[{res}]");
+        var ll = new LinkedLists.LinkedLists();
+        var res = ll.ReverseBetween(prev.next, 2, 4);
 
+        while (res != null)
+        {
+            Console.WriteLine(res.val);
+            res = res.next;
+        }
         //Console.WriteLine(string.Join(", ", res));
     }
 
