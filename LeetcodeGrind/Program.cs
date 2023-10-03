@@ -9,21 +9,12 @@ internal class Program
 {
     static void Main(string[] args)
     {
-        var prev = new ListNode(0);
-        prev.next = new ListNode(1);
-        prev.next.next = new ListNode(2);
-        prev.next.next.next = new ListNode(3);
-        prev.next.next.next.next = new ListNode(4);
-        prev.next.next.next.next.next = new ListNode(5);
+        var nums = new int[] { 3, 1, 4, 2 };
+        
+        var aah = new ArraysAndHashing.ArraysAndHashing();
+        var res = aah.Find132pattern(nums);
+        Console.WriteLine(res);
 
-        var ll = new LinkedLists.LinkedLists();
-        var res = ll.ReverseBetween(prev.next, 2, 4);
-
-        while (res != null)
-        {
-            Console.WriteLine(res.val);
-            res = res.next;
-        }
         //Console.WriteLine(string.Join(", ", res));
     }
 

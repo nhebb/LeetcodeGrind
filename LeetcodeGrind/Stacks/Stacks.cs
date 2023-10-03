@@ -241,4 +241,29 @@ public class Stacks
         var r = string.Join("", stack.Reverse());
         return string.Join("", stack.ToArray().Reverse());
     }
+
+
+    // 456. 132 Pattern
+    public bool Find132pattern(int[] nums)
+    {
+        if (nums.Length < 3)
+            return false;
+
+        // https://leetcode.com/problems/132-pattern/solutions/4107421/99-35-stack-left-approach-binary-search/
+
+        var third = int.MinValue;
+        var stack = new Stack<int>();
+
+        for (int i = nums.Length - 1; i >= 0; i--)
+        {
+            if (nums[i] < third)
+                return true;
+
+            while (stack.Count > 0 && stack.Peek() < nums[i])
+                third = stack.Pop();
+
+            stack.Push(nums[i]);
+        }
+        return false;
+    }
 }
