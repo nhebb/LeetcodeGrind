@@ -10,9 +10,9 @@ internal class Program
     static void Main(string[] args)
     {
         var nums = new int[] { 3, 1, 4, 2 };
-        
-        var aah = new ArraysAndHashing.ArraysAndHashing();
-        var res = aah.Find132pattern(nums);
+
+        var stacks = new Stacks.Stacks();
+        var res = stacks.Find132pattern(nums);
         Console.WriteLine(res);
 
         //Console.WriteLine(string.Join(", ", res));
