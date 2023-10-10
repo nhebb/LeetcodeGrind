@@ -9,10 +9,8 @@ internal class Program
 {
     static void Main(string[] args)
     {
-        var nums = new int[] { 3, 1, 4, 2 };
 
-        var stacks = new Stacks.Stacks();
-        var res = stacks.Find132pattern(nums);
+        var res = (100 & 15) != 0;
         Console.WriteLine(res);
 
         //Console.WriteLine(string.Join(", ", res));
