@@ -1,4 +1,4 @@
-﻿using LeetcodeGrind.LinkedLists;
+﻿using LeetcodeGrind.Common;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.Design.Serialization;

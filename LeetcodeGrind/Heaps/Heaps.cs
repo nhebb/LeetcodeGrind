@@ -1,4 +1,4 @@
-﻿using LeetcodeGrind.LinkedLists;
+﻿using LeetcodeGrind.Common;
 using System.Text;
 
 namespace LeetcodeGrind.Heaps;

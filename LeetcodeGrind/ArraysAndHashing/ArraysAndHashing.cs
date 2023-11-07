@@ -14,101 +14,6 @@ namespace LeetcodeGrind.ArraysAndHashing;
 
 public class ArraysAndHashing
 {
-    // 217. Contains Duplicate
-    public bool ContainsDuplicate(int[] nums)
-    {
-        var hs = new HashSet<int>();
-        for (int i = 0; i < nums.Length; i++)
-        {
-            if (!hs.Add(nums[i]))
-                return true;
-        }
-        return false;
-    }
-
-
-    // 1. Two Sum
-    public int[] TwoSum(int[] nums, int target)
-    {
-        var dict = new Dictionary<int, int>();
-        for (int i = 0; i < nums.Length; i++)
-        {
-            dict[nums[i]] = i;
-        }
-
-        for (int i = 0; i < nums.Length; i++)
-        {
-            if (dict.TryGetValue(target - nums[i], out int result)
-                && result != i)
-            {
-                return new int[] { i, result };
-            }
-        }
-        return new int[] { -1, -1 }; ;
-    }
-
-
-    // 242. Valid Anagram
-    public bool IsAnagram(string s, string t)
-    {
-        if (s.Length != t.Length) { return false; }
-
-        var dict = new Dictionary<char, int>();
-
-        for (int i = 0; i < s.Length; i++)
-        {
-            if (dict.TryGetValue(s[i], out var val))
-                dict[s[i]] = val + 1;
-            else
-                dict[s[i]] = 1;
-        }
-        for (int i = 0; i < t.Length; i++)
-        {
-            if (!dict.ContainsKey(t[i]))
-                return false;
-
-            dict[t[i]] -= 1;
-            if (dict[t[i]] == 0)
-                dict.Remove(t[i]);
-        }
-        return true;
-    }
-
-
-    // 49. Group Anagrams
-    public IList<IList<string>> GroupAnagrams(string[] strs)
-    {
-        var res = new List<IList<string>>();
-        var d = new Dictionary<string, List<string>>();
-        foreach (var s in strs)
-        {
-            var chars = string.Join("", s.ToCharArray().OrderBy(x => x));
-            if (!d.ContainsKey(chars))
-                d[chars] = new List<string>();
-            d[chars].Add(s);
-        }
-
-        foreach (var kvp in d)
-        {
-            res.Add(kvp.Value);
-        }
-        return res;
-    }
-
-
-    // 1299. Replace Elements with Greatest Element on Right Side
-    /* I did this one in Python3
-    def replaceElements(self, arr: List[int]) -> List[int]:
-        lastMax = -1
-        for i in range(len(arr) -1, -1, -1):
-            curMax = max(lastMax, arr[i])
-            arr[i] = lastMax
-            lastMax = curMax
-            
-        return arr
-     */
-
-
     // 392. Is Subsequence
     public bool IsSubsequence(string s, string t)
     {
@@ -4007,7 +3912,7 @@ public class ArraysAndHashing
         {
             // j is essentially counting the number of items
             // that need to change to be continuous.
-            while (j < unique.Length 
+            while (j < unique.Length
                 && unique[j] < unique[i] + len)
             {
                 j++;
@@ -4017,6 +3922,37 @@ public class ArraysAndHashing
 
             // take min in case incrementing goes past length needed.
             ans = Math.Min(ans, len - diff);
+        }
+
+        return ans;
+    }
+
+
+    // 2251. Number of Flowers in Full Bloom
+    public int[] FullBloomFlowers(int[][] flowers, int[] people)
+    {
+        var d = new Dictionary<int, int>();
+
+        for (int i = 0; i < people.Length; i++)
+        {
+            d[people[i]] = 0;
+        }
+
+        foreach (var flower in flowers)
+        {
+            for (int time = flower[0]; time <= flower[1]; time++)
+            {
+                if (d.ContainsKey(time))
+                {
+                    d[flower[time]]++;
+                }
+            }
+        }
+
+        var ans = new int[people.Length];
+        for (int i = 0; i < ans.Length; i++)
+        {
+            ans[i] = d[people[i]];
         }
 
         return ans;

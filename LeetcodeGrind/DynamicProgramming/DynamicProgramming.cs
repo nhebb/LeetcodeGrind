@@ -11,67 +11,6 @@ namespace LeetcodeGrind.DynamicProgramming;
 
 public class DynamicProgramming
 {
-    // 5. Longest Palindromic Substring
-    public string LongestPalindrome(string s)
-    {
-        var oddSubString = GetLongestOddSubstring(s);
-        var evenSubString = GetLongestEvenSubstring(s);
-        return oddSubString.Length >= evenSubString.Length
-            ? oddSubString
-            : evenSubString;
-    }
-
-    private string GetLongestEvenSubstring(string s)
-    {
-        var substr = "";
-        var len = 0;
-        for (int i = 0; i + 1 < s.Length; i++)
-        {
-            var offset = 0;
-            while (i - offset >= 0 && i + 1 + offset < s.Length)
-            {
-                if (s[i - offset] != s[i + 1 + offset])
-                    break;
-
-                var numchars = (2 * offset) + 2;
-                if (numchars > len)
-                {
-                    len = numchars;
-                    substr = s.Substring(i - offset, numchars);
-                }
-                offset++;
-            }
-        }
-
-        return substr;
-    }
-    private string GetLongestOddSubstring(string s)
-    {
-        var substr = "";
-        var len = 0;
-        for (int i = 0; i < s.Length; i++)
-        {
-            var offset = 0;
-            while (i - offset >= 0 && i + offset < s.Length)
-            {
-                if (s[i - offset] != s[i + offset])
-                    break;
-
-                var numchars = (2 * offset) + 1;
-                if (numchars > len)
-                {
-                    len = numchars;
-                    substr = s.Substring(i - offset, numchars);
-                }
-
-                offset++;
-            }
-        }
-
-        return substr;
-    }
-
-
     // 198. House Robber
     public int Rob(int[] nums)
     {

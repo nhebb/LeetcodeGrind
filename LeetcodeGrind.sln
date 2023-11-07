@@ -5,8 +5,6 @@ VisualStudioVersion = 17.3.32929.385
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LeetcodeGrind", "LeetcodeGrind\LeetcodeGrind.csproj", "{1E3D2E3B-7EAE-4ABA-8D1A-F75503242548}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LeetcodeGrindTests", "LeetcodeGrindTests\LeetcodeGrindTests.csproj", "{B2EF0C87-8837-467D-A08B-BFEBDA5F467C}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{A07AD939-EA52-4128-94B0-3E1570A3A98A}"
 	ProjectSection(SolutionItems) = preProject
 		.editorconfig = .editorconfig
@@ -24,10 +22,6 @@ Global
 		{1E3D2E3B-7EAE-4ABA-8D1A-F75503242548}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1E3D2E3B-7EAE-4ABA-8D1A-F75503242548}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1E3D2E3B-7EAE-4ABA-8D1A-F75503242548}.Release|Any CPU.Build.0 = Release|Any CPU
-		{B2EF0C87-8837-467D-A08B-BFEBDA5F467C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{B2EF0C87-8837-467D-A08B-BFEBDA5F467C}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{B2EF0C87-8837-467D-A08B-BFEBDA5F467C}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{B2EF0C87-8837-467D-A08B-BFEBDA5F467C}.Release|Any CPU.Build.0 = Release|Any CPU
 		{ABFAA699-8AB5-4A42-9ADF-36DCFA832A56}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{ABFAA699-8AB5-4A42-9ADF-36DCFA832A56}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{ABFAA699-8AB5-4A42-9ADF-36DCFA832A56}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
