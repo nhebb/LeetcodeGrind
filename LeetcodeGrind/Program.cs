@@ -21,4 +21,8 @@ internal class Program
         }
     }
 
+    // TIP: Use this for jagged array declaration:
+    // var array2D = Enumerable.Range(0, m).Select(x => new int[n]).ToArray();
+
+
 }
