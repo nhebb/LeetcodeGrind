@@ -6,10 +6,10 @@ internal class Program
 {
     static void Main(string[] args)
     {
-        var input = "[2,1,3,5,4,6,7]";
-        var arr = input.To1DIntArray();
-        var sln = new P1535();
-        var res = sln.GetWinner(arr, 2);
+        var dist = "[3]".To1DIntArray();
+        var speed = "[5]".To1DIntArray();
+        var sln = new P1921();
+        var res = sln.EliminateMaximum(dist, speed);
         Console.WriteLine(res);
     }
 
