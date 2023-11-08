@@ -1136,7 +1136,7 @@ public class Graphs
         var visited = new HashSet<int>();
         visited.Add(start);
 
-        // Djikstr's algo
+        // Djikstra's algo
         while (pq.Count > 0)
         {
             var edge = pq.Dequeue();
