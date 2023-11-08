@@ -931,6 +931,7 @@ public class Graphs
 
 
     // 2492. Minimum Score of a Path Between Two Cities
+    // TODO: Finish this.
     public int MinScore(int n, int[][] roads)
     {
         // create bidirectional adjacency list
@@ -981,10 +982,9 @@ public class Graphs
             q.Enqueue(edge);
         }
 
-        while (q.Count > 0) ;
+        while (q.Count > 0) 
         {
             var count = q.Count;
-
 
         }
 
