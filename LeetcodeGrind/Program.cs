@@ -6,10 +6,9 @@ internal class Program
 {
     static void Main(string[] args)
     {
-        var dist = "[3]".To1DIntArray();
-        var speed = "[5]".To1DIntArray();
-        var sln = new P1921();
-        var res = sln.EliminateMaximum(dist, speed);
+        var s = "abbcccaa";
+        var sln = new P1759();
+        var res = sln.CountHomogenous(s);
         Console.WriteLine(res);
     }
 
