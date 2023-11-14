@@ -1,4 +1,4 @@
-namespace LeetcodeGrind.Solutions;
+namespace LeetcodeGrind.Solutions.ShuffleArray;
 
 // 384. Shuffle an Array
 public class Solution
