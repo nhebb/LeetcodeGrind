@@ -6,12 +6,10 @@ internal class Program
 {
     static void Main(string[] args)
     {
-        var s = "uAOiiEeAaaAUIo";
-        var chars = s.ToCharArray();
-        Array.Sort(chars);
-        s = string.Join("", chars);
-        Console.WriteLine(s);
-
+        var arr = new int[] { 1, 1, 1, 4, 1, 1, 1 };
+        var sln = new P1846();
+        var res = sln.MaximumElementAfterDecrementingAndRearranging(arr);
+        Console.WriteLine(res);
         //var n = 13;
 
         //var edges =
