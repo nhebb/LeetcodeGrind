@@ -6,9 +6,10 @@ internal class Program
 {
     static void Main(string[] args)
     {
-        var stockPrices = "[[1,7],[2,6],[3,5],[4,4],[5,4],[6,3],[7,2],[8,1]]".To2DIntArray();
-        var sln = new P2280();
-        var res = sln.MinimumLines(stockPrices);
+        var nums = new int[] { 7, 9, 10, 8, 6, 4, 1, 5, 2, 3 };
+        // 1, 2, 3, 4, 5, 6, 7, 8, 9, 10
+        var sln = new P1887();
+        var res = sln.ReductionOperations(nums);
 
         Console.WriteLine(res);
 
