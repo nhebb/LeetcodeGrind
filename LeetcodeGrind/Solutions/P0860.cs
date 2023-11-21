@@ -5,14 +5,45 @@ public class P0860
 {
     public bool LemonadeChange(int[] bills)
     {
-        var change = 0;
+        var twenties = 0;
+        var tens = 0;
+        var fives = 0;
+
         for (int i = 0; i < bills.Length; i++)
         {
-            change += 5;
-            change -= bills[i] - 5;
-
-            if (change < 0)
-                return false;
+            if (bills[i] == 20)
+            {
+                twenties++;
+                if (tens > 0 && fives > 0)
+                {
+                    tens--;
+                    fives--;
+                }
+                else if (fives >= 3)
+                {
+                    fives -= 3;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            else if (bills[i] == 10)
+            {
+                tens++;
+                if (fives >0)
+                {
+                    fives--;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            else // (bills[i] == 5)
+            {
+                fives++;
+            }
         }
 
         return true;
