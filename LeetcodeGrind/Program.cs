@@ -6,6 +6,10 @@ internal class Program
 {
     static void Main(string[] args)
     {
+        var s = "covid2019";
+        var sln = new P1417();
+        var res = sln.Reformat(s);
+        Console.WriteLine(res);
 
         // problem 2642
         //var edges =
