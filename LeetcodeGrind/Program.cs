@@ -6,9 +6,11 @@ internal class Program
 {
     static void Main(string[] args)
     {
-        var s = "covid2019";
-        var sln = new P1417();
-        var res = sln.Reformat(s);
+        var s1 = "a";
+        var s2 = "a";
+        var s3 = "a";
+        var sln = new P2937();
+        var res = sln.FindMinimumOperations(s1, s2, s3);
         Console.WriteLine(res);
 
         // problem 2642

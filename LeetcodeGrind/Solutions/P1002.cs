@@ -5,17 +5,25 @@ public class P1002
 {
     public IList<string> CommonChars(string[] words)
     {
-        // Wrong answer. Must include  duplicated characters
-        IEnumerable<char> hs = words[0].ToList();
+        var d = words[0].GroupBy(x => x).ToDictionary(g => g.Key, g => g.Count());
+
         for (int i = 1; i < words.Length; i++)
         {
-            hs = hs.Intersect(words[i]);
+            var d2 = words[i].GroupBy(x => x).ToDictionary(g => g.Key, g => g.Count());
+            foreach (var kvp in d)
+            {
+                if (!d2.ContainsKey(kvp.Key))
+                    d.Remove(kvp.Key);
+                else
+                    d[kvp.Key] = Math.Min(kvp.Value, d2[kvp.Key]);
+            }
         }
 
         var result = new List<string>();
-        foreach (char c in hs)
+        foreach (var kvp in d)
         {
-            result.Add(c.ToString());
+            for (int i = 0; i < kvp.Value; i++)
+                result.Add(kvp.Key.ToString());
         }
 
         return result;
