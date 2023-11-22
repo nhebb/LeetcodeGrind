@@ -6,11 +6,9 @@ internal class Program
 {
     static void Main(string[] args)
     {
-        var s1 = "a";
-        var s2 = "a";
-        var s3 = "a";
-        var sln = new P2937();
-        var res = sln.FindMinimumOperations(s1, s2, s3);
+        var a = 1;
+        var b = 2;
+        var res = a ^ b;
         Console.WriteLine(res);
 
         // problem 2642
