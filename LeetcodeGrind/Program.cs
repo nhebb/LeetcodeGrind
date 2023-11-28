@@ -1,4 +1,5 @@
-﻿using LeetcodeGrind.Solutions;
+﻿using LeetcodeGrind.Common;
+using LeetcodeGrind.Solutions;
 
 namespace LeetcodeGrind;
 
@@ -6,24 +7,14 @@ internal class Program
 {
     static void Main(string[] args)
     {
-        
-        var letters1 = new char[] { 'c', 'f', 'j' };
-        var target1 = 'a';
-        var letters2 = new char[] { 'c', 'f', 'j' };
-        var target2 = 'c';
-        var letters3 = new char[] { 'x', 'x', 'y', 'y' };
-        var target3 = 'z';
 
-        var sln = new P0744();
-
-        //var res1 = sln.NextGreatestLetter(letters1, target1);
-        //Console.WriteLine(res1);
-
-        //var res2 = sln.NextGreatestLetter(letters2, target2);
-        //Console.WriteLine(res2);
-
-        var res3 = sln.NextGreatestLetter(letters3, target3);
-        Console.WriteLine(res3);
+        var root = new TreeNode(1);
+        root.left = new TreeNode(2);
+        root.right = new TreeNode(3);
+        root.left.right = new TreeNode(4);
+        root.right.right = new TreeNode(5);
+        var sln = new P0993();
+        var res = sln.IsCousins(root, 4, 5);
 
         //var sln = new P1685();
         //var res = sln.GetSumAbsoluteDifferences(nums);
