@@ -7,15 +7,10 @@ internal class Program
 {
     static void Main(string[] args)
     {
-
-        var root = new TreeNode(1);
-        root.left = new TreeNode(2);
-        root.right = new TreeNode(3);
-        root.left.right = new TreeNode(4);
-        root.right.right = new TreeNode(5);
-        var sln = new P0993();
-        var res = sln.IsCousins(root, 4, 5);
-
+        var ages = new int[] { 16, 17, 18 };
+        var sln = new P0825();
+        var res = sln.NumFriendRequests(ages);
+        
         //var sln = new P1685();
         //var res = sln.GetSumAbsoluteDifferences(nums);
         //Console.WriteLine(string.Join(", ", res));
