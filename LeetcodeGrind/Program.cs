@@ -7,10 +7,13 @@ internal class Program
 {
     static void Main(string[] args)
     {
-        var ages = new int[] { 16, 17, 18 };
-        var sln = new P0825();
-        var res = sln.NumFriendRequests(ages);
-        
+        //var tasks = new char[] { 'A', 'A', 'A', 'B', 'B', 'B' };
+        var tasks = new char[] { 'A', 'A', 'A', 'A', 'A', 'A', 'B', 'C', 'D', 'E', 'F', 'G' };
+        int n = 2;
+        var sln = new P0621();
+        var res = sln.LeastInterval(tasks, n);
+        Console.WriteLine(res);
+
         //var sln = new P1685();
         //var res = sln.GetSumAbsoluteDifferences(nums);
         //Console.WriteLine(string.Join(", ", res));
