@@ -8,11 +8,11 @@ internal class Program
     static void Main(string[] args)
     {
         //var tasks = new char[] { 'A', 'A', 'A', 'B', 'B', 'B' };
-        var tasks = new char[] { 'A', 'A', 'A', 'A', 'A', 'A', 'B', 'C', 'D', 'E', 'F', 'G' };
-        int n = 2;
-        var sln = new P0621();
-        var res = sln.LeastInterval(tasks, n);
-        Console.WriteLine(res);
+        //var tasks = new char[] { 'A', 'A', 'A', 'A', 'A', 'A', 'B', 'C', 'D', 'E', 'F', 'G' };
+        //int n = 2;
+        //var sln = new P0621();
+        //var res = sln.LeastInterval(tasks, n);
+        //Console.WriteLine(res);
 
         //var sln = new P1685();
         //var res = sln.GetSumAbsoluteDifferences(nums);
