@@ -7,9 +7,12 @@ internal class Program
 {
     static void Main(string[] args)
     {
-        var sln = new P0914();
-        var deck = new int[] { 1, 2, 3, 4, 4, 3, 2, 1 };
-        var res = sln.HasGroupsSizeX(deck);
+        for (int i = 5; i <= 100; i += 5)
+            Console.WriteLine($"{i} -> {Convert.ToString(i, 2)}");
+
+        //var nums = new int[] { 0, 1, 1 };
+        //var sln = new P1018();
+        //var res = sln.PrefixesDivBy5(nums);
 
         //var tasks = new char[] { 'A', 'A', 'A', 'B', 'B', 'B' };
         //var tasks = new char[] { 'A', 'A', 'A', 'A', 'A', 'A', 'B', 'C', 'D', 'E', 'F', 'G' };
