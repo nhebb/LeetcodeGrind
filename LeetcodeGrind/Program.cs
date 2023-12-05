@@ -7,8 +7,10 @@ internal class Program
 {
     static void Main(string[] args)
     {
-        var s = "abc";
-        var s2 = string.Join("",s.Reverse());
+        var sln = new P0914();
+        var deck = new int[] { 1, 2, 3, 4, 4, 3, 2, 1 };
+        var res = sln.HasGroupsSizeX(deck);
+
         //var tasks = new char[] { 'A', 'A', 'A', 'B', 'B', 'B' };
         //var tasks = new char[] { 'A', 'A', 'A', 'A', 'A', 'A', 'B', 'C', 'D', 'E', 'F', 'G' };
         //int n = 2;
