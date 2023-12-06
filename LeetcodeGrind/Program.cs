@@ -7,8 +7,10 @@ internal class Program
 {
     static void Main(string[] args)
     {
-        for (int i = 5; i <= 100; i += 5)
-            Console.WriteLine($"{i} -> {Convert.ToString(i, 2)}");
+        //var arr = new int[] { 1, 0, 2, 3, 0, 4, 5, 0 };
+        var sln = new P1103();
+        var res = sln.DistributeCandies(7, 4);
+        Console.WriteLine(string.Join(", ", res));
 
         //var nums = new int[] { 0, 1, 1 };
         //var sln = new P1018();
