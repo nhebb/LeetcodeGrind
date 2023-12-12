@@ -7,10 +7,11 @@ internal class Program
 {
     static void Main(string[] args)
     {
-        //var arr = new int[] { 1, 0, 2, 3, 0, 4, 5, 0 };
-        var sln = new P1103();
-        var res = sln.DistributeCandies(7, 4);
-        Console.WriteLine(string.Join(", ", res));
+        var date1 = "2019-06-29";
+        var date2 = "2019-06-30";
+        var sln = new P1360();
+        var res = sln.DaysBetweenDates(date1, date2);
+        Console.WriteLine(res);
 
         //var nums = new int[] { 0, 1, 1 };
         //var sln = new P1018();
