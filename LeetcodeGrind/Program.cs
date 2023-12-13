@@ -7,10 +7,9 @@ internal class Program
 {
     static void Main(string[] args)
     {
-        var date1 = "2019-06-29";
-        var date2 = "2019-06-30";
-        var sln = new P1360();
-        var res = sln.DaysBetweenDates(date1, date2);
+        var nums = new int[] { 2,5,1,4};
+        var sln = new P2748();
+        var res = sln.CountBeautifulPairs(nums);
         Console.WriteLine(res);
 
         //var nums = new int[] { 0, 1, 1 };

@@ -14,8 +14,26 @@ public class P1700
         var seen = new HashSet<int>();
         int j = 0;
 
+        var lastQueueCount = 0;
+        while (j < sandwiches.Length && q.Count > 0 && q.Count != lastQueueCount)
+        {
+            lastQueueCount = q.Count;
 
+            for (int i = 0; i < lastQueueCount && j < sandwiches.Length; i++)
+            {
+                var student = q.Dequeue();
+                if (student == sandwiches[j])
+                {
+                    j++;
+                }
+                else
+                {
+                    q.Enqueue(student);
+                }
+            }
+            
+        }
 
-        return 0;
+        return q.Count;
     }
 }

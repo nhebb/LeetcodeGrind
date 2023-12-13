@@ -9,13 +9,18 @@ public class P0030
     {
         var ans = new List<int>();
 
+        // Store count of each word
+        var wordCount = words.GroupBy(x => x)
+                             .ToDictionary(g => g.Key, g => g.Count());
+
+        var subLength = words.Length * words[0].Length;
+
         // store indices of each char in s in a dictionary to
         // shorten the substring lookup time
         var d = new Dictionary<char, List<int>>();
         for (char i = 'a'; i <= 'z'; i++)
             d[i] = new List<int>();
 
-        var subLength = words.Length * words[0].Length;
         for (int i = 0; i < s.Length - subLength; i++)
             d[s[i]].Add(i);
 
