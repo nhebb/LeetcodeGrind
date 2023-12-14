@@ -11,7 +11,6 @@ internal class Program
         var sln = new P2748();
         var res = sln.CountBeautifulPairs(nums);
         Console.WriteLine(res);
-
         //var nums = new int[] { 0, 1, 1 };
         //var sln = new P1018();
         //var res = sln.PrefixesDivBy5(nums);
