@@ -7,10 +7,14 @@ internal class Program
 {
     static void Main(string[] args)
     {
-        var nums = new int[] { 2,5,1,4};
-        var sln = new P2748();
-        var res = sln.CountBeautifulPairs(nums);
+        var nums = new int[] { 47, 46, 65, 37, 24, 54, 39, 70 };
+        var sln = new P2765();
+        var res = sln.AlternatingSubarray(nums);
         Console.WriteLine(res);
+
+
+
+
         //var nums = new int[] { 0, 1, 1 };
         //var sln = new P1018();
         //var res = sln.PrefixesDivBy5(nums);
