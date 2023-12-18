@@ -1,5 +1,4 @@
-﻿using LeetcodeGrind.Common;
-using LeetcodeGrind.Solutions;
+﻿using LeetcodeGrind.Solutions;
 
 namespace LeetcodeGrind;
 
@@ -7,11 +6,6 @@ internal class Program
 {
     static void Main(string[] args)
     {
-        var nums = new int[] { 47, 46, 65, 37, 24, 54, 39, 70 };
-        var sln = new P2765();
-        var res = sln.AlternatingSubarray(nums);
-        Console.WriteLine(res);
-
 
 
 

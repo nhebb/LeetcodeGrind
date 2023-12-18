@@ -13,7 +13,7 @@ public class P0621
             {
                 return b.Quantity.CompareTo(a.Quantity);
             }
-            
+
             if (a.Time < b.Time)
             {
                 return -1;
