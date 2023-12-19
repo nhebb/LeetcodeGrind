@@ -14,6 +14,9 @@ internal class Program
         //var sln = new P1018();
         //var res = sln.PrefixesDivBy5(nums);
 
+        var path = "";
+        var result = 
+
         //var tasks = new char[] { 'A', 'A', 'A', 'B', 'B', 'B' };
         //var tasks = new char[] { 'A', 'A', 'A', 'A', 'A', 'A', 'B', 'C', 'D', 'E', 'F', 'G' };
         //int n = 2;
