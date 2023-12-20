@@ -6,16 +6,15 @@ internal class Program
 {
     static void Main(string[] args)
     {
-        var rounds = new int[] { 3, 2, 1, 2, 1, 3, 2, 1, 2, 1, 3, 2, 3, 1 };
-        var sln = new P1560();
-        var res = sln.MostVisited(3, rounds);
+        var code = new int[] { 2, 4, 9, 3 };
+        var k = -2;
+        var sln = new P1652();
+        var res = sln.Decrypt(code, k);
         Console.WriteLine(string.Join(", ", res));
         //var nums = new int[] { 0, 1, 1 };
         //var sln = new P1018();
         //var res = sln.PrefixesDivBy5(nums);
 
-        var path = "";
-        var result = 
 
         //var tasks = new char[] { 'A', 'A', 'A', 'B', 'B', 'B' };
         //var tasks = new char[] { 'A', 'A', 'A', 'A', 'A', 'A', 'B', 'C', 'D', 'E', 'F', 'G' };
