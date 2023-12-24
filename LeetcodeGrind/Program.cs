@@ -1,4 +1,5 @@
-﻿using LeetcodeGrind.Solutions;
+﻿using LeetcodeGrind.Common;
+using LeetcodeGrind.Solutions;
 
 namespace LeetcodeGrind;
 
@@ -6,11 +7,10 @@ internal class Program
 {
     static void Main(string[] args)
     {
-        var code = new int[] { 2, 4, 9, 3 };
-        var k = -2;
-        var sln = new P1652();
-        var res = sln.Decrypt(code, k);
-        Console.WriteLine(string.Join(", ", res));
+        var s = "mgntdygtxrvxjnwksqhxuxtrv";
+        var sln = new P1624();
+        var res = sln.MaxLengthBetweenEqualCharacters(s);
+        Console.WriteLine(res);
         //var nums = new int[] { 0, 1, 1 };
         //var sln = new P1018();
         //var res = sln.PrefixesDivBy5(nums);
