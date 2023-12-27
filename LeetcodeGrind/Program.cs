@@ -1,5 +1,6 @@
 ﻿using LeetcodeGrind.Common;
 using LeetcodeGrind.Solutions;
+using System.Text;
 
 namespace LeetcodeGrind;
 
@@ -7,10 +8,14 @@ internal class Program
 {
     static void Main(string[] args)
     {
-        var s = "mgntdygtxrvxjnwksqhxuxtrv";
-        var sln = new P1624();
-        var res = sln.MaxLengthBetweenEqualCharacters(s);
+        var sln = new P2243();
+        var s = "11111222223";
+        var k =        3;
+        var res = sln.DigitSum(s, k);
+
         Console.WriteLine(res);
+        
+        
         //var nums = new int[] { 0, 1, 1 };
         //var sln = new P1018();
         //var res = sln.PrefixesDivBy5(nums);
