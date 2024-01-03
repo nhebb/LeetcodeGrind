@@ -8,14 +8,13 @@ internal class Program
 {
     static void Main(string[] args)
     {
-        var sln = new P2243();
-        var s = "11111222223";
-        var k =        3;
-        var res = sln.DigitSum(s, k);
+        var sln = new P1608();
+        var nums = new int[] { 0, 4, 3, 0, 4 };
+        var res = sln.SpecialArray(nums);
 
         Console.WriteLine(res);
-        
-        
+
+
         //var nums = new int[] { 0, 1, 1 };
         //var sln = new P1018();
         //var res = sln.PrefixesDivBy5(nums);

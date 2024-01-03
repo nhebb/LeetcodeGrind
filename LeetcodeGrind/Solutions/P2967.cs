@@ -1,35 +1,62 @@
 namespace LeetcodeGrind.Solutions;
 
-// TODO: 2967. Minimum Cost to Make Array Equalindromic
+// 2967. Minimum Cost to Make Array Equalindromic
 public class P2967
 {
     public long MinimumCost(int[] nums)
     {
         Array.Sort(nums);
-        var median = nums.Length % 2 == 1
-            ? nums[nums.Length / 2]
-            : (nums[nums.Length / 2] + nums[(nums.Length + 1) / 2]) / 2;
-        var medianStr = median.ToString().ToCharArray();
-        int a = 0;
-        int b = medianStr.Length - 1;
-        while (a < b)
+
+        var n = nums.Length;
+        var median = n % 2 != 0
+            ? nums[n / 2]
+            : (int)((nums[(n + 1) / 2] + nums[n / 2]) / 2);
+
+        long result = long.MaxValue;
+        for (int i = median; i >= 1; i--)
         {
-            medianStr[b] = medianStr[a];
-            a++;
-            b--;
+            if (IsPalindrome(i))
+            {
+                result = Math.Min(result, GetCost(nums, i));
+                break;
+            }
         }
 
-        var target = 0;
-        for (int i = 0; i < medianStr.Length; i++)
+        for (int i = median; i <= Math.Pow(10, 9); i++)
         {
-            target *= 10;
-            target += medianStr[i] - '0';
+            if (IsPalindrome(i))
+            {
+                result = Math.Min(result, GetCost(nums, i));
+                break;
+            }
         }
 
+        return result;
+    }
+
+    private bool IsPalindrome(int n)
+    {
+        var s = n.ToString();
+        var i = 0;
+        var j = s.Length - 1;
+
+        while (i < j)
+        {
+            if (s[i] != s[j])
+                return false;
+            i++;
+            j--;
+        }
+
+        return true;
+    }
+
+    private long GetCost(int[] nums, int target)
+    {
         long cost = 0;
         for (int i = 0; i < nums.Length; i++)
         {
-            cost += Math.Abs(nums[i] - target);
+            cost += Math.Abs(target - nums[i]);
         }
 
         return cost;
