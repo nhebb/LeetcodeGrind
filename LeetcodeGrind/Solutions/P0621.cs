@@ -1,7 +1,6 @@
 namespace LeetcodeGrind.Solutions;
 
-// 621. Task Scheduler
-// TODO: Finish this.
+// TODO: 621. Task Scheduler
 public class P0621
 {
     private class TaskComparer : IComparer<TaskItem>

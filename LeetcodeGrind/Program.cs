@@ -8,9 +8,9 @@ internal class Program
 {
     static void Main(string[] args)
     {
-        var sln = new P1608();
-        var nums = new int[] { 0, 4, 3, 0, 4 };
-        var res = sln.SpecialArray(nums);
+        var sln = new P1893();
+        var ranges = "[[15,36],[15,23],[15,44],[30,49],[2,19],[27,36],[7,42],[12,41]]".To2DIntArray();
+        var res = sln.IsCovered(ranges, 19, 47);
 
         Console.WriteLine(res);
 
