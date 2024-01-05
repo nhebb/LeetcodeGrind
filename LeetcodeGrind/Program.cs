@@ -8,9 +8,12 @@ internal class Program
 {
     static void Main(string[] args)
     {
-        var sln = new P1893();
-        var ranges = "[[15,36],[15,23],[15,44],[30,49],[2,19],[27,36],[7,42],[12,41]]".To2DIntArray();
-        var res = sln.IsCovered(ranges, 19, 47);
+        var sln = new P2409();
+        var arriveAlice = "08-06";
+        var leaveAlice = "12-08";
+        var arriveBob = "02-04";
+        var leaveBob = "09-01";
+        var res = sln.CountDaysTogether(arriveAlice, leaveAlice, arriveBob, leaveBob);
 
         Console.WriteLine(res);
 
