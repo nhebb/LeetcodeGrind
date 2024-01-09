@@ -8,12 +8,9 @@ internal class Program
 {
     static void Main(string[] args)
     {
-        var sln = new P2409();
-        var arriveAlice = "08-06";
-        var leaveAlice = "12-08";
-        var arriveBob = "02-04";
-        var leaveBob = "09-01";
-        var res = sln.CountDaysTogether(arriveAlice, leaveAlice, arriveBob, leaveBob);
+        var sln = new P2062();
+        var word = "duuebuaeeeeeeuaoeiueaoui";
+        var res = sln.CountVowelSubstrings(word);
 
         Console.WriteLine(res);
 

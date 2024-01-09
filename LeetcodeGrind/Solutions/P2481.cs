@@ -12,5 +12,4 @@ public class P2481
             ? n
             : n / 2;
     }
-    r
 }

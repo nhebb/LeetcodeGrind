@@ -70,4 +70,32 @@ public class P0621
         }
         return time;
     }
+
+
+    public int LeastInterval2(char[] tasks, int n)
+    {
+        if (n == 0)
+        {
+            return tasks.Length;
+        }
+
+        var tCounts = new int[26];
+        foreach (var t in tasks)
+        {
+            tCounts[t - 'A']++;
+        }
+        Array.Sort(tCounts, (a, b) => b - a);
+
+        var result = new List<int>();
+        var nextIndex = 0;
+        for (int i = 0; i < tCounts.Length; i++)
+        {
+
+        }
+
+        var empties = new PriorityQueue<int, int>();
+
+
+        return 0;
+    }
 }
