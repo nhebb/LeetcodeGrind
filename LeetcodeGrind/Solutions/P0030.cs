@@ -1,3 +1,5 @@
+using System.Collections;
+
 namespace LeetcodeGrind.Solutions;
 
 // TODO: 30. Substring with Concatenation of All Words
@@ -7,13 +9,18 @@ public class P0030
 {
     public IList<int> FindSubstring(string s, string[] words)
     {
+        var wordLength = words[0].Length;
+        var subLength = words.Length * wordLength;
+        if (subLength > s.Length)
+        {
+            return new int[] { };
+        }
+
         var ans = new List<int>();
 
         // Store count of each word
         var wordCount = words.GroupBy(x => x)
                              .ToDictionary(g => g.Key, g => g.Count());
-
-        var subLength = words.Length * words[0].Length;
 
         // store indices of each char in s in a dictionary to
         // shorten the substring lookup time

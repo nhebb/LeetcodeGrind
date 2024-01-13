@@ -8,9 +8,11 @@ internal class Program
 {
     static void Main(string[] args)
     {
-        var sln = new P2062();
-        var word = "duuebuaeeeeeeuaoeiueaoui";
-        var res = sln.CountVowelSubstrings(word);
+        var input = "[8,3,10,1,6,null,14,null,null,4,7,13]".To1DStringArray();
+        var root = input.ToBst();
+
+        var sln = new P1026();
+        var res = sln.MaxAncestorDiff(root);
 
         Console.WriteLine(res);
 

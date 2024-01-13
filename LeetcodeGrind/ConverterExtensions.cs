@@ -1,4 +1,5 @@
-﻿using System;
+﻿using LeetcodeGrind.Common;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -29,6 +30,18 @@ public static class ConverterExtensions
         return Array.ConvertAll<string, int>(values, int.Parse);
     }
 
+    public static string[] To1DStringArray(this string s)
+    {
+        if (string.IsNullOrEmpty(s))
+            return null;
+
+        var values = s.Replace("[", "")
+                      .Replace("]", "")
+                      .Split(',', StringSplitOptions.RemoveEmptyEntries);
+
+        return values;
+    }
+
     public static int[][] To2DIntArray(this string s)
     {
         var rows = s.Replace("[[", "")
@@ -46,4 +59,43 @@ public static class ConverterExtensions
         return array2D;
     }
 
+    // Construct BST from level-order traversal
+    private static TreeNode LevelOrder(TreeNode root, int val)
+    {
+        if (root == null)
+        {
+            return new TreeNode(val);
+        }
+
+        if (val <= root.val)
+        {
+            root.left = LevelOrder(root.left, val);
+        }
+        else
+        {
+            root.right = LevelOrder(root.right, val);
+        }
+
+        return root;
+    }
+
+    public static TreeNode ToBst(this string[] arr)
+    {
+        if (arr is null || arr.Length == 0)
+        {
+            return null;
+        }
+
+        TreeNode root = null;
+        for (int i = 0; i < arr.Length; i++)
+        {
+            if (arr[i] == "null")
+                continue;
+
+            var val = int.Parse(arr[i]);
+            root = LevelOrder(root, val);
+        }
+
+        return root;
+    }
 }

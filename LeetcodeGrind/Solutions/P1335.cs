@@ -46,8 +46,6 @@ public class P1335
     }
 
 
-
-
     public int MinDifficulty2(int[] jobDifficulty, int d)
     {
         if (jobDifficulty.Length < d)
@@ -94,6 +92,4 @@ public class P1335
 
         return Dfs(0, d);
     }
-
-
 }
