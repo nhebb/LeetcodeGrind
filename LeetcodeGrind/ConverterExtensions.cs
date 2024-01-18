@@ -35,7 +35,8 @@ public static class ConverterExtensions
         if (string.IsNullOrEmpty(s))
             return null;
 
-        var values = s.Replace("[", "")
+        var values = s.Replace(" ","")
+                      .Replace("[", "")
                       .Replace("]", "")
                       .Split(',', StringSplitOptions.RemoveEmptyEntries);
 
