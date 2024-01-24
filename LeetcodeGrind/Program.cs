@@ -8,12 +8,13 @@ internal class Program
 {
     static void Main(string[] args)
     {
-        var times = "[[3, 5, 78], [2, 1, 1], [1, 3, 0], [4, 3, 59], [5, 3, 85], [5, 2, 22], [2, 4, 23], [1, 4, 43], [4, 5, 75], [5, 1, 15], [1, 5, 91], [4, 1, 16], [3, 2, 98], [3, 4, 22], [5, 4, 31], [1, 2, 0], [2, 5, 4], [4, 2, 51], [3, 1, 36], [2, 3, 59]]".To2DIntArray();
+        //var grid = "[[1,2,3],[4,5,6],[7,8,9]]".To2DIntArray();
 
-        var sln = new P0743();
-        var res = sln.NetworkDelayTime(times, 5, 5); ;
-
-        Console.WriteLine(res);
+        //var sln = new P1289();
+        //var res = sln.MinFallingPathSum(grid);
+        var a = 24563.1459;
+        Console.WriteLine(a.ToString("F"));
+        Console.WriteLine(a.ToString("0.00"));
 
 
         //var nums = new int[] { 0, 1, 1 };
