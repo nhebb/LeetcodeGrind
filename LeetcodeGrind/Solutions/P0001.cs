@@ -1,5 +1,3 @@
-using LeetcodeGrind.Common;
-
 namespace LeetcodeGrind.Solutions;
 
 // 1. Two Sum
