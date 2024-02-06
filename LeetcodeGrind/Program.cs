@@ -1,5 +1,6 @@
 ﻿using LeetcodeGrind.Common;
 using LeetcodeGrind.Solutions;
+using System.Diagnostics.CodeAnalysis;
 using System.Text;
 
 namespace LeetcodeGrind;
@@ -8,14 +9,14 @@ internal class Program
 {
     static void Main(string[] args)
     {
+        var isConnected = "[[1,0,0,1],[0,1,1,0],[0,1,1,1],[1,0,1,1]]".To2DIntArray();
+        var sln = new P0547();
+        var res = sln.FindCircleNum(isConnected);
+        Console.WriteLine(res);
         //var grid = "[[1,2,3],[4,5,6],[7,8,9]]".To2DIntArray();
 
         //var sln = new P1289();
         //var res = sln.MinFallingPathSum(grid);
-        var a = 24563.1459;
-        Console.WriteLine(a.ToString("F"));
-        Console.WriteLine(a.ToString("0.00"));
-
 
         //var nums = new int[] { 0, 1, 1 };
         //var sln = new P1018();

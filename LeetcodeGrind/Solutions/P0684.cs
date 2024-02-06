@@ -20,9 +20,10 @@ public class P0684
 
         int Find(int x)
         {
-            while (x != parent[x])
-                x = parent[x];
-            return x;
+            if (parent[x] != x)
+                parent[x] = Find(parent[x]);
+
+            return parent[x];
         }
 
         void Union(int x, int y)

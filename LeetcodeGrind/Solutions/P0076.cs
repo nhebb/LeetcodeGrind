@@ -19,9 +19,8 @@ public class P0076
 
         var need = countT.Keys.Count;
         var have = 0;
-        var resLen = s.Length + 1;
-        var res = new int[] { -1, -1 };
-        //var i = 0;
+        var resultLength = s.Length + 1;
+        var result = new int[] { -1, -1 };
         var i = 0;
 
         for (int j = 0; j < s.Length; j++)
@@ -36,11 +35,12 @@ public class P0076
 
             while (have == need)
             {
-                if (j - i + 1 < resLen)
+                var curLength = j - i + 1;
+                if (curLength < resultLength)
                 {
-                    res[0] = i;
-                    res[1] = j;
-                    resLen = j - i + 1;
+                    result[0] = i;
+                    result[1] = j;
+                    resultLength = curLength;
                 }
 
                 window[s[i]]--;
@@ -49,10 +49,10 @@ public class P0076
                 i++;
             }
         }
-        if (resLen <= s.Length)
-            return s.Substring(res[0], res[1] - res[0] + 1);
+
+        if (resultLength <= s.Length)
+            return s.Substring(result[0], result[1] - result[0] + 1);
         return "";
     }
 
 }
-
