@@ -9,9 +9,10 @@ internal class Program
 {
     static void Main(string[] args)
     {
-        var isConnected = "[[1,0,0,1],[0,1,1,0],[0,1,1,1],[1,0,1,1]]".To2DIntArray();
-        var sln = new P0547();
-        var res = sln.FindCircleNum(isConnected);
+        var word = "aab";
+        var k = 2;
+        var sln = new P3029();
+        var res = sln.MinimumTimeToInitialState(word, k);
         Console.WriteLine(res);
         //var grid = "[[1,2,3],[4,5,6],[7,8,9]]".To2DIntArray();
 
