@@ -1,5 +1,3 @@
-using System.ComponentModel.Design;
-
 namespace LeetcodeGrind.Solutions;
 
 // 1685. Sum of Absolute Differences in a Sorted Array
@@ -20,8 +18,8 @@ public class P1685
             // absolute value isn't needed because the numbers to
             // the left are <= current number, and the numbers to
             // the right are >=, which means we can just do the
-            // subtraction current - left and right - current.
-            // Second, the sum of the delats is equal to the number
+            // subtractions: current - left and right - current.
+            // Second, the sum of the deltas is equal to the number
             // of elements on each side * current - the sum of
             // the elements.
             result[i] = i * nums[i] - prefix + // left side

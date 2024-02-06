@@ -1,5 +1,3 @@
-using System.Text;
-
 namespace LeetcodeGrind.Solutions;
 
 // 1018. Binary Prefix Divisible By 5

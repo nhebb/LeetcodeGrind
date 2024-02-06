@@ -9,20 +9,9 @@ internal class Program
 {
     static void Main(string[] args)
     {
-        var word = "aab";
-        var k = 2;
-        var sln = new P3029();
-        var res = sln.MinimumTimeToInitialState(word, k);
-        Console.WriteLine(res);
         //var grid = "[[1,2,3],[4,5,6],[7,8,9]]".To2DIntArray();
-
         //var sln = new P1289();
         //var res = sln.MinFallingPathSum(grid);
-
-        //var nums = new int[] { 0, 1, 1 };
-        //var sln = new P1018();
-        //var res = sln.PrefixesDivBy5(nums);
-
 
         //var tasks = new char[] { 'A', 'A', 'A', 'B', 'B', 'B' };
         //var tasks = new char[] { 'A', 'A', 'A', 'A', 'A', 'A', 'B', 'C', 'D', 'E', 'F', 'G' };
@@ -30,10 +19,6 @@ internal class Program
         //var sln = new P0621();
         //var res = sln.LeastInterval(tasks, n);
         //Console.WriteLine(res);
-
-        //var sln = new P1685();
-        //var res = sln.GetSumAbsoluteDifferences(nums);
-        //Console.WriteLine(string.Join(", ", res));
 
         // problem 2642
         //var edges =
