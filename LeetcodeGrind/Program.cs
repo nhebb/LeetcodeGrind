@@ -9,6 +9,11 @@ internal class Program
 {
     static void Main(string[] args)
     {
+
+        var res = Enumerable.Range(1, 25).ToArray();
+
+        Console.WriteLine(res[^1]);
+
         //var grid = "[[1,2,3],[4,5,6],[7,8,9]]".To2DIntArray();
         //var sln = new P1289();
         //var res = sln.MinFallingPathSum(grid);

@@ -1,22 +1,22 @@
 namespace LeetcodeGrind.Solutions;
 
 // 279. Perfect Squares
-// TODO: Finish this
 public class P0279
 {
     public int NumSquares(int n)
     {
-        var squares = new List<int>();
-        var i = 1;
+        int[] dp = new int[n + 1];
+        Array.Fill(dp, int.MaxValue);
+        dp[0] = 0;
 
-        while (i * i <= n)
+        for (int i = 1; i <= n; i++)
         {
-            squares.Add(i * i);
-            i++;
+            for (int j = 1; j * j <= i; j++)
+            {
+                dp[i] = Math.Min(dp[i], dp[i - j * j] + 1);
+            }
         }
 
-        var ans = new List<int>();
-
-        return ans.Count;
+        return dp[n];
     }
 }
