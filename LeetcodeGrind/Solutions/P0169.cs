@@ -25,4 +25,12 @@ public class P0169
 
         return maj;
     }
+
+    public int MajorityElementLINQ(int[] nums)
+    {
+        return nums.GroupBy(x => x)
+                   .OrderByDescending(g => g.Count())
+                   .First()
+                   .Key;
+    }
 }

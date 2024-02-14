@@ -28,4 +28,9 @@ public class P2108
 
         return "";
     }
+
+    public string FirstPalindromeLINQ(string[] words)
+    {
+        return words.FirstOrDefault(w => w == string.Join("", w.Reverse()), "");
+    }
 }
