@@ -7,33 +7,6 @@ public class P0368
 {
     public IList<int> LargestDivisibleSubset(int[] nums)
     {
-        Array.Sort(nums);
-        var result = new List<int>();
-        var current = new List<int>();
-
-        for (int i = 0; i < nums.Length - 1; i++)
-        {
-            current.Add(nums[i]);
-            for (int j = i + 1; j < nums.Length; j++)
-            {
-                if (nums[j] % current[^1] == 0)
-                {
-                    current.Add(nums[j]);
-                }
-            }
-
-            if (current.Count > result.Count)
-            {
-                result.Clear();
-                result.AddRange(current);
-            }
-        }
-
-        return result;
-    }
-
-    public IList<int> LargestDivisibleSubset2(int[] nums)
-    {
         if (nums.Length == 1)
         {
             return nums;
