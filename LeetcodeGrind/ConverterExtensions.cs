@@ -45,7 +45,8 @@ public static class ConverterExtensions
 
     public static int[][] To2DIntArray(this string s)
     {
-        var rows = s.Replace("[[", "")
+        var rows = s.Replace(" ", "")
+                    .Replace("[[", "")
                     .Replace("]]", "")
                     .Split("],[");
 

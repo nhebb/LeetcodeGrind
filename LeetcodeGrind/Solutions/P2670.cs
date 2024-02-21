@@ -8,12 +8,12 @@ public class P2670
         var n = nums.Length;
 
         var hsRight = new HashSet<int>(n);
-        var postfix = new int[n + 1];
-        postfix[^1] = 0;
-        for (int i = postfix.Length - 2; i >= 0; i--)
+        var suffix = new int[n + 1];
+        suffix[^1] = 0;
+        for (int i = suffix.Length - 2; i >= 0; i--)
         {
             hsRight.Add(nums[i]);
-            postfix[i] = hsRight.Count;
+            suffix[i] = hsRight.Count;
         }
 
         var hsLeft = new HashSet<int>(n);
@@ -21,7 +21,7 @@ public class P2670
         for (int i = 0; i < n; i++)
         {
             hsLeft.Add(nums[i]);
-            ans[i] = hsLeft.Count - postfix[i + 1];
+            ans[i] = hsLeft.Count - suffix[i + 1];
         }
 
         return ans;

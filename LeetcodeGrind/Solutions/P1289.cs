@@ -26,13 +26,13 @@ public class P1289
 
 
         var prefix = new int[n][];
-        var postfix = new int[n][];
+        var suffix = new int[n][];
         var dp = new int[n][];
 
         int GetMinOffsetVal(int r, int c1, int c2)
         {
             var val1 = c1 < 0 ? int.MaxValue : prefix[r][c1];
-            var val2 = c2 >= n ? int.MaxValue : postfix[r][c2];
+            var val2 = c2 >= n ? int.MaxValue : suffix[r][c2];
 
             return Math.Min(val1, val2);
         }
@@ -49,15 +49,15 @@ public class P1289
         {
             dp[r] = new int[n];
             prefix[r] = new int[n];
-            postfix[r] = new int[n];
+            suffix[r] = new int[n];
 
             prefix[r][0] = grid[r][0];
-            postfix[r][n - 1] = grid[r][n - 1];
+            suffix[r][n - 1] = grid[r][n - 1];
 
             for (int c1 = 1, c2 = n - 2; c1 < n && c2 >= 0; c1++, c2--)
             {
                 prefix[r][c1] = Math.Min(prefix[r][c1 - 1], grid[r][c1]);
-                postfix[r][c2] = Math.Min(postfix[r][c2 + 1], grid[r][c2]);
+                suffix[r][c2] = Math.Min(suffix[r][c2 + 1], grid[r][c2]);
             }
         }
 

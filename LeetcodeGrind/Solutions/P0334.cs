@@ -16,7 +16,7 @@ public class P0334
             mins[i] = Math.Min(nums[i], mins[i - 1]);
         }
 
-        // Create postfix array of maximum values to the right
+        // Create suffix array of maximum values to the right
         maxs[^1] = nums[^1];
         for (int i = nums.Length - 2; i >= 0; i--)
         {

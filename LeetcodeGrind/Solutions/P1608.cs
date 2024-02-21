@@ -11,13 +11,13 @@ public class P1608
             counts[nums[i]]++;
         }
 
-        var postfix = new int[1001];
-        postfix[^1] = counts[^1];
+        var suffix = new int[1001];
+        suffix[^1] = counts[^1];
 
         for (int i = counts.Length - 2; i >= 0; i--)
         {
-            postfix[i] = counts[i] + postfix[i + 1];
-            if (postfix[i] == i)
+            suffix[i] = counts[i] + suffix[i + 1];
+            if (suffix[i] == i)
             {
                 return i;
             }

@@ -6,13 +6,13 @@ public class P1685
     public int[] GetSumAbsoluteDifferences(int[] nums)
     {
         int prefix = 0;
-        int postfix = nums.Sum();
+        int suffix = nums.Sum();
         var result = new int[nums.Length];
 
         for (int i = 0; i < nums.Length; i++)
         {
             // Remove current from right side sum before calculating result
-            postfix -= nums[i];
+            suffix -= nums[i];
 
             // The math is a bit tricky at first glance. First, the
             // absolute value isn't needed because the numbers to
@@ -23,7 +23,7 @@ public class P1685
             // of elements on each side * current - the sum of
             // the elements.
             result[i] = i * nums[i] - prefix + // left side
-                        postfix - (nums[i] * (nums.Length - i - 1)); // right side
+                        suffix - (nums[i] * (nums.Length - i - 1)); // right side
 
             // Add current to left side sum after calculating result
             prefix += nums[i];
