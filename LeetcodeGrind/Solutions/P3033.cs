@@ -1,4 +1,4 @@
-﻿namespace LeetcodeGrind;
+﻿namespace LeetcodeGrind.Solutions;
 
 // 3033. Modify the Matrix
 public class P3033

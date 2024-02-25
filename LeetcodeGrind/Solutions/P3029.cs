@@ -1,4 +1,4 @@
-﻿namespace LeetcodeGrind;
+﻿namespace LeetcodeGrind.Solutions;
 
 // 3029. Minimum Time to Revert Word to Initial State I
 public class P3029

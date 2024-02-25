@@ -1,4 +1,4 @@
-﻿namespace LeetcodeGrind;
+﻿namespace LeetcodeGrind.Solutions;
 
 // 3028. Ant on the Boundary
 public class P3028
