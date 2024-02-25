@@ -1,5 +1,3 @@
-using System.ComponentModel.Design;
-
 namespace LeetcodeGrind.Solutions;
 
 // 547. Number of Provinces

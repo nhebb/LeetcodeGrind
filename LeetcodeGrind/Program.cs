@@ -9,14 +9,20 @@ internal class Program
 {
     static void Main(string[] args)
     {
+
+        int[] nums = [24, 6, 45, 49, 30, 49, 33, 33, 42, 26, 35, 42, 42, 30, 30, 32];
+        var sln = new P2709();
+        var res = sln.CanTraverseAllPairs(nums);
+        Console.WriteLine(res);
+
         //var n = 2;
         //var meetings = "[[0,10],[1,5], [2, 7], [3, 4]]".To2DIntArray();
         //var n = 3;
         //var meetings = "[[1, 20], [2, 10], [3, 5], [4, 9], [6, 8]]".To2DIntArray();
-        var n = 4;
-        var meetings = "[[18,19],[3,12],[17,19],[2,13],[7,10]]".To2DIntArray();
-        var sln = new P2402();
-        var res = sln.MostBooked(n, meetings);
+        //var n = 4;
+        //var meetings = "[[18,19],[3,12],[17,19],[2,13],[7,10]]".To2DIntArray();
+        //var sln = new P2402();
+        //var res = sln.MostBooked(n, meetings);
 
         //Console.WriteLine(res);
 
