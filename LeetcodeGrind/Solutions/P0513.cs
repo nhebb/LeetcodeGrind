@@ -7,29 +7,25 @@ public class P0513
 {
     public int FindBottomLeftValue(TreeNode root)
     {
-        var maxDepth = 0;
-        var minCol = 0;
-        var result = root.val;
+        var levels = new List<IList<int>>();
 
-        void Dfs(TreeNode node, int depth, int col)
+        void Dfs(TreeNode node, int depth)
         {
-            if (depth > maxDepth
-                || (depth == maxDepth && col < minCol))
+            if (node == null)
+                return;
+
+            if (depth == levels.Count)
             {
-                maxDepth = depth;
-                minCol = col;
-                result = node.val;
+                levels.Add(new List<int>());
             }
+            levels[depth].Add(node.val);
 
-            if (node.left != null)
-                Dfs(node.left, depth + 1, col - 1);
-
-            if (node.right != null)
-                Dfs(node.right, depth + 1, col + 1);
+            Dfs(node.left, depth + 1);
+            Dfs(node.right, depth + 1);
         }
 
-        Dfs(root, 0, 0);
+        Dfs(root, 0);
 
-        return result;
+        return levels[^1][0];
     }
 }

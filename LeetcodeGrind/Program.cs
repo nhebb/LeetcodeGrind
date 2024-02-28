@@ -10,11 +10,13 @@ internal class Program
     static void Main(string[] args)
     {
 
-        int[] nums = [24, 6, 45, 49, 30, 49, 33, 33, 42, 26, 35, 42, 42, 30, 30, 32];
-        var sln = new P2709();
-        var res = sln.CanTraverseAllPairs(nums);
-        Console.WriteLine(res);
-
+        int[] w = [1,3];
+        var sln = new LeetcodeGrind.Solutions.P0528.Solution(w);
+        for (int i = 0; i < 5; i++)
+        {
+            var res = sln.PickIndex();
+            Console.WriteLine(res);
+        }
         //var n = 2;
         //var meetings = "[[0,10],[1,5], [2, 7], [3, 4]]".To2DIntArray();
         //var n = 3;
