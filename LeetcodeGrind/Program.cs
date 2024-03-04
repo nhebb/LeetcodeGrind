@@ -10,13 +10,11 @@ internal class Program
     static void Main(string[] args)
     {
 
-        int[] w = [1,3];
-        var sln = new LeetcodeGrind.Solutions.P0528.Solution(w);
-        for (int i = 0; i < 5; i++)
-        {
-            var res = sln.PickIndex();
-            Console.WriteLine(res);
-        }
+        int[] tokens = [68, 85, 34, 25, 60];
+        int power = 44;
+        var sln = new P0948();
+        var res = sln.BagOfTokensScore(tokens, power);
+        Console.WriteLine(res);
         //var n = 2;
         //var meetings = "[[0,10],[1,5], [2, 7], [3, 4]]".To2DIntArray();
         //var n = 3;
