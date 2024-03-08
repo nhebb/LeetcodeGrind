@@ -7,8 +7,11 @@ public class P0141
 {
     public bool HasCycle(ListNode head)
     {
-        // two pointers solution
-        if (head == null) { return false; }
+        // two pointers solution - faster, O(1)
+        if (head == null)
+        {
+            return false;
+        }
 
         var slow = head;
         var fast = head;
@@ -16,14 +19,17 @@ public class P0141
         {
             slow = slow.next;
             fast = fast.next.next;
-            if (slow == fast) { return true; }
+            if (slow == fast)
+            {
+                return true;
+            }
         }
         return false;
     }
 
     public bool HasCycle2(ListNode head)
     {
-        // hashset solution
+        // hashset solution - generally slower + O(n) memory
         var hs = new HashSet<ListNode>();
 
         while (head != null)

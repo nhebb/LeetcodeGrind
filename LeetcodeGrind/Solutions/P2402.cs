@@ -13,14 +13,7 @@ public class P2402
             }
             else if (x.available == y.available)
             {
-                if (x.number < y.number)
-                {
-                    return -1;
-                }
-                else
-                {
-                    return 1;
-                }
+                return x.number.CompareTo(y.number);
             }
             return 1;
         }
