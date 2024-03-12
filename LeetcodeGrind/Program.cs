@@ -10,9 +10,10 @@ internal class Program
     static void Main(string[] args)
     {
 
-        var s = "cabaabac";
-        var sln = new P1750();
-        var res = sln.MinimumLength(s);
+        var order = "kqep";
+        var s = "pekeq";
+        var sln = new P0791();
+        var res = sln.CustomSortString(order, s);
         Console.WriteLine(res);
         //var n = 2;
         //var meetings = "[[0,10],[1,5], [2, 7], [3, 4]]".To2DIntArray();
