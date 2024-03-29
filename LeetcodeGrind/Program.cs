@@ -9,10 +9,10 @@ internal class Program
 {
     static void Main(string[] args)
     {
-        char[] tasks = ['A', 'A', 'A', 'A', 'A', 'A', 'B', 'C', 'D', 'E', 'F', 'G'];
-        var n = 1;
-        var sln = new P0621();
-        var res = sln.LeastInterval(tasks, n);
+        int[] nums = [3, 1, 1];
+        var k = 1; ;
+        var sln = new P2958();
+        var res = sln.MaxSubarrayLength(nums, k);
         Console.WriteLine(res);
         //var n = 2;
         //var meetings = "[[0,10],[1,5], [2, 7], [3, 4]]".To2DIntArray();

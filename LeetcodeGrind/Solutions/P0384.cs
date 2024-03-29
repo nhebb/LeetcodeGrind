@@ -4,13 +4,11 @@ namespace LeetcodeGrind.Solutions.ShuffleArray;
 public class Solution
 {
     int[] _nums;
-    int[] _ans;
     Random _rand;
 
     public Solution(int[] nums)
     {
         _nums = nums;
-        _ans = new int[nums.Length];
         _rand = new Random();
     }
 
@@ -19,21 +17,20 @@ public class Solution
         return _nums;
     }
 
+    // Fisher-Yates shuffle
     public int[] Shuffle()
     {
-        var hs = new HashSet<int>();
-        var i = 0;
-        while (i < _nums.Length)
+        var ans = new int[_nums.Length];
+        _nums.CopyTo(ans, 0);
+        var n = ans.Length;
+
+        while (n > 1)
         {
-            var index = _rand.Next(0, _nums.Length);
-            while (hs.Contains(index))
-            {
-                index = _rand.Next(0, _nums.Length);
-            }
-            _ans[i] = _nums[index];
-            hs.Add(index);
-            i++;
+            n--;
+            var k = _rand.Next(n + 1);
+            (ans[k], ans[n]) = (ans[n], ans[k]);
         }
-        return _ans;
+
+        return ans;
     }
 }

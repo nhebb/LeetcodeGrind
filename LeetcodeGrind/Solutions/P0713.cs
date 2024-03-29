@@ -6,21 +6,26 @@ public class P0713
 {
     public int NumSubarrayProductLessThanK(int[] nums, int k)
     {
-        int count = 0;
-        int q = 0;
-        int product = 1;
-        for (int i = 0; i < nums.Length; i++)
-        {
-            // 1. Calculate product
-            product *= nums[i];
+        if (k <= 1) 
+            return 0;
 
-            // 2. While the product is > target, increase left.
-            while (product >= k && q < i)
+        int count = 0;
+        int product = 1;
+        int i = 0;
+
+        for (int j = 0; j < nums.Length; j++)
+        {
+            product *= nums[j];
+
+            while (product >= k && i <= j)
             {
-                product /= nums[q];
-                q++;
+                product /= nums[i];
+                i++;
             }
+
+            count += j - i + 1; 
         }
+
         return count;
     }
 }
