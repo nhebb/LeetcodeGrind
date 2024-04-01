@@ -5,6 +5,11 @@ public class P0058
 {
     public int LengthOfLastWord(string s)
     {
+        return s.Split(' ', StringSplitOptions.RemoveEmptyEntries)[^1].Length;
+    }
+
+    public int LengthOfLastWord2(string s)
+    {
         // The 'hard' way - without using Split()
         var length = 0;
         var inString = false;
