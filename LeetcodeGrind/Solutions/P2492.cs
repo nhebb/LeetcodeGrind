@@ -1,9 +1,8 @@
 namespace LeetcodeGrind.Solutions;
 
-// 2492. Minimum Score of a Path Between Two Cities
+// TODO: 2492. Minimum Score of a Path Between Two Cities
 public class P2492
 {
-    // TODO: Finish this.
     public int MinScore(int n, int[][] roads)
     {
         // create bidirectional adjacency list

@@ -1,7 +1,7 @@
 namespace LeetcodeGrind.P2642;
 
-// 2642. Design Graph With Shortest Path Calculator
-// TODO: Wrong Answer.
+// TODO: 2642. Design Graph With Shortest Path Calculator
+// This solution fails with Wrong Answer.
 public class Graph
 {
     private List<List<int[]>> _adjList;

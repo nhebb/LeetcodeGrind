@@ -1,7 +1,7 @@
 namespace LeetcodeGrind.Solutions;
 
-// 713. Subarray Product Less Than K
-// TODO: Finish this. Wrong Answer.
+// TODO: 713. Subarray Product Less Than K
+// This solution fails with Wrong Answer.
 public class P0713
 {
     public int NumSubarrayProductLessThanK(int[] nums, int k)

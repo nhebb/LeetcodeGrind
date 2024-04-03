@@ -1,7 +1,6 @@
 namespace LeetcodeGrind.Solutions;
 
-// 218. The Skyline Problem
-// TODO: Finish this.
+// TODO: 218. The Skyline Problem
 public class P0218
 {
     public IList<IList<int>> GetSkyline(int[][] buildings)

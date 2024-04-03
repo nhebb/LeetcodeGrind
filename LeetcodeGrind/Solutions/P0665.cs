@@ -1,7 +1,7 @@
 namespace LeetcodeGrind.Solutions;
 
-// 665. Non-decreasing Array
-// TODO: This fails test case { 3,4,2,3 }
+// TODO: 665. Non-decreasing Array
+// This fails test case { 3,4,2,3 }
 public class P0665
 {
     public bool CheckPossibility(int[] nums)

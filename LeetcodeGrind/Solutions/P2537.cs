@@ -1,7 +1,7 @@
 namespace LeetcodeGrind.Solutions;
 
-// 2537. Count the Number of Good Subarrays
-// TODO: Finish this. Solution yields Wrong Answer
+// TODO: 2537. Count the Number of Good Subarrays
+// This solution fails with Wrong Answer
 public class P2537
 {
     public long CountGood(int[] nums, int k)

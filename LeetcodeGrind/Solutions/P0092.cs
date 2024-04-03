@@ -2,8 +2,7 @@ using LeetcodeGrind.Common;
 
 namespace LeetcodeGrind.Solutions;
 
-// 92. Reverse Linked List II
-// TODO: Finish this.
+// TODO 92. Reverse Linked List II
 public class P0092
 {
     public ListNode ReverseBetween(ListNode head, int left, int right)

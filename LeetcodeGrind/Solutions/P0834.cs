@@ -1,7 +1,6 @@
 namespace LeetcodeGrind.Solutions;
 
-// 834. Sum of Distances in Tree
-// TODO: Finish this.
+// TODO: 834. Sum of Distances in Tree
 public class P0834
 {
     public int[] SumOfDistancesInTree(int n, int[][] edges)

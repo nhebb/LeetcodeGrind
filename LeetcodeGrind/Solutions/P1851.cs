@@ -1,7 +1,6 @@
 namespace LeetcodeGrind.Solutions;
 
-// 1851. Minimum Interval to Include Each Query
-// TODO: Finish this
+// TODO: 1851. Minimum Interval to Include Each Query
 public class P1851
 {
     //public int[] MinInterval(int[][] intervals, int[] queries)
