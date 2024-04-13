@@ -5,37 +5,49 @@ public class P0085
 {
     public int MaximalRectangle(char[][] matrix)
     {
-        for (int r = 0; r < matrix.Length; r++)
+        var rows = matrix.Length;
+        var cols = matrix[0].Length;
+
+        var maxArea = 0;
+        var heights = new int[cols];
+        var stack = new Stack<int>();
+
+        for (int row = 0; row < rows; row++)
         {
-            for (int c = 1; c < matrix[r].Length; c++)
+            for (int col = 0; col < cols; col++)
             {
-                if (matrix[r][c] == '1')
+                if (matrix[row][col] == '1')
                 {
-                    var val = matrix[r][c - 1] - '0' + 1;
-                    matrix[r][c] = (char)('0' + val);
+                    heights[col]++;
+                }
+                else
+                {
+                    heights[col] = 0;
                 }
             }
-        }
 
-        var max = matrix[0].Select(x => x - '0').Max();
+            var area = 0;
 
-        for (int c = 0; c < matrix[0].Length; c++)
-        {
-            for (int r = 1; r < matrix.Length; r++)
+            for (int i = 0; i <= cols; i++)
             {
-                if (matrix[r][c] != '0')
+                while (stack.Count > 0 && 
+                      (i == cols || heights[stack.Peek()] >= heights[i]))
                 {
-                    // 11111        12345
-                    // 11111    =>  12345
-                    // 00111        00123
+                    int h = heights[stack.Pop()];
+                    int w = stack.Count == 0 
+                        ? i 
+                        : i - stack.Peek() - 1;
 
-                    var val = Math.Min(matrix[r][c] - '0' , matrix[r - 1][c] - '0');
-                    max = Math.Max(max, val);
-                    matrix[r][c] = (char)('0' + val);
+                    area = Math.Max(area, h * w);
                 }
+
+                stack.Push(i);
             }
+            
+            maxArea = Math.Max(maxArea, area);
+            stack.Clear();
         }
 
-        return max;
+        return maxArea;
     }
 }

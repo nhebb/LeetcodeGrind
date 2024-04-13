@@ -9,10 +9,14 @@ internal class Program
 {
     static void Main(string[] args)
     {
-        int[] nums = [3, 1, 1];
-        var k = 1; ;
-        var sln = new P2958();
-        var res = sln.MaxSubarrayLength(nums, k);
+        var matrix = new char[4][];
+        matrix[0] = ['1', '0', '1', '0', '0'];
+        matrix[1] = ['1', '0', '1', '1', '1'];
+        matrix[2] = ['1', '1', '1', '1', '1'];
+        matrix[3] = ['1', '0', '0', '1', '0'];
+        
+        var sln = new P0085();
+        var res = sln.MaximalRectangle2(matrix);
         Console.WriteLine(res);
         //var n = 2;
         //var meetings = "[[0,10],[1,5], [2, 7], [3, 4]]".To2DIntArray();

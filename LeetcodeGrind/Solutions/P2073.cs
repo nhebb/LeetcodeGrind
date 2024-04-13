@@ -5,22 +5,19 @@ public class P2073
 {
     public int TimeRequiredToBuy(int[] tickets, int k)
     {
-        var n = tickets.Length;
         var time = 0;
         var i = 0;
-        while (true)
+
+        while (tickets[k] > 0)
         {
             if (tickets[i] > 0)
             {
                 tickets[i]--;
                 time++;
-                if (i == k && tickets[i] == 0)
-                {
-                    return time;
-                }
             }
-
-            i = (i + 1) % n;
+            i = (i + 1) % tickets.Length;
         }
+
+        return time;
     }
 }
