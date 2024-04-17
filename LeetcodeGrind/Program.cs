@@ -16,7 +16,7 @@ internal class Program
         matrix[3] = ['1', '0', '0', '1', '0'];
         
         var sln = new P0085();
-        var res = sln.MaximalRectangle2(matrix);
+        var res = sln.MaximalRectangle(matrix);
         Console.WriteLine(res);
         //var n = 2;
         //var meetings = "[[0,10],[1,5], [2, 7], [3, 4]]".To2DIntArray();

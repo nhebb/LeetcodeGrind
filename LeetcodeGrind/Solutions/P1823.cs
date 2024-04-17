@@ -5,9 +5,9 @@ public class P1823
 {
     public int FindTheWinner(int n, int k)
     {
-        var q = new Queue<int>();
-        for (int i = 1; i <= n; i++)
-            q.Enqueue(i);
+        var q = new Queue<int>(Enumerable.Range(1, n));
+        //for (int i = 1; i <= n; i++)
+        //    q.Enqueue(i);
 
         while (q.Count > 1)
         {
