@@ -5,17 +5,32 @@ public class P1971
 {
     public bool ValidPath(int n, int[][] edges, int source, int destination)
     {
-        var graph = new Dictionary<int, List<int>>();
-        for (int i = 0; i < n; i++)
-            graph[i] = new List<int>();
+        if(source == destination) 
+            return true;
 
-        foreach (var edge in edges)
+        var graph = new Dictionary<int, List<int>>(n);
+        var containDestination = false;
+
+        for (int i = 0; i < edges.Length; i++)
         {
-            graph[edge[0]].Add(edge[1]);
-            graph[edge[1]].Add(edge[0]);
+            if (edges[i][0] == destination || edges[i][1] == destination)
+                containDestination = true;
+
+            if (graph.TryGetValue(edges[i][0], out List<int>? list0))
+                list0.Add(edges[i][1]);
+            else
+                graph[edges[i][0]] = new List<int>() { edges[i][1] };
+
+            if (graph.TryGetValue(edges[i][1], out List<int>? list1))
+                list1.Add(edges[i][0]);
+            else
+                graph[edges[i][1]] = new List<int>() { edges[i][0] };
         }
 
-        var visited = new HashSet<int>();
+        if(!containDestination)
+            return false;
+
+        var visited = new HashSet<int>(n);
         var queue = new Queue<int>();
         queue.Enqueue(source);
 

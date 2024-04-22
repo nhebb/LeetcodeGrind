@@ -9,14 +9,16 @@ internal class Program
 {
     static void Main(string[] args)
     {
-        var matrix = new char[4][];
-        matrix[0] = ['1', '0', '1', '0', '0'];
-        matrix[1] = ['1', '0', '1', '1', '1'];
-        matrix[2] = ['1', '1', '1', '1', '1'];
-        matrix[3] = ['1', '0', '0', '1', '0'];
-        
-        var sln = new P0085();
-        var res = sln.MaximalRectangle(matrix);
+        string[] input = ["4", "0", "1", "1"];
+        var root = new TreeNode(25);
+        root.left = new TreeNode(1);
+        root.left.left = new TreeNode(0);
+        root.left.left.left = new TreeNode(1);
+        root.left.left.left.left = new TreeNode(0);
+        root.left.right = new TreeNode(0);
+
+        var sln = new P0988();
+        var res = sln.SmallestFromLeaf(root);
         Console.WriteLine(res);
         //var n = 2;
         //var meetings = "[[0,10],[1,5], [2, 7], [3, 4]]".To2DIntArray();
