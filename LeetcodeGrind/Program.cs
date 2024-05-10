@@ -9,17 +9,16 @@ internal class Program
 {
     static void Main(string[] args)
     {
-        string[] input = ["4", "0", "1", "1"];
-        var root = new TreeNode(25);
-        root.left = new TreeNode(1);
-        root.left.left = new TreeNode(0);
-        root.left.left.left = new TreeNode(1);
-        root.left.left.left.left = new TreeNode(0);
-        root.left.right = new TreeNode(0);
+        int[] arr = [1, 2, 3, 5];
+        var k = 3;
 
-        var sln = new P0988();
-        var res = sln.SmallestFromLeaf(root);
-        Console.WriteLine(res);
+        var sln = new P0786();
+        var res = sln.KthSmallestPrimeFraction(arr, k);
+        var s = string.Join(", ", res);
+        Console.WriteLine(s);
+
+
+        // Problem 2402
         //var n = 2;
         //var meetings = "[[0,10],[1,5], [2, 7], [3, 4]]".To2DIntArray();
         //var n = 3;
@@ -31,6 +30,8 @@ internal class Program
 
         //Console.WriteLine(res);
 
+
+        // Problem 1289
         //var grid = "[[1,2,3],[4,5,6],[7,8,9]]".To2DIntArray();
         //var sln = new P1289();
         //var res = sln.MinFallingPathSum(grid);
@@ -42,7 +43,7 @@ internal class Program
         //var res = sln.LeastInterval(tasks, n);
         //Console.WriteLine(res);
 
-        // problem 2642
+        // Problem 2642
         //var edges =
         //"[[7,2,131570],[9,4,622890],[9,1,812365],[1,3,399349],[10,2,407736],[6,7,880509],[1,4,289656],[8,0,802664],[6,4,826732],[10,3,567982],[5,6,434340],[4,7,833968],[12,1,578047],[8,5,739814],[10,9,648073],[1,6,679167],[3,6,933017],[0,10,399226],[1,11,915959],[0,12,393037],[11,5,811057],[6,2,100832],[5,1,731872],[3,8,741455],[2,9,835397],[7,0,516610],[11,8,680504],[3,11,455056],[1,0,252721]]".To2DIntArray();
 

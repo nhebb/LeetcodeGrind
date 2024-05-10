@@ -51,7 +51,11 @@ public class P0230
 
         Dfs(root);
 
+        // Weirdly, this:
         return list.Skip(k - 1).Take(1).First();
+
+        // ... runs faster than this:
+        // return list[k - 1];
     }
 
 }

@@ -20,7 +20,6 @@ public class P1289
             {
                 pq[r].Enqueue((grid[r][c], c), grid[r][c]);
             }
-
         }
 
 

@@ -7,6 +7,9 @@ public class P0504
 {
     public string ConvertToBase7(int num)
     {
+        // Easy way:
+        // return Convert.ToString(num, 7);
+
         if (num == 0)
             return "0";
 
