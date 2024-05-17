@@ -9,13 +9,11 @@ internal class Program
 {
     static void Main(string[] args)
     {
-        int[] arr = [1, 2, 3, 5];
-        var k = 3;
+        int[][] grid = [[0, 0, 1, 1], [1, 0, 1, 0], [1, 1, 0, 0]];
 
-        var sln = new P0786();
-        var res = sln.KthSmallestPrimeFraction(arr, k);
-        var s = string.Join(", ", res);
-        Console.WriteLine(s);
+        var sln = new P0861();
+        var res = sln.MatrixScore(grid);
+        Console.WriteLine(res);
 
 
         // Problem 2402
