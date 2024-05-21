@@ -6,10 +6,6 @@ public class P0001
     public int[] TwoSum(int[] nums, int target)
     {
         var dict = new Dictionary<int, int>();
-        for (int i = 0; i < nums.Length; i++)
-        {
-            dict[nums[i]] = i;
-        }
 
         for (int i = 0; i < nums.Length; i++)
         {
@@ -18,8 +14,11 @@ public class P0001
             {
                 return new int[] { i, result };
             }
+
+            dict[nums[i]] = i;
         }
-        return new int[] { -1, -1 }; ;
+
+        return new int[] { -1, -1 };
     }
 }
 
