@@ -9,10 +9,12 @@ internal class Program
 {
     static void Main(string[] args)
     {
-        int[][] grid = [[0, 0, 1, 1], [1, 0, 1, 0], [1, 1, 0, 0]];
+        var s = "krrgw";
+        var t = "zjxss";
+        var maxCost = 19;
 
-        var sln = new P0861();
-        var res = sln.MatrixScore(grid);
+        var sln = new P1208();
+        var res = sln.EqualSubstring(s,t,maxCost);
         Console.WriteLine(res);
 
 
