@@ -9,13 +9,10 @@ internal class Program
 {
     static void Main(string[] args)
     {
-        var s = "krrgw";
-        var t = "zjxss";
-        var maxCost = 19;
 
-        var sln = new P1208();
-        var res = sln.EqualSubstring(s,t,maxCost);
-        Console.WriteLine(res);
+        var sln = new P0260();
+        var res = sln.SingleNumber2([1, 2, 1, 3, 2, 5]);
+        //Console.WriteLine(res);
 
 
         // Problem 2402

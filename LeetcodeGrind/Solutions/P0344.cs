@@ -5,7 +5,6 @@ public class P0344
 {
     public void ReverseString(char[] s)
     {
-        if (s == null || s.Length == 1) return;
         int i = 0;
         int j = s.Length - 1;
         while (i < j)
