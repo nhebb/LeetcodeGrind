@@ -9,10 +9,13 @@ internal class Program
 {
     static void Main(string[] args)
     {
+        int[] nums1 = [2, 12];
+        int[] nums2 = [4, 3];
+        var k = 4;
+        var sln = new P3162();
+        var res = sln.NumberOfPairs(nums1, nums2, k);
 
-        var sln = new P0260();
-        var res = sln.SingleNumber2([1, 2, 1, 3, 2, 5]);
-        //Console.WriteLine(res);
+        Console.WriteLine(res);
 
 
         // Problem 2402
