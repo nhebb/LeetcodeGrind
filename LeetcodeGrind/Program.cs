@@ -9,14 +9,14 @@ internal class Program
 {
     static void Main(string[] args)
     {
-        int[] nums1 = [2, 12];
-        int[] nums2 = [4, 3];
-        var k = 4;
-        var sln = new P3162();
-        var res = sln.NumberOfPairs(nums1, nums2, k);
+        int[] customers = [1, 0, 1, 2, 1, 1, 7, 5];
+        int[] grumpy =    [0, 1, 0, 1, 0, 1, 0, 1];
+        var minutes = 3;
+
+        var sln = new P1052();
+        var res = sln.MaxSatisfied(customers, grumpy, minutes);
 
         Console.WriteLine(res);
-
 
         // Problem 2402
         //var n = 2;

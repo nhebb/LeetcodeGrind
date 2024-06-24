@@ -2,49 +2,45 @@ using LeetcodeGrind.Common;
 
 namespace LeetcodeGrind.Solutions;
 
-// TODO: 25. Reverse Nodes in k-Group
-/* Given the head of a linked list, reverse the nodes of the list k at a time,
- * and return the modified list.
-
-k is a positive integer and is less than or equal to the length of the linked 
-list. If the number of nodes is not a multiple of k then left-out nodes, 
-in the end, should remain as it is.
-
-You may not alter the values in the list's nodes, only nodes themselves may 
-be changed.
-
-Constraints:
-    The number of nodes in the list is n.
-    1 <= k <= n <= 5000
-    0 <= Node.val <= 1000
-
-*/
+// 25. Reverse Nodes in k-Group
 public class P0025
 {
     public ListNode ReverseKGroup(ListNode head, int k)
     {
+        var stack = new Stack<ListNode>();
         var prev = new ListNode();
-        // do the first k nodes to get the head value to return
-        var fast = head;
-        var slow = head;
-        var i = k;
+        prev.next = head;
+        var last = prev; // last node in a set of k
+        var isFirstSet = true;
 
-        // this may be off by 1
-        while (i > 0 && fast != null)
+        while (head != null)
         {
-            fast = fast.next;
-            i--;
-        }
-        if (i > 1)
-            return head;
+            var i = 0;
+            while (head != null && i < k)
+            {
+                stack.Push(head);
+                head = head.next;
+                i++;
+            }
 
-        prev.next = fast;
-        var nextNode = fast.next;
+            if (i < k)
+            {
+                break;
+            }
 
-        for (i = 0; i < k; i++)
-        {
-            var temp = slow.next;
+            if (isFirstSet)
+            {
+                prev.next = stack.Peek();
+                isFirstSet = false;
+            }
 
+            while (stack.Count > 0)
+            {
+                last.next = stack.Pop();
+                last = last.next;
+            }
+
+            last.next = head;
         }
 
         return prev.next;
