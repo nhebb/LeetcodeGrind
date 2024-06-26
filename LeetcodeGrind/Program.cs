@@ -9,12 +9,8 @@ internal class Program
 {
     static void Main(string[] args)
     {
-        int[] customers = [1, 0, 1, 2, 1, 1, 7, 5];
-        int[] grumpy =    [0, 1, 0, 1, 0, 1, 0, 1];
-        var minutes = 3;
-
-        var sln = new P1052();
-        var res = sln.MaxSatisfied(customers, grumpy, minutes);
+        var sln = new P3178();
+        var res = sln.NumberOfChild(4, 2);
 
         Console.WriteLine(res);
 
