@@ -5,28 +5,24 @@ public class P0350
 {
     public int[] IntersectII(int[] nums1, int[] nums2)
     {
-        var d1 = new Dictionary<int, int>();
-        var d2 = new Dictionary<int, int>();
+        var d1 = nums1.GroupBy(x => x)
+                      .ToDictionary(g => g.Key, g => g.Count());
+        var d2 = nums2.GroupBy(x => x)
+                      .ToDictionary(g => g.Key, g => g.Count());
 
-        foreach (var num in nums1)
-            if (!d1.TryAdd(num, 1))
-                d1[num]++;
-
-        foreach (var num in nums2)
-            if (!d2.TryAdd(num, 1))
-                d2[num]++;
-
-        var res = new List<int>();
+        var intersects = new List<int>();
         foreach (var kvp in d1)
         {
-            if (d2.TryGetValue(kvp.Key, out var val))
+            if (d2.TryGetValue(kvp.Key, out var count))
             {
-                var count = Math.Min(kvp.Value, val);
+                count = Math.Min(kvp.Value, count);
                 for (int i = 0; i < count; i++)
-                    res.Add(kvp.Key);
+                {
+                    intersects.Add(kvp.Key);
+                }
             }
         }
 
-        return res.ToArray();
+        return intersects.ToArray();
     }
 }

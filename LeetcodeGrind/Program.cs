@@ -2,6 +2,7 @@
 using LeetcodeGrind.Solutions;
 using System.Diagnostics.CodeAnalysis;
 using System.Text;
+using System.Text.RegularExpressions;
 
 namespace LeetcodeGrind;
 
@@ -9,10 +10,15 @@ internal class Program
 {
     static void Main(string[] args)
     {
-        var sln = new P3178();
-        var res = sln.NumberOfChild(4, 2);
+        string[] queries = ["uAxaqlzahfialcezsLfj", "cAqlzyahaslccezssLfj", "AqlezahjarflcezshLfj", "AqlzofahaplcejuzsLfj", "tAqlzahavslcezsLwzfj", "AqlzahalcerrzsLpfonj", "AqlzahalceaczdsosLfj", "eAqlzbxahalcezelsLfj"];
+        var pattern = "AqlzahalcezsLfj";
 
-        Console.WriteLine(res);
+        var sln = new P1023();
+        var res = sln.CamelMatch(queries, pattern);
+
+        var result = string.Join(",", res);
+        Console.WriteLine($"Result:  {result}");
+        Console.WriteLine("Expected: [true,true,true,true,true,true,true,true]");
 
         // Problem 2402
         //var n = 2;
