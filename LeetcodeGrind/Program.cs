@@ -10,15 +10,14 @@ internal class Program
 {
     static void Main(string[] args)
     {
-        string[] queries = ["uAxaqlzahfialcezsLfj", "cAqlzyahaslccezssLfj", "AqlezahjarflcezshLfj", "AqlzofahaplcejuzsLfj", "tAqlzahavslcezsLwzfj", "AqlzahalcerrzsLpfonj", "AqlzahalceaczdsosLfj", "eAqlzbxahalcezelsLfj"];
-        var pattern = "AqlzahalcezsLfj";
+        int[] positions = [37, 35];
+        int[] healths = [16, 19];
+        string directions = "RL";
 
-        var sln = new P1023();
-        var res = sln.CamelMatch(queries, pattern);
+        var sln = new P2751();
+        var res = sln.SurvivedRobotsHealths(positions, healths, directions);
 
-        var result = string.Join(",", res);
-        Console.WriteLine($"Result:  {result}");
-        Console.WriteLine("Expected: [true,true,true,true,true,true,true,true]");
+        Console.WriteLine(string.Join(", ", res));
 
         // Problem 2402
         //var n = 2;
