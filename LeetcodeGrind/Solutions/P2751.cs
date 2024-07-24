@@ -133,9 +133,7 @@ public class P2751
             else if (stack.Count > 0 && stack.Peek().Direction == 'R' &&
                      stack.Peek().Health > robot.Health)
             {
-                var prev = stack.Pop();
-                prev.Health--;
-                stack.Push(prev);
+                stack.Peek().Health--;
             }
             else if (stack.Count > 0 && stack.Peek().Direction == 'R' &&
                      stack.Peek().Health == robot.Health)
@@ -162,17 +160,14 @@ public class P2751
                 else if (stack.Count > 0 && stack.Peek().Direction == 'R' &&
                          stack.Peek().Health > robot.Health)
                 {
-                    var prev = stack.Pop();
-                    prev.Health--;
-                    stack.Push(prev);
+                    stack.Peek().Health--;
                 }
             }
         }
 
-        var result = stack.ToList();
-
-        return result.OrderBy(r => r.Index)
-                     .Select(r => r.Health)
-                     .ToList();
+        return stack.ToList()
+                    .OrderBy(r => r.Index)
+                    .Select(r => r.Health)
+                    .ToList();
     }
 }

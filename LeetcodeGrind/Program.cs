@@ -10,14 +10,11 @@ internal class Program
 {
     static void Main(string[] args)
     {
-        int[] positions = [37, 35];
-        int[] healths = [16, 19];
-        string directions = "RL";
+        var s = "abaacbcbb";
+        var sln = new P3223();
+        var res = sln.MinimumLength(s);
 
-        var sln = new P2751();
-        var res = sln.SurvivedRobotsHealths(positions, healths, directions);
-
-        Console.WriteLine(string.Join(", ", res));
+        Console.WriteLine(res);
 
         // Problem 2402
         //var n = 2;
