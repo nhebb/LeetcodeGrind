@@ -10,10 +10,12 @@ internal class Program
 {
     static void Main(string[] args)
     {
-        var s = "abaacbcbb";
-        var sln = new P3223();
-        var res = sln.MinimumLength(s);
-
+        int[] nums = [1, 2, 3, 4];
+        var n = 4;
+        var left = 1;
+        var right = 5;
+        var sln = new P1508();
+        var res = sln.RangeSum(nums, nums.Length, left, right);
         Console.WriteLine(res);
 
         // Problem 2402
@@ -77,6 +79,7 @@ internal class Program
 
     // TIP: Use this for jagged array declaration:
     // var array2D = Enumerable.Range(0, m).Select(x => new int[n]).ToArray();
+
 
 
 }

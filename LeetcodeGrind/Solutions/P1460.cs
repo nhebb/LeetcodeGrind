@@ -22,4 +22,23 @@ public class P1460
 
         return true;
     }
+
+    public bool CanBeEqual2(int[] target, int[] arr)
+    {
+        if (target.Length != arr.Length)
+            return false;
+
+        Array.Sort(target);
+        Array.Sort(arr);
+
+        for (int i = 0; i < arr.Length; i++)
+        {
+            if (arr[i] != target[i])
+            {
+                return false;
+            }
+        }
+
+        return true;
+    }
 }
