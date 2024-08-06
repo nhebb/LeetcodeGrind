@@ -10,7 +10,8 @@ public class P2053
 
         for (int i = 0; i < arr.Length; i++)
         {
-            if (d[arr[i]] == 1) {
+            if (d[arr[i]] == 1)
+            {
                 k--;
                 if (k == 0)
                 {

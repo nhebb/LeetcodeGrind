@@ -10,12 +10,11 @@ internal class Program
 {
     static void Main(string[] args)
     {
-        int[] nums = [1, 2, 3, 4];
-        var n = 4;
-        var left = 1;
-        var right = 5;
-        var sln = new P1508();
-        var res = sln.RangeSum(nums, nums.Length, left, right);
+        var today = DateTime.Now;
+        var res = today.DayOfYear;
+        //var word = "aabbccddeeffgghhiiiiii";
+        //var sln = new P3016();
+        //var res = sln.MinimumPushes(word);
         Console.WriteLine(res);
 
         // Problem 2402
