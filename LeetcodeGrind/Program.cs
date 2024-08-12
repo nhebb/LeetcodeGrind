@@ -10,12 +10,16 @@ internal class Program
 {
     static void Main(string[] args)
     {
-        var today = DateTime.Now;
-        var res = today.DayOfYear;
+        var d1 = new DateTime(1964, 5, 1);
+        var d2 = DateTime.Now;
+        var ts = d2 - d1;
+        var res2 = ts.Days;
+        Console.WriteLine(res2);
+
         //var word = "aabbccddeeffgghhiiiiii";
         //var sln = new P3016();
         //var res = sln.MinimumPushes(word);
-        Console.WriteLine(res);
+        //Console.WriteLine(res);
 
         // Problem 2402
         //var n = 2;
