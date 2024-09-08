@@ -10,11 +10,24 @@ internal class Program
 {
     static void Main(string[] args)
     {
-        var d1 = new DateTime(1964, 5, 1);
-        var d2 = DateTime.Now;
-        var ts = d2 - d1;
-        var res2 = ts.Days;
-        Console.WriteLine(res2);
+        ListNode head = new ListNode(1);
+        head.next = new ListNode(2);
+        head.next.next = new ListNode(3);
+        var k = 5;
+        var sln = new P0725();
+        var res = sln.SplitListToParts(head, k);
+
+        for (int i = 0; i < res.Length; i++)
+        {
+            if (res[i] != null)
+            {
+                Console.WriteLine($"[{res[i].val}]");
+            }
+            else
+            {
+                Console.WriteLine("[]");
+            }
+        }
 
         //var word = "aabbccddeeffgghhiiiiii";
         //var sln = new P3016();
