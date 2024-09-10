@@ -10,24 +10,24 @@ internal class Program
 {
     static void Main(string[] args)
     {
-        ListNode head = new ListNode(1);
-        head.next = new ListNode(2);
-        head.next.next = new ListNode(3);
-        var k = 5;
-        var sln = new P0725();
-        var res = sln.SplitListToParts(head, k);
-
-        for (int i = 0; i < res.Length; i++)
+        int[] vals = [3, 0, 2, 6, 8, 1, 7, 9, 4, 2, 5, 5, 0];
+        var head = new ListNode(vals[0]);
+        var node = head;
+        for (int i = 1; i < vals.Length; i++)
         {
-            if (res[i] != null)
-            {
-                Console.WriteLine($"[{res[i].val}]");
-            }
-            else
-            {
-                Console.WriteLine("[]");
-            }
+            node.next = new ListNode(vals[i]);
+            node = node.next;
         }
+
+        var m = 3;
+        var n = 5;
+        var sln = new P2326();
+        var res = sln.SpiralMatrix(m, n, head);
+        foreach (var row in res)
+        {
+            Console.WriteLine(string.Join(',', row));
+        }
+
 
         //var word = "aabbccddeeffgghhiiiiii";
         //var sln = new P3016();
