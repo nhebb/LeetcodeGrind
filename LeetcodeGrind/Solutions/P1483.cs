@@ -1,10 +1,35 @@
-using LeetcodeGrind.Common;
-
 namespace LeetcodeGrind.Solutions;
 
-// 
-public class P1483
+// 1483. Kth Ancestor of a Tree Node
+public class TreeAncestor
 {
+    // TODO: TLE
+    Dictionary<int, int> d;
 
+    public TreeAncestor(int n, int[] parent)
+    {
+        d = new(n);
+        for (int i = 0; i < parent.Length; i++)
+        {
+            d[i] = parent[i];
+        }
+    }
+
+    public int GetKthAncestor(int node, int k)
+    {
+        var val = -1;
+        while (k > 0)
+        {
+            if (d.TryGetValue(node, out int value))
+            {
+                node = value;
+            }
+            else
+            {
+                return -1;
+            }
+            k--;
+        }
+        return node;
+    }
 }
-

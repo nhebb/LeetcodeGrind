@@ -10,23 +10,10 @@ internal class Program
 {
     static void Main(string[] args)
     {
-        int[] vals = [3, 0, 2, 6, 8, 1, 7, 9, 4, 2, 5, 5, 0];
-        var head = new ListNode(vals[0]);
-        var node = head;
-        for (int i = 1; i < vals.Length; i++)
-        {
-            node.next = new ListNode(vals[i]);
-            node = node.next;
-        }
-
-        var m = 3;
-        var n = 5;
-        var sln = new P2326();
-        var res = sln.SpiralMatrix(m, n, head);
-        foreach (var row in res)
-        {
-            Console.WriteLine(string.Join(',', row));
-        }
+        int num1 = 987, num2 = 879, num3 = 798;
+        var sln = new P3270();
+        var res = sln.GenerateKey(num1, num2, num3);
+        Console.WriteLine(res);
 
 
         //var word = "aabbccddeeffgghhiiiiii";

@@ -1,6 +1,6 @@
 ﻿namespace LeetcodeGrind.Solutions;
 
-// 3249. Count the Number of Good Nodes
+// TODO: 3249. Count the Number of Good Nodes
 public class P3249
 {
     public int CountGoodNodes(int[][] edges)
