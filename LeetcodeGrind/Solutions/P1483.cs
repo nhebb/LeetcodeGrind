@@ -17,7 +17,6 @@ public class TreeAncestor
 
     public int GetKthAncestor(int node, int k)
     {
-        var val = -1;
         while (k > 0)
         {
             if (d.TryGetValue(node, out int value))

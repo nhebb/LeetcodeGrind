@@ -1,8 +1,4 @@
-﻿using LeetcodeGrind.Common;
-using LeetcodeGrind.Solutions;
-using System.Diagnostics.CodeAnalysis;
-using System.Text;
-using System.Text.RegularExpressions;
+﻿using LeetcodeGrind.Solutions;
 
 namespace LeetcodeGrind;
 
@@ -10,11 +6,15 @@ internal class Program
 {
     static void Main(string[] args)
     {
-        int num1 = 987, num2 = 879, num3 = 798;
-        var sln = new P3270();
-        var res = sln.GenerateKey(num1, num2, num3);
-        Console.WriteLine(res);
-
+        int[][] bookings = [[10, 20], [50, 60], [10, 40], [5, 15], [5, 10], [25, 55]];
+        var sln = new MyCalendarTwo();
+        for (int i = 0; i < bookings.Length; i++)
+        {
+            if(i == 5)
+                Console.WriteLine("----");
+            var res = sln.Book(bookings[i][0], bookings[i][1]);
+            Console.WriteLine(res);
+        }
 
         //var word = "aabbccddeeffgghhiiiiii";
         //var sln = new P3016();

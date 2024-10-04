@@ -1,6 +1,5 @@
 ﻿namespace LeetcodeGrind.Solutions;
 
-// TODO: Submit on lazy day
 // 3280. Convert Date to Binary
 public class P3280
 {
