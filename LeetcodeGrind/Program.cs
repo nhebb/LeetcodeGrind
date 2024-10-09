@@ -6,15 +6,11 @@ internal class Program
 {
     static void Main(string[] args)
     {
-        int[][] bookings = [[10, 20], [50, 60], [10, 40], [5, 15], [5, 10], [25, 55]];
-        var sln = new MyCalendarTwo();
-        for (int i = 0; i < bookings.Length; i++)
-        {
-            if(i == 5)
-                Console.WriteLine("----");
-            var res = sln.Book(bookings[i][0], bookings[i][1]);
+        
+        var s = "())";
+        var sln = new P0921();
+        var res = sln.MinAddToMakeValid(s);
             Console.WriteLine(res);
-        }
 
         //var word = "aabbccddeeffgghhiiiiii";
         //var sln = new P3016();

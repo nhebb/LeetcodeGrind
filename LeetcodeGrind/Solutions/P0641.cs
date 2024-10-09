@@ -18,39 +18,39 @@ public class MyCircularDeque
         last = 0;
     }
 
-    public bool InsertFront(int value)
-    {
+    //public bool InsertFront(int value)
+    //{
 
-    }
+    //}
 
-    public bool InsertLast(int value)
-    {
+    //public bool InsertLast(int value)
+    //{
 
-    }
+    //}
 
-    public bool DeleteFront()
-    {
-        count--;
-        first = (first + 1) % capacity;
-    }
+    //public bool DeleteFront()
+    //{
+    //    count--;
+    //    first = (first + 1) % capacity;
+    //}
 
-    public bool DeleteLast()
-    {
-        count--;
-        if (count == 0)
-        {
-            first = 0;
-            last = 0;
-        }
-        else
-        {
-            last--;
-            if (last < 0)
-            {
-                last = capacity - 1;
-            }
-        }
-    }
+    //public bool DeleteLast()
+    //{
+    //    count--;
+    //    if (count == 0)
+    //    {
+    //        first = 0;
+    //        last = 0;
+    //    }
+    //    else
+    //    {
+    //        last--;
+    //        if (last < 0)
+    //        {
+    //            last = capacity - 1;
+    //        }
+    //    }
+    //}
 
     public int GetFront()
     {
