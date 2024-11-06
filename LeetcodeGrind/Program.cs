@@ -6,24 +6,19 @@ internal class Program
 {
     static void Main(string[] args)
     {
-        
-        var s = "())";
-        var sln = new P0921();
-        var res = sln.MinAddToMakeValid(s);
-            Console.WriteLine(res);
+        int[] nums = [8, 4, 2, 30, 15];
+        var sln = new P3011();
+        var res = sln.CanSortArray(nums);
 
-        //var word = "aabbccddeeffgghhiiiiii";
-        //var sln = new P3016();
-        //var res = sln.MinimumPushes(word);
-        //Console.WriteLine(res);
+        Console.WriteLine(res);
 
         // Problem 2402
         //var n = 2;
-        //var meetings = "[[0,10],[1,5], [2, 7], [3, 4]]".To2DIntArray();
+        //int[][] meetings = [[0,10],[1,5], [2, 7], [3, 4]];
         //var n = 3;
-        //var meetings = "[[1, 20], [2, 10], [3, 5], [4, 9], [6, 8]]".To2DIntArray();
+        //int[][]  meetings = [[1, 20], [2, 10], [3, 5], [4, 9], [6, 8]];
         //var n = 4;
-        //var meetings = "[[18,19],[3,12],[17,19],[2,13],[7,10]]".To2DIntArray();
+        //int[][]  meetings = [[18,19],[3,12],[17,19],[2,13],[7,10]];
         //var sln = new P2402();
         //var res = sln.MostBooked(n, meetings);
 
@@ -31,11 +26,11 @@ internal class Program
 
 
         // Problem 1289
-        //var grid = "[[1,2,3],[4,5,6],[7,8,9]]".To2DIntArray();
+        //int[][] grid = [[1,2,3],[4,5,6],[7,8,9]];
         //var sln = new P1289();
         //var res = sln.MinFallingPathSum(grid);
 
-        //var tasks = new char[] { 'A', 'A', 'A', 'B', 'B', 'B' };
+        //char[] tasks = [ 'A', 'A', 'A', 'B', 'B', 'B' ];
         //var tasks = new char[] { 'A', 'A', 'A', 'A', 'A', 'A', 'B', 'C', 'D', 'E', 'F', 'G' };
         //int n = 2;
         //var sln = new P0621();

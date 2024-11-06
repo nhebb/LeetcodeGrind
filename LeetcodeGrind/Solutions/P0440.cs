@@ -1,6 +1,8 @@
 namespace LeetcodeGrind.Solutions;
 
-// 440. K-th Smallest in Lexicographical Order
+// TODO: 440. K-th Smallest in Lexicographical Order
+// Original LINQ solution failed with out of memory error.
+// Re-do with Trie.
 public class P0440
 {
     public int FindKthNumber(int n, int k)

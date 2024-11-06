@@ -1,6 +1,6 @@
 namespace LeetcodeGrind.Solutions;
 
-// 2416. 
+// 2416. Sum of Prefix Scores of Strings
 public class P2416
 {
     private class CountTrie

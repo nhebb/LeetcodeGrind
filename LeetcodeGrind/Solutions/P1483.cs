@@ -1,9 +1,9 @@
 namespace LeetcodeGrind.Solutions;
 
-// 1483. Kth Ancestor of a Tree Node
+// TOTO: 1483. Kth Ancestor of a Tree Node
+// TLE
 public class TreeAncestor
 {
-    // TODO: TLE
     Dictionary<int, int> d;
 
     public TreeAncestor(int n, int[] parent)
