@@ -6,9 +6,10 @@ internal class Program
 {
     static void Main(string[] args)
     {
-        int[] nums = [8, 4, 2, 30, 15];
-        var sln = new P3011();
-        var res = sln.CanSortArray(nums);
+        int[][] items = [[1, 2], [3, 2], [2, 4], [5, 6], [3, 5]];
+        int[] queries = [1, 2, 3, 4, 5, 6];
+        var sln = new P2070();
+        var res = sln.MaximumBeauty(items, queries);
 
         Console.WriteLine(res);
 
