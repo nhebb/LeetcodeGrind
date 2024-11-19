@@ -6,10 +6,9 @@ internal class Program
 {
     static void Main(string[] args)
     {
-        int[][] items = [[1, 2], [3, 2], [2, 4], [5, 6], [3, 5]];
-        int[] queries = [1, 2, 3, 4, 5, 6];
-        var sln = new P2070();
-        var res = sln.MaximumBeauty(items, queries);
+        int[] nums = [1, 5, 4, 2, 9, 9, 9];
+        var sln = new P2461();
+        var res = sln.MaximumSubarraySum(nums, 3);
 
         Console.WriteLine(res);
 

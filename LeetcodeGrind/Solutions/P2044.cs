@@ -1,10 +1,10 @@
-using LeetcodeGrind.Common;
-
 namespace LeetcodeGrind.Solutions;
 
 // 2044. Count Number of Maximum Bitwise-OR Subsets
 public class P2044
 {
+    // TODO: Wrong approach. Do backtracking.
+
     public int CountMaxOrSubsets(int[] nums)
     {
         var max = 0;
@@ -23,7 +23,6 @@ public class P2044
                 count++;
             }
 
-            // wrong. do backtracking
             for (int j = i + 1; j < nums.Length; j++)
             {
                 current ^= nums[j];
