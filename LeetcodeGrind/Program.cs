@@ -6,10 +6,10 @@ internal class Program
 {
     static void Main(string[] args)
     {
-        int[] nums = [1, 5, 4, 2, 9, 9, 9];
-        var sln = new P2461();
-        var res = sln.MaximumSubarraySum(nums, 3);
-
+        int[][] classes =[[1, 2], [3, 5], [2, 2]];
+        var extraStudents = 2;
+        var sln = new P1792();
+        double res = sln.MaxAverageRatio(classes, extraStudents);
         Console.WriteLine(res);
 
         // Problem 2402
