@@ -6,10 +6,12 @@ internal class Program
 {
     static void Main(string[] args)
     {
-        int[][] classes =[[1, 2], [3, 5], [2, 2]];
-        var extraStudents = 2;
-        var sln = new P1792();
-        double res = sln.MaxAverageRatio(classes, extraStudents);
+        var res = -27 % 26;
+        //var s = "robnsdvpuxbapuqgopqvxdrchivlifeepy";
+        //var s = "aababab";
+        //var repeatLimit = 2;
+        //var sln = new P2182();
+        //var res = sln.RepeatLimitedString(s, repeatLimit);
         Console.WriteLine(res);
 
         // Problem 2402
