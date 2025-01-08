@@ -5,9 +5,6 @@ public class P3042
 {
     public int CountPrefixSuffixPairs(string[] words)
     {
-        var sorted = words.OrderBy(w => w.Length)
-                          .ToArray();
-
         var pairs = 0;
 
         for (int i = 0; i < words.Length - 1; i++)
