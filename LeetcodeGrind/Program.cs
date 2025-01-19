@@ -6,13 +6,19 @@ internal class Program
 {
     static void Main(string[] args)
     {
-        var res = -27 % 26;
-        //var s = "robnsdvpuxbapuqgopqvxdrchivlifeepy";
-        //var s = "aababab";
-        //var repeatLimit = 2;
-        //var sln = new P2182();
-        //var res = sln.RepeatLimitedString(s, repeatLimit);
-        Console.WriteLine(res);
+        var xor = 0;
+        int[] nums = [10, 2, 5, 0];
+        foreach (var num in nums)
+        {
+            xor ^= num;
+        }
+        Console.WriteLine(xor);
+
+        //var num1 = 25;
+        //var num2 = 72;
+        //var sln = new P2429();
+        //var res = sln.MinimizeXor(num1, num2);
+        //Console.WriteLine(res);
 
         // Problem 2402
         //var n = 2;
@@ -75,7 +81,4 @@ internal class Program
 
     // TIP: Use this for jagged array declaration:
     // var array2D = Enumerable.Range(0, m).Select(x => new int[n]).ToArray();
-
-
-
 }

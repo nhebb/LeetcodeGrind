@@ -26,4 +26,22 @@ public class P2657
 
         return C;
     }
+
+    public int[] FindThePrefixCommonArray2(int[] A, int[] B)
+    {
+        var hs = new HashSet<int>(A.Length * 2);
+        var prefixCommon = new int[A.Length];
+        var count = 0;
+
+        for (int i = 0; i < A.Length; i++)
+        {
+            hs.Add(A[i]);
+            hs.Add(B[i]);
+            count += 2;
+
+            prefixCommon[i] = count - hs.Count;
+        }
+
+        return prefixCommon;
+    }
 }

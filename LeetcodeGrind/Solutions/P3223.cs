@@ -5,17 +5,22 @@ public class P3223
 {
     public int MinimumLength(string s)
     {
-        var counts = s.GroupBy(c => c)
-                      .ToDictionary(g => g.Key, g => g.Count());
+        var counts = new int[26];
+        for (var i = 0; i < s.Length;i++)
+        {
+            counts[s[i] - 'a']++;
+        }
 
         var deleted = 0;
-        foreach (var kvp in counts)
+        for (var i = 0; i < counts.Length; i++)
         {
-            var count = kvp.Value;
-            while (count > 2)
+            var count = counts[i];
+            if (count > 2)
             {
-                deleted += 2;
-                count -= 2;
+                if (count % 2 == 0)
+                    deleted += count - 2;
+                else
+                    deleted += count - 1;
             }
         }
 
