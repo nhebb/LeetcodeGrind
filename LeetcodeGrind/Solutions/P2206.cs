@@ -18,4 +18,18 @@ public class P2206
 
         return true;
     }
+
+    public bool DivideArray2(int[] nums)
+    {
+        var hs = new HashSet<int>(nums.Length / 2);
+        foreach (var num in nums)
+        {
+            if (!hs.Add(num))
+            {
+                hs.Remove(num);
+            }
+        }
+
+        return hs.Count == 0;
+    }
 }

@@ -39,4 +39,30 @@ public class P2161
 
         return nums;
     }
+
+    public int[] PivotArray2(int[] nums, int pivot)
+    {
+        var result = new List<int>();
+        var greater = new List<int>();
+        var pivots = 0;
+
+        foreach (var num in nums)
+        {
+            if (num < pivot)
+                result.Add(num);
+            else if (num > pivot)
+                greater.Add(num);
+            else
+                pivots++;
+        }
+
+        while (pivots > 0)
+        {
+            result.Add(pivot);
+            pivots--;
+        }
+
+        result.AddRange(greater);
+        return result.ToArray();
+    }
 }

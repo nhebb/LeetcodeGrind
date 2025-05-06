@@ -6,19 +6,10 @@ internal class Program
 {
     static void Main(string[] args)
     {
-        var xor = 0;
-        int[] nums = [10, 2, 5, 0];
-        foreach (var num in nums)
-        {
-            xor ^= num;
-        }
-        Console.WriteLine(xor);
-
-        //var num1 = 25;
-        //var num2 = 72;
-        //var sln = new P2429();
-        //var res = sln.MinimizeXor(num1, num2);
-        //Console.WriteLine(res);
+        int[][] grid = [[1, 0], [1, 1]];
+        var sln = new P1267();
+        var res = sln.CountServers(grid);
+        Console.WriteLine(res);
 
         // Problem 2402
         //var n = 2;
